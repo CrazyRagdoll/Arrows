@@ -7,4 +7,4 @@ before_script:
   - sudo apt-get update -qq
   - sudo apt-get install -qq -y libglew-dev libsdl2-dev
   
-script: mkdir Make && cd Make/ && cmake CMakeLists.txt && make
+script: cd Make/ && cmake CMakeLists.txt && make
