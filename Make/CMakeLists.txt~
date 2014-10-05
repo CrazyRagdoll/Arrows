@@ -5,8 +5,8 @@ cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 project("Arrows")
 
 #set the source files and path
-set(SOURCES Final Year Project/src/Main.cpp)
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR} Final Year Project/Modules)
+set(SOURCES Final\ Year\ Project/src/Main.cpp)
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR} Final\ Year\ Project/Modules)
 
 #Checking all packages are installed
 
