@@ -1,0 +1,1 @@
+/usr/bin/c++    -fexceptions -g    CMakeFiles/ArrowsRun.dir/src/main.cpp.o  -o ArrowsRun -rdynamic -Wl,-Bstatic -lSDL2main -Wl,-Bdynamic -lSDL2 -lpthread -lGLEW -lGL -lGLU -lGLEW -lSDL2 
