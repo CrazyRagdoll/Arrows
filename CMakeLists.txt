@@ -69,4 +69,4 @@ link_libraries(${LIBS})
 add_executable(ArrowsRun ${SOURCES})
 
 ### LINKER ###
-target_link_libraries(Arrows GL GLU GLEW SDL2)
+target_link_libraries(ArrowsRun GL GLU GLEW SDL2)
