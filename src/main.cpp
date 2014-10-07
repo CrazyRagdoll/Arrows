@@ -1,6 +1,8 @@
 #define GLEW_STATIC // Easier debugging
+#include <GL/glut.g>
 #include <GL/glew.h>
 #include <GL/gl.h>
+#include "stdafx.h"
 #include <SDL2/SDL.h>
 #include <unistd.h>
 #include <iostream>

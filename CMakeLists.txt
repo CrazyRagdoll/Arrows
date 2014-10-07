@@ -9,46 +9,43 @@ set(SOURCES src/main.cpp)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/Modules)
 
 #Checking all packages are installed
-
 #First OpenGL
 find_package(OpenGL REQUIRED)
 if(NOT OPENGL_FOUND)
-  message(ERROR " OPENGL not found!")
+    message(ERROR " OPENGL not found!")
 endif(NOT OPENGL_FOUND)
 
 #GLU library
 if(NOT OPENGL_GLU_FOUND)
-  message(ERROR " GLU not found!")
+    message(ERROR " GLU not found!")
 endif(NOT OPENGL_GLU_FOUND)
 
 #SDL2 library
 find_package(SDL2 REQUIRED)
 if(NOT SDL2_FOUND)
-  message(ERROR " SDL2 not found!")
+    message(ERROR " SDL2 not found!")
 endif(NOT SDL2_FOUND)
 
 #GLU library
 find_package(GLEW REQUIRED)
 if(NOT GLEW_FOUND)
-  message(ERROR " GLEW not found!")
+	message(ERROR " GLEW not found!")
 endif(NOT GLEW_FOUND)
 
 #Vectormath library
 find_package(VECTORMATH REQUIRED)
 if(NOT VECTORMATH_FOUND)
-  message(ERROR " Vectormath not found!")
+	message(ERROR " Vectormath not found!")
 endif(NOT VECTORMATH_FOUND)
 
-#Include directories
+#Include directories 
 include_directories(${SDL2_INCLUDE_DIRS} ${OpenGL_INCLUDE_DIRS} ${Vectormath_INCLUDE_DIRS} ${GLEW_INCLUDE_DIRS})
-
 #Linker directories
 link_directories(${SDL2_LIBRARY_DIRS} ${OpenGL_LIBRARY_DIRS} ${Vectormath_LIBRARY_DIRS} ${GLEW_LIBRARY_DIRS})
-
-#Definitions
+#Definitions 
 add_definitions(${SDL_DEFINITIONS} ${OpenGL_DEFINITIONS} ${Vectormath_DEFINITIONS} ${GLEW_DEFINITIONS})
 
-#Compiler flags depending on the OS
+#Compiler flags depending on the OS 
 if (UNIX)
   message(status " Setting GCC flags")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fexceptions -g")
@@ -56,17 +53,18 @@ else()
   message(status "Setting MSVC flags")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHc-")
 endif(UNIX)
-  message(status " ** CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
 
-#Define the c++ version used
+message(status " ** CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
+
+#Define the c++ version used 
 add_definitions("-std=c++0x")
 
 #setting and linking the libraries
 set(LIBS ${LIBS} ${SDL2_LIBRARY} ${OpenGL_LIBRARY} ${GLEW_LIBRARY} ${Vectormath_LIBRARIES})
 link_libraries(${LIBS})
 
-#Create the executable file
-add_executable(ArrowsRun ${SOURCES})
+#Create the executable file 
+add_executable(CubeRacerRun ${SOURCES})
 
 ### LINKER ###
-target_link_libraries(ArrowsRun GL GLU GLEW SDL2)
+target_link_libraries(CubeRacerRun GL GLU GLEW SDL2)
