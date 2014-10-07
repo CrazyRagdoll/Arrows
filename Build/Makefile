@@ -42,10 +42,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/sam/Final Year Project"
+CMAKE_SOURCE_DIR = "/home/sam/Final Year Project/Build"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/sam/Final Year Project"
+CMAKE_BINARY_DIR = "/home/sam/Final Year Project/Build"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -72,9 +72,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sam/Final Year Project/CMakeFiles" "/home/sam/Final Year Project/CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sam/Final Year Project/Build/CMakeFiles" "/home/sam/Final Year Project/Build/CMakeFiles/progress.marks"
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sam/Final Year Project/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sam/Final Year Project/Build/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -102,41 +102,41 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named ArrowsRun
+# Target rules for targets named Arrows
 
 # Build rule for target.
-ArrowsRun: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ArrowsRun
-.PHONY : ArrowsRun
+Arrows: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Arrows
+.PHONY : Arrows
 
 # fast build rule for target.
-ArrowsRun/fast:
-	$(MAKE) -f CMakeFiles/ArrowsRun.dir/build.make CMakeFiles/ArrowsRun.dir/build
-.PHONY : ArrowsRun/fast
+Arrows/fast:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/build
+.PHONY : Arrows/fast
 
-src/main.o: src/main.cpp.o
-.PHONY : src/main.o
+home/sam/Final_Year_Project/src/main.o: home/sam/Final_Year_Project/src/main.cpp.o
+.PHONY : home/sam/Final_Year_Project/src/main.o
 
 # target to build an object file
-src/main.cpp.o:
-	$(MAKE) -f CMakeFiles/ArrowsRun.dir/build.make CMakeFiles/ArrowsRun.dir/src/main.cpp.o
-.PHONY : src/main.cpp.o
+home/sam/Final_Year_Project/src/main.cpp.o:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/main.cpp.o
+.PHONY : home/sam/Final_Year_Project/src/main.cpp.o
 
-src/main.i: src/main.cpp.i
-.PHONY : src/main.i
+home/sam/Final_Year_Project/src/main.i: home/sam/Final_Year_Project/src/main.cpp.i
+.PHONY : home/sam/Final_Year_Project/src/main.i
 
 # target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) -f CMakeFiles/ArrowsRun.dir/build.make CMakeFiles/ArrowsRun.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
+home/sam/Final_Year_Project/src/main.cpp.i:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/main.cpp.i
+.PHONY : home/sam/Final_Year_Project/src/main.cpp.i
 
-src/main.s: src/main.cpp.s
-.PHONY : src/main.s
+home/sam/Final_Year_Project/src/main.s: home/sam/Final_Year_Project/src/main.cpp.s
+.PHONY : home/sam/Final_Year_Project/src/main.s
 
 # target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) -f CMakeFiles/ArrowsRun.dir/build.make CMakeFiles/ArrowsRun.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
+home/sam/Final_Year_Project/src/main.cpp.s:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/main.cpp.s
+.PHONY : home/sam/Final_Year_Project/src/main.cpp.s
 
 # Help Target
 help:
@@ -144,12 +144,12 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... ArrowsRun"
+	@echo "... Arrows"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
+	@echo "... home/sam/Final_Year_Project/src/main.o"
+	@echo "... home/sam/Final_Year_Project/src/main.i"
+	@echo "... home/sam/Final_Year_Project/src/main.s"
 .PHONY : help
 
 
