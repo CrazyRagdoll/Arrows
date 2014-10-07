@@ -1,5 +1,5 @@
 FILE(REMOVE_RECURSE
-  "CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/main.cpp.o"
+  "CMakeFiles/Arrows.dir/src/main.cpp.o"
   "Arrows.pdb"
   "Arrows"
 )

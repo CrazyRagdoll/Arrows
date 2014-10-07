@@ -50,44 +50,44 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/sam/Final Year Project/Build"
+CMAKE_SOURCE_DIR = "/home/sam/Final Year Project"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/sam/Final Year Project/Build"
+CMAKE_BINARY_DIR = "/home/sam/Final Year Project"
 
 #=============================================================================
-# Target rules for target CMakeFiles/Arrows.dir
+# Target rules for target CMakeFiles/ArrowsRun.dir
 
 # All Build rule for target.
-CMakeFiles/Arrows.dir/all:
-	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/depend
-	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report "/home/sam/Final Year Project/Build/CMakeFiles"  1
-	@echo "Built target Arrows"
-.PHONY : CMakeFiles/Arrows.dir/all
+CMakeFiles/ArrowsRun.dir/all:
+	$(MAKE) -f CMakeFiles/ArrowsRun.dir/build.make CMakeFiles/ArrowsRun.dir/depend
+	$(MAKE) -f CMakeFiles/ArrowsRun.dir/build.make CMakeFiles/ArrowsRun.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report "/home/sam/Final Year Project/CMakeFiles"  1
+	@echo "Built target ArrowsRun"
+.PHONY : CMakeFiles/ArrowsRun.dir/all
 
 # Include target in all.
-all: CMakeFiles/Arrows.dir/all
+all: CMakeFiles/ArrowsRun.dir/all
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/Arrows.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sam/Final Year Project/Build/CMakeFiles" 1
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Arrows.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sam/Final Year Project/Build/CMakeFiles" 0
-.PHONY : CMakeFiles/Arrows.dir/rule
+CMakeFiles/ArrowsRun.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sam/Final Year Project/CMakeFiles" 1
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/ArrowsRun.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sam/Final Year Project/CMakeFiles" 0
+.PHONY : CMakeFiles/ArrowsRun.dir/rule
 
 # Convenience name for target.
-Arrows: CMakeFiles/Arrows.dir/rule
-.PHONY : Arrows
+ArrowsRun: CMakeFiles/ArrowsRun.dir/rule
+.PHONY : ArrowsRun
 
 # clean rule for target.
-CMakeFiles/Arrows.dir/clean:
-	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/clean
-.PHONY : CMakeFiles/Arrows.dir/clean
+CMakeFiles/ArrowsRun.dir/clean:
+	$(MAKE) -f CMakeFiles/ArrowsRun.dir/build.make CMakeFiles/ArrowsRun.dir/clean
+.PHONY : CMakeFiles/ArrowsRun.dir/clean
 
 # clean rule for target.
-clean: CMakeFiles/Arrows.dir/clean
+clean: CMakeFiles/ArrowsRun.dir/clean
 .PHONY : clean
 
 #=============================================================================
