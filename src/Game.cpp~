@@ -1,6 +1,17 @@
 #include "Game.h"
 
 #include <iostream>
+#include <string>
+
+void fatalError(std::string errorString)
+{
+	std::cout << errorString << std:endl;
+	std::cout << "Enter any key to quit...";
+	int tmp;
+	std::cin >> tmp;
+	SDL_Quit();
+	exit(1);
+}
 
 Game::Game()
 {
@@ -26,6 +37,23 @@ void Game::initSystems()
 	SDL_Init(SDL_INIT_EVERYTHING); // initialize SDL
 
 	_window = SDL_CreateWindow("Arrows", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _screenWidth, _screenHeight, SDL_WINDOW_OPENGL);
+	
+	if (_window == nullptr)
+	{
+		fatalError("SDL window could not be created!");
+	}
+
+	SDL_GLContext glContext = SDL_GL_CreateContext(_window);
+	if (glContext == nullptr)
+	{
+		fatalError("SDL_GL context could not be created!");
+	}
+
+	GLenum error = glewInit();
+	if(error != GLEW_OK)
+	{
+		fatalError("Could not initalize glew!");
+	} 
 }
 
 void Game::gameLoop() 
@@ -44,9 +72,6 @@ void Game::processInput()
 		switch (evnt.type)
 		{
 			case SDL_QUIT:
-				_gameState = GameState::EXIT;
-				break;
-			case SDLK_ESC:
 				_gameState = GameState::EXIT;
 				break;
 			case SDL_MOUSEMOTION:
