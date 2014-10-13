@@ -5,6 +5,8 @@
 #include <GL/glew.h>
 #include <GL/gl.h>
 
+enum class GameState {PLAY, EXIT};
+
 class Game
 {
 public:
@@ -13,12 +15,15 @@ public:
 
 	void run();
 
-	void initSystems();
-
 private:
+	void initSystems();
+	void gameLoop();
+	void processInput();
+
 	SDL_Window* _window;
 	int _screenWidth;
-	int _screenHeight;	
+	int _screenHeight;
+	GameState _gameState;	
 };
 
 #endif

@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+/home/sam/Final Year Project/src/Game.cpp
+Game.h
+/home/sam/Final Year Project/src/Game.h
+iostream
+-
+
 /home/sam/Final Year Project/src/Game.h
 SDL2/SDL.h
 -
@@ -13,10 +19,4 @@ GL/glew.h
 -
 GL/gl.h
 -
-
-/home/sam/Final Year Project/src/Main.cpp
-iostream
--
-Game.h
-/home/sam/Final Year Project/src/Game.h
 
