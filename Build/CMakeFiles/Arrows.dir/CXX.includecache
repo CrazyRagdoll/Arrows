@@ -11,6 +11,8 @@ Game.h
 /home/sam/Final Year Project/src/Game.h
 iostream
 -
+string
+-
 
 /home/sam/Final Year Project/src/Game.h
 SDL2/SDL.h
