@@ -5,8 +5,8 @@ cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 project("Arrows")
 
 #set the source files and path
-set(SOURCES src/main.cpp)
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/Modules)
+set(SOURCES ../src/Main.cpp ../src/Game.h ../src/Game.cpp)
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/../Modules)
 
 #Checking all packages are installed
 #First OpenGL
@@ -64,7 +64,7 @@ set(LIBS ${LIBS} ${SDL2_LIBRARY} ${OpenGL_LIBRARY} ${GLEW_LIBRARY} ${Vectormath_
 link_libraries(${LIBS})
 
 #Create the executable file 
-add_executable(CubeRacerRun ${SOURCES})
+add_executable(Arrows ${SOURCES})
 
 ### LINKER ###
-target_link_libraries(CubeRacerRun GL GLU GLEW SDL2)
+target_link_libraries(Arrows GL GLU GLEW SDL2)

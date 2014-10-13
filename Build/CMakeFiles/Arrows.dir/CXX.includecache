@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/sam/Final Year Project/src/Game.h
+SDL2/SDL.h
+-
+GL/glew.h
+-
+GL/gl.h
+-
+
+/home/sam/Final Year Project/src/Main.cpp
+iostream
+-
+Game.h
+/home/sam/Final Year Project/src/Game.h
+
