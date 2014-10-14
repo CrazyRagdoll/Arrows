@@ -22,7 +22,8 @@ private:
 
 	SDL_Window* _window;
 	int _screenWidth;
-	int _screenHeight;	
+	int _screenHeight;
+	GameState _gameState;	
 };
 
 #endif
