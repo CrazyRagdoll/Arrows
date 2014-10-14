@@ -162,6 +162,30 @@ home/sam/Final_Year_Project/src/Main.cpp.s:
 	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Main.cpp.s
 .PHONY : home/sam/Final_Year_Project/src/Main.cpp.s
 
+home/sam/Final_Year_Project/src/Sprite.o: home/sam/Final_Year_Project/src/Sprite.cpp.o
+.PHONY : home/sam/Final_Year_Project/src/Sprite.o
+
+# target to build an object file
+home/sam/Final_Year_Project/src/Sprite.cpp.o:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Sprite.cpp.o
+.PHONY : home/sam/Final_Year_Project/src/Sprite.cpp.o
+
+home/sam/Final_Year_Project/src/Sprite.i: home/sam/Final_Year_Project/src/Sprite.cpp.i
+.PHONY : home/sam/Final_Year_Project/src/Sprite.i
+
+# target to preprocess a source file
+home/sam/Final_Year_Project/src/Sprite.cpp.i:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Sprite.cpp.i
+.PHONY : home/sam/Final_Year_Project/src/Sprite.cpp.i
+
+home/sam/Final_Year_Project/src/Sprite.s: home/sam/Final_Year_Project/src/Sprite.cpp.s
+.PHONY : home/sam/Final_Year_Project/src/Sprite.s
+
+# target to generate assembly for a file
+home/sam/Final_Year_Project/src/Sprite.cpp.s:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Sprite.cpp.s
+.PHONY : home/sam/Final_Year_Project/src/Sprite.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -177,6 +201,9 @@ help:
 	@echo "... home/sam/Final_Year_Project/src/Main.o"
 	@echo "... home/sam/Final_Year_Project/src/Main.i"
 	@echo "... home/sam/Final_Year_Project/src/Main.s"
+	@echo "... home/sam/Final_Year_Project/src/Sprite.o"
+	@echo "... home/sam/Final_Year_Project/src/Sprite.i"
+	@echo "... home/sam/Final_Year_Project/src/Sprite.s"
 .PHONY : help
 
 

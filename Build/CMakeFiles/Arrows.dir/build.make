@@ -98,16 +98,41 @@ CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Game.cpp.o.provides: CMake
 
 CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Game.cpp.o.provides.build: CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Game.cpp.o
 
+CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Sprite.cpp.o: CMakeFiles/Arrows.dir/flags.make
+CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Sprite.cpp.o: /home/sam/Final\ Year\ Project/src/Sprite.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report "/home/sam/Final Year Project/Build/CMakeFiles" $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Sprite.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Sprite.cpp.o -c "/home/sam/Final Year Project/src/Sprite.cpp"
+
+CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Sprite.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Sprite.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E "/home/sam/Final Year Project/src/Sprite.cpp" > CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Sprite.cpp.i
+
+CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Sprite.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Sprite.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S "/home/sam/Final Year Project/src/Sprite.cpp" -o CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Sprite.cpp.s
+
+CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Sprite.cpp.o.requires:
+.PHONY : CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Sprite.cpp.o.requires
+
+CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Sprite.cpp.o.provides: CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Sprite.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Sprite.cpp.o.provides.build
+.PHONY : CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Sprite.cpp.o.provides
+
+CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Sprite.cpp.o.provides.build: CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Sprite.cpp.o
+
 # Object files for target Arrows
 Arrows_OBJECTS = \
 "CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Main.cpp.o" \
-"CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Game.cpp.o"
+"CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Game.cpp.o" \
+"CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Sprite.cpp.o"
 
 # External object files for target Arrows
 Arrows_EXTERNAL_OBJECTS =
 
 Arrows: CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Main.cpp.o
 Arrows: CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Game.cpp.o
+Arrows: CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Sprite.cpp.o
 Arrows: CMakeFiles/Arrows.dir/build.make
 Arrows: /usr/lib/x86_64-linux-gnu/libSDL2main.a
 Arrows: /usr/lib/x86_64-linux-gnu/libSDL2.so
@@ -122,6 +147,7 @@ CMakeFiles/Arrows.dir/build: Arrows
 
 CMakeFiles/Arrows.dir/requires: CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Main.cpp.o.requires
 CMakeFiles/Arrows.dir/requires: CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Game.cpp.o.requires
+CMakeFiles/Arrows.dir/requires: CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Sprite.cpp.o.requires
 .PHONY : CMakeFiles/Arrows.dir/requires
 
 CMakeFiles/Arrows.dir/clean:

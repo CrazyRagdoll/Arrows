@@ -3,7 +3,12 @@
 
 CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Game.cpp.o: /home/sam/Final\ Year\ Project/src/Game.cpp
 CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Game.cpp.o: /home/sam/Final\ Year\ Project/src/Game.h
+CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Game.cpp.o: /home/sam/Final\ Year\ Project/src/Sprite.h
 
 CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Main.cpp.o: /home/sam/Final\ Year\ Project/src/Game.h
 CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Main.cpp.o: /home/sam/Final\ Year\ Project/src/Main.cpp
+CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Main.cpp.o: /home/sam/Final\ Year\ Project/src/Sprite.h
+
+CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Sprite.cpp.o: /home/sam/Final\ Year\ Project/src/Sprite.cpp
+CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Sprite.cpp.o: /home/sam/Final\ Year\ Project/src/Sprite.h
 

@@ -6,6 +6,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
 SET(CMAKE_DEPENDS_CHECK_CXX
   "/home/sam/Final Year Project/src/Game.cpp" "/home/sam/Final Year Project/Build/CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Game.cpp.o"
   "/home/sam/Final Year Project/src/Main.cpp" "/home/sam/Final Year Project/Build/CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Main.cpp.o"
+  "/home/sam/Final Year Project/src/Sprite.cpp" "/home/sam/Final Year Project/Build/CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Sprite.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 
