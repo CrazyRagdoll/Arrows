@@ -7,7 +7,7 @@ void fatalError(std::string errorString)
 {
 	std::cout << errorString << std::endl;
 	std::cout << "Enter any key to quit...";
-	int tmp;
+	int tmp; 
 	std::cin >> tmp;
 	SDL_Quit();
 	exit(1);
@@ -29,6 +29,9 @@ Game::~Game()
 void Game::run()
 {
 	initSystems();
+
+	_sprite.init(-1.0f, -1.0f, 1.0f, 1.0f);
+
 	gameLoop();
 }
 
@@ -53,13 +56,15 @@ void Game::initSystems()
 
 	// Setting up Glew
 	GLenum error = glewInit();
-	if(error != GLEW_OK)
+	if(error != GLEW_OK) //GLEW_OK = 0 enum. Which means glew initalized
 	{
 		fatalError("Could not initalize glew!");
 	}
 
+	// Enabling double buffer to make the game smoother by removing flickering
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
+	// Clearing the screen and setting it to blue
 	glClearColor(0.0f, 0.0f, 1.0f, 1.0);
 	
 }
@@ -76,6 +81,8 @@ void Game::gameLoop()
 void Game::processInput()
 {
 	SDL_Event evnt;
+
+	// Will keep the CPU looking for events untill one is pressed.
 	while (SDL_PollEvent(&evnt))
 	{
 		switch (evnt.type)
@@ -98,5 +105,8 @@ void Game::drawGame()
 	// Clearing the Colour and Depth buffers
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	_sprite.draw();
+
+	// Swap the buffers and draw everything onto the screencd 
 	SDL_GL_SwapWindow(_window);
 }

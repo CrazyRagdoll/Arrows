@@ -7,7 +7,7 @@ void fatalError(std::string errorString)
 {
 	std::cout << errorString << std::endl;
 	std::cout << "Enter any key to quit...";
-	int tmp;
+	int tmp; 
 	std::cin >> tmp;
 	SDL_Quit();
 	exit(1);
@@ -29,6 +29,10 @@ Game::~Game()
 void Game::run()
 {
 	initSystems();
+
+	//test sprite
+	_sprite.init(-1.0f, -1.0f, 1.0f, 1.0f);
+
 	gameLoop();
 }
 
@@ -53,7 +57,7 @@ void Game::initSystems()
 
 	// Setting up Glew
 	GLenum error = glewInit();
-	if(error != GLEW_OK)
+	if(error != GLEW_OK) //GLEW_OK = 0 enum. Which means glew initalized
 	{
 		fatalError("Could not initalize glew!");
 	}
@@ -101,6 +105,8 @@ void Game::drawGame()
 
 	// Clearing the Colour and Depth buffers
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	_sprite.draw();
 
 	// Swap the buffers and draw everything onto the screencd 
 	SDL_GL_SwapWindow(_window);
