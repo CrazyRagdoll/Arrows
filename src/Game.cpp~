@@ -30,7 +30,9 @@ void Game::run()
 {
 	initSystems();
 
+	//test sprite
 	_sprite.init(-1.0f, -1.0f, 1.0f, 1.0f);
+	_sprite.draw();
 
 	gameLoop();
 }

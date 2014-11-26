@@ -38,22 +38,19 @@ RM = /usr/bin/cmake -E remove -f
 # Escaping for special characters.
 EQUALS = =
 
-# The program to use to edit the cache.
-CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
-
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/sam/Final Year Project/Build"
+CMAKE_SOURCE_DIR = /home/sam/Documents/Arrows/Build
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/sam/Final Year Project/Build"
+CMAKE_BINARY_DIR = /home/sam/Documents/Arrows/Build
 
 #=============================================================================
 # Targets provided globally by CMake.
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/bin/cmake-gui -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running interactive CMake command-line interface..."
+	/usr/bin/cmake -i .
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -72,9 +69,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sam/Final Year Project/Build/CMakeFiles" "/home/sam/Final Year Project/Build/CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sam/Documents/Arrows/Build/CMakeFiles /home/sam/Documents/Arrows/Build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sam/Final Year Project/Build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sam/Documents/Arrows/Build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -114,77 +111,77 @@ Arrows/fast:
 	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/build
 .PHONY : Arrows/fast
 
-home/sam/Final_Year_Project/src/Game.o: home/sam/Final_Year_Project/src/Game.cpp.o
-.PHONY : home/sam/Final_Year_Project/src/Game.o
+home/sam/Documents/Arrows/src/Game.o: home/sam/Documents/Arrows/src/Game.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/Game.o
 
 # target to build an object file
-home/sam/Final_Year_Project/src/Game.cpp.o:
-	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Game.cpp.o
-.PHONY : home/sam/Final_Year_Project/src/Game.cpp.o
+home/sam/Documents/Arrows/src/Game.cpp.o:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Game.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/Game.cpp.o
 
-home/sam/Final_Year_Project/src/Game.i: home/sam/Final_Year_Project/src/Game.cpp.i
-.PHONY : home/sam/Final_Year_Project/src/Game.i
+home/sam/Documents/Arrows/src/Game.i: home/sam/Documents/Arrows/src/Game.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/Game.i
 
 # target to preprocess a source file
-home/sam/Final_Year_Project/src/Game.cpp.i:
-	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Game.cpp.i
-.PHONY : home/sam/Final_Year_Project/src/Game.cpp.i
+home/sam/Documents/Arrows/src/Game.cpp.i:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Game.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/Game.cpp.i
 
-home/sam/Final_Year_Project/src/Game.s: home/sam/Final_Year_Project/src/Game.cpp.s
-.PHONY : home/sam/Final_Year_Project/src/Game.s
+home/sam/Documents/Arrows/src/Game.s: home/sam/Documents/Arrows/src/Game.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/Game.s
 
 # target to generate assembly for a file
-home/sam/Final_Year_Project/src/Game.cpp.s:
-	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Game.cpp.s
-.PHONY : home/sam/Final_Year_Project/src/Game.cpp.s
+home/sam/Documents/Arrows/src/Game.cpp.s:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Game.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/Game.cpp.s
 
-home/sam/Final_Year_Project/src/Main.o: home/sam/Final_Year_Project/src/Main.cpp.o
-.PHONY : home/sam/Final_Year_Project/src/Main.o
+home/sam/Documents/Arrows/src/Main.o: home/sam/Documents/Arrows/src/Main.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/Main.o
 
 # target to build an object file
-home/sam/Final_Year_Project/src/Main.cpp.o:
-	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Main.cpp.o
-.PHONY : home/sam/Final_Year_Project/src/Main.cpp.o
+home/sam/Documents/Arrows/src/Main.cpp.o:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Main.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/Main.cpp.o
 
-home/sam/Final_Year_Project/src/Main.i: home/sam/Final_Year_Project/src/Main.cpp.i
-.PHONY : home/sam/Final_Year_Project/src/Main.i
+home/sam/Documents/Arrows/src/Main.i: home/sam/Documents/Arrows/src/Main.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/Main.i
 
 # target to preprocess a source file
-home/sam/Final_Year_Project/src/Main.cpp.i:
-	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Main.cpp.i
-.PHONY : home/sam/Final_Year_Project/src/Main.cpp.i
+home/sam/Documents/Arrows/src/Main.cpp.i:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Main.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/Main.cpp.i
 
-home/sam/Final_Year_Project/src/Main.s: home/sam/Final_Year_Project/src/Main.cpp.s
-.PHONY : home/sam/Final_Year_Project/src/Main.s
+home/sam/Documents/Arrows/src/Main.s: home/sam/Documents/Arrows/src/Main.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/Main.s
 
 # target to generate assembly for a file
-home/sam/Final_Year_Project/src/Main.cpp.s:
-	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Main.cpp.s
-.PHONY : home/sam/Final_Year_Project/src/Main.cpp.s
+home/sam/Documents/Arrows/src/Main.cpp.s:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Main.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/Main.cpp.s
 
-home/sam/Final_Year_Project/src/Sprite.o: home/sam/Final_Year_Project/src/Sprite.cpp.o
-.PHONY : home/sam/Final_Year_Project/src/Sprite.o
+home/sam/Documents/Arrows/src/Sprite.o: home/sam/Documents/Arrows/src/Sprite.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/Sprite.o
 
 # target to build an object file
-home/sam/Final_Year_Project/src/Sprite.cpp.o:
-	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Sprite.cpp.o
-.PHONY : home/sam/Final_Year_Project/src/Sprite.cpp.o
+home/sam/Documents/Arrows/src/Sprite.cpp.o:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Sprite.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/Sprite.cpp.o
 
-home/sam/Final_Year_Project/src/Sprite.i: home/sam/Final_Year_Project/src/Sprite.cpp.i
-.PHONY : home/sam/Final_Year_Project/src/Sprite.i
+home/sam/Documents/Arrows/src/Sprite.i: home/sam/Documents/Arrows/src/Sprite.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/Sprite.i
 
 # target to preprocess a source file
-home/sam/Final_Year_Project/src/Sprite.cpp.i:
-	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Sprite.cpp.i
-.PHONY : home/sam/Final_Year_Project/src/Sprite.cpp.i
+home/sam/Documents/Arrows/src/Sprite.cpp.i:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Sprite.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/Sprite.cpp.i
 
-home/sam/Final_Year_Project/src/Sprite.s: home/sam/Final_Year_Project/src/Sprite.cpp.s
-.PHONY : home/sam/Final_Year_Project/src/Sprite.s
+home/sam/Documents/Arrows/src/Sprite.s: home/sam/Documents/Arrows/src/Sprite.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/Sprite.s
 
 # target to generate assembly for a file
-home/sam/Final_Year_Project/src/Sprite.cpp.s:
-	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Final_Year_Project/src/Sprite.cpp.s
-.PHONY : home/sam/Final_Year_Project/src/Sprite.cpp.s
+home/sam/Documents/Arrows/src/Sprite.cpp.s:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Sprite.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/Sprite.cpp.s
 
 # Help Target
 help:
@@ -195,15 +192,15 @@ help:
 	@echo "... Arrows"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... home/sam/Final_Year_Project/src/Game.o"
-	@echo "... home/sam/Final_Year_Project/src/Game.i"
-	@echo "... home/sam/Final_Year_Project/src/Game.s"
-	@echo "... home/sam/Final_Year_Project/src/Main.o"
-	@echo "... home/sam/Final_Year_Project/src/Main.i"
-	@echo "... home/sam/Final_Year_Project/src/Main.s"
-	@echo "... home/sam/Final_Year_Project/src/Sprite.o"
-	@echo "... home/sam/Final_Year_Project/src/Sprite.i"
-	@echo "... home/sam/Final_Year_Project/src/Sprite.s"
+	@echo "... home/sam/Documents/Arrows/src/Game.o"
+	@echo "... home/sam/Documents/Arrows/src/Game.i"
+	@echo "... home/sam/Documents/Arrows/src/Game.s"
+	@echo "... home/sam/Documents/Arrows/src/Main.o"
+	@echo "... home/sam/Documents/Arrows/src/Main.i"
+	@echo "... home/sam/Documents/Arrows/src/Main.s"
+	@echo "... home/sam/Documents/Arrows/src/Sprite.o"
+	@echo "... home/sam/Documents/Arrows/src/Sprite.i"
+	@echo "... home/sam/Documents/Arrows/src/Sprite.s"
 .PHONY : help
 
 

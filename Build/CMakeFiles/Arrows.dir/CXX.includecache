@@ -6,15 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/home/sam/Final Year Project/src/Game.cpp
+/home/sam/Documents/Arrows/src/Game.cpp
 Game.h
-/home/sam/Final Year Project/src/Game.h
+/home/sam/Documents/Arrows/src/Game.h
 iostream
 -
 string
 -
 
-/home/sam/Final Year Project/src/Game.h
+/home/sam/Documents/Arrows/src/Game.h
 SDL2/SDL.h
 -
 GL/glew.h
@@ -22,17 +22,9 @@ GL/glew.h
 GL/gl.h
 -
 Sprite.h
-/home/sam/Final Year Project/src/Sprite.h
+/home/sam/Documents/Arrows/src/Sprite.h
 
-/home/sam/Final Year Project/src/Main.cpp
-Game.h
-/home/sam/Final Year Project/src/Game.h
-
-/home/sam/Final Year Project/src/Sprite.cpp
-Sprite.h
-/home/sam/Final Year Project/src/Sprite.h
-
-/home/sam/Final Year Project/src/Sprite.h
+/home/sam/Documents/Arrows/src/Sprite.h
 GL/glew.h
 -
 
