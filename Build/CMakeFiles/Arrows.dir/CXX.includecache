@@ -6,9 +6,21 @@
 
 #IncludeRegexTransform: 
 
+/home/sam/Documents/Arrows/src/Errors.h
+string
+-
+
+/home/sam/Documents/Arrows/src/GLSLProgram.h
+string
+-
+GL/glew.h
+-
+
 /home/sam/Documents/Arrows/src/Game.cpp
 Game.h
 /home/sam/Documents/Arrows/src/Game.h
+Errors.h
+/home/sam/Documents/Arrows/src/Errors.h
 iostream
 -
 string
@@ -21,6 +33,8 @@ GL/glew.h
 -
 GL/gl.h
 -
+GLSLProgram.h
+/home/sam/Documents/Arrows/src/GLSLProgram.h
 Sprite.h
 /home/sam/Documents/Arrows/src/Sprite.h
 

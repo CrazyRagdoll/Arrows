@@ -1,0 +1,8 @@
+#ifndef ERRORS_H_
+#define SPRITE_H_
+
+#include <string>
+
+void fatalError(std::string errorString);
+
+#endif
