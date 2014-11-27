@@ -66,12 +66,22 @@ void GLSLProgram::linkShaders()
 	//always detaach shaders after a successful link
 	glDetachShader(_programID, _vertexShaderID);
 	glDetachShader(_programID, _fragmentShaderID);	
+	glDeleteShader(_vertexShaderID);
+	glDeleteShader(_fragmentShaderID);
 }
 
 void GLSLProgram::addAttribute(const std::string& attributeName)
 {
 	glBindAttribLocation(_programID, _numAttributes++, attributeName.c_str());
-	_numAttributes++;
+}
+
+GLuint GLSLProgram::getUniformLocation(const std::string& uniformName)
+{
+	GLuint location = glGetUniformLocation(_programID, uniformName.c_str());
+	if(location == GL_INVALID_INDEX) {
+		fatalError("Uniform " + uniformName + " not found in shader!");
+	}
+	return location;
 }
 
 void GLSLProgram::use()

@@ -21,4 +21,5 @@ CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Main.cpp.o: /home/sam/Docume
 
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Sprite.cpp.o: /home/sam/Documents/Arrows/src/Sprite.cpp
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Sprite.cpp.o: /home/sam/Documents/Arrows/src/Sprite.h
+CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Sprite.cpp.o: /home/sam/Documents/Arrows/src/Vertex.h
 

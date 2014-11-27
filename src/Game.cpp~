@@ -4,12 +4,13 @@
 #include <iostream>
 #include <string>
 
-Game::Game()
+Game::Game() : 
+	_screenWidth(1024), 
+	_screenHeight(768), 
+	_time(0.0f), 
+	_window(nullptr), 
+	_gameState(GameState::PLAY)
 {
-	_window = nullptr;
-	_screenWidth = 680;
-	_screenHeight = 420;
-	_gameState = GameState::PLAY;
 }
 
 Game::~Game()
@@ -22,7 +23,7 @@ void Game::run()
 	initSystems();
 
 	//test sprite
-	_sprite.init(-1.0f, -1.0f, 1.0f, 1.0f);
+	_sprite.init(-1.0f, -1.0f, 2.0f, 2.0f);
 
 	gameLoop();
 }
@@ -57,7 +58,7 @@ void Game::initSystems()
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
 	// Clearing the screen and setting it to blue
-	glClearColor(0.0f, 0.0f, 1.0f, 1.0);
+	glClearColor(0.0f, 0.0f, 2.0f, 2.0);
 
 	initShaders();
 }
@@ -66,6 +67,7 @@ void Game::initShaders()
 {
 	_colorProgram.compileShaders("../src/Shaders/colorShading.vert", "../src/Shaders/colorShading.frag");
 	_colorProgram.addAttribute("vertexPosition");
+	//_colorProgram.addAttribute("vertexColor");
 	_colorProgram.linkShaders();
 }
 
@@ -74,6 +76,7 @@ void Game::gameLoop()
 	while (_gameState != GameState::EXIT)
 	{
 		processInput();
+		_time += 0.01;
 		drawGame();
 	}
 }
@@ -107,6 +110,10 @@ void Game::drawGame()
 
 	_colorProgram.use();
 
+	GLuint timeLocation = _colorProgram.getUniformLocation("time");
+	glUniform1f(timeLocation, _time);
+
+	//draw our sprite
 	_sprite.draw();
 
 	_colorProgram.unuse();
