@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 project("Arrows")
 
 #set the source files and path
-set(SOURCES ../src/Main.cpp ../src/Game.h ../src/Game.cpp  ../src/Sprite.h ../src/Sprite.cpp)
+set(SOURCES ../src/Main.cpp ../src/Game.h ../src/Game.cpp  ../src/Sprite.h ../src/Sprite.cpp ../src/Errors.h ../src/Errors.cpp ../src/GLSLProgram.h ../src/GLSLProgram.cpp ../src/Vertex.h)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/../Modules)
 
 #Checking all packages are installed

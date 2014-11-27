@@ -111,6 +111,30 @@ Arrows/fast:
 	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/build
 .PHONY : Arrows/fast
 
+home/sam/Documents/Arrows/src/Camera.o: home/sam/Documents/Arrows/src/Camera.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/Camera.o
+
+# target to build an object file
+home/sam/Documents/Arrows/src/Camera.cpp.o:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Camera.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/Camera.cpp.o
+
+home/sam/Documents/Arrows/src/Camera.i: home/sam/Documents/Arrows/src/Camera.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/Camera.i
+
+# target to preprocess a source file
+home/sam/Documents/Arrows/src/Camera.cpp.i:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Camera.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/Camera.cpp.i
+
+home/sam/Documents/Arrows/src/Camera.s: home/sam/Documents/Arrows/src/Camera.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/Camera.s
+
+# target to generate assembly for a file
+home/sam/Documents/Arrows/src/Camera.cpp.s:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Camera.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/Camera.cpp.s
+
 home/sam/Documents/Arrows/src/Errors.o: home/sam/Documents/Arrows/src/Errors.cpp.o
 .PHONY : home/sam/Documents/Arrows/src/Errors.o
 
@@ -240,6 +264,9 @@ help:
 	@echo "... Arrows"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... home/sam/Documents/Arrows/src/Camera.o"
+	@echo "... home/sam/Documents/Arrows/src/Camera.i"
+	@echo "... home/sam/Documents/Arrows/src/Camera.s"
 	@echo "... home/sam/Documents/Arrows/src/Errors.o"
 	@echo "... home/sam/Documents/Arrows/src/Errors.i"
 	@echo "... home/sam/Documents/Arrows/src/Errors.s"

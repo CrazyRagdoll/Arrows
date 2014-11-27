@@ -4,6 +4,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Sprite.cpp.o"
   "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Errors.cpp.o"
   "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/GLSLProgram.cpp.o"
+  "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Camera.cpp.o"
   "Arrows.pdb"
   "Arrows"
 )

@@ -6,7 +6,7 @@
 #include <GL/gl.h>
 
 #include "GLSLProgram.h"
-
+#include "Camera.h"
 #include "Sprite.h"
 
 enum class GameState {PLAY, EXIT};
@@ -31,10 +31,12 @@ private:
 	int _screenHeight;
 	GameState _gameState;	
 
-	//test sprite
+	//test sprites
 	Sprite _sprite;
 
 	GLSLProgram _colorProgram;
+
+	Camera _camera;
 
 	float _time;
 };
