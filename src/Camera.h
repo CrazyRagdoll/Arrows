@@ -5,11 +5,11 @@
 #include "glm/gtc/matrix_transform.hpp"
 
 //Camera class for 2D games
-class Camera2D
+class Camera
 {
 public:
-	Camera2D();
-	~Camera2D();
+	Camera();
+	~Camera();
 
 	//sets up the orthographic matrix and screen dimensions
 	void init(int screenWidth, int screenHeight);

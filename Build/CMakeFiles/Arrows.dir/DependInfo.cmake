@@ -4,6 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
+  "/home/sam/Documents/Arrows/src/Camera.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Camera.cpp.o"
   "/home/sam/Documents/Arrows/src/Errors.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Errors.cpp.o"
   "/home/sam/Documents/Arrows/src/GLSLProgram.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/GLSLProgram.cpp.o"
   "/home/sam/Documents/Arrows/src/Game.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Game.cpp.o"
@@ -12,6 +13,7 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "/home/sam/Documents/Arrows/src/ResourceManager.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/ResourceManager.cpp.o"
   "/home/sam/Documents/Arrows/src/Sprite.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Sprite.cpp.o"
   "/home/sam/Documents/Arrows/src/TextureCache.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/TextureCache.cpp.o"
+  "/home/sam/Documents/Arrows/src/Window.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Window.cpp.o"
   "/home/sam/Documents/Arrows/src/main.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/main.cpp.o"
   "/home/sam/Documents/Arrows/src/picoPNG.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/picoPNG.cpp.o"
   )

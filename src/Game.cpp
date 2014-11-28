@@ -7,12 +7,11 @@
 Game::Game() : 
 	_screenWidth(1024), 
 	_screenHeight(768), 
-	_time(0.0f), 
-	_window(nullptr), 
+	_time(0.0f),  
 	_gameState(GameState::PLAY),
 	_maxFPS(60.0f)
 {
-
+	_camera.init(_screenWidth, _screenHeight);
 }
 
 Game::~Game()
@@ -25,10 +24,10 @@ void Game::run()
 	initSystems();
 
 	_sprites.push_back(new Sprite());
-	_sprites.back()->init(-1.0f, -1.0f, 1.0f, 1.0f, "../src/Textures/PNG/CharacterRight_Standing.png");
+	_sprites.back()->init(0.0f, 0.0f, _screenWidth / 2, _screenWidth / 2, "../src/Textures/PNG/CharacterRight_Standing.png");
 
 	_sprites.push_back(new Sprite());
-	_sprites.back()->init(0.0f, -1.0f, 1.0f, 1.0f, "../src/Textures/PNG/CharacterRight_Standing.png");
+	_sprites.back()->init(_screenWidth / 2, 0.0f, _screenWidth / 2, _screenWidth / 2, "../src/Textures/PNG/CharacterRight_Standing.png");
 
 	gameLoop();
 }
@@ -41,35 +40,7 @@ void Game::initSystems()
 	// Enabling double buffer to make the game smoother by removing flickering
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
-	// Creating and opening an SDL window.
-	_window = SDL_CreateWindow("Arrows", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _screenWidth, _screenHeight, SDL_WINDOW_OPENGL);
-	if (_window == nullptr)
-	{
-		fatalError("SDL window could not be created!");
-	}
-
-	// Setting up the OpenGL context
-	SDL_GLContext glContext = SDL_GL_CreateContext(_window);
-	if (glContext == nullptr)
-	{
-		fatalError("SDL_GL context could not be created!");
-	}
-
-	// Setting up Glew
-	GLenum error = glewInit();
-	if(error != GLEW_OK) //GLEW_OK = 0 enum. Which means glew initalized
-	{
-		fatalError("Could not initalize glew!");
-	}
-
-	//Check the openGL version
-	std::printf("***   OpenGL Version: %s   ***\n", glGetString(GL_VERSION)); 	
-	
-	// Clearing the screen and setting it to blue
-	glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
-
-	//set vsync
-	SDL_GL_SetSwapInterval(1);
+	_window.create("Arrows", _screenWidth, _screenHeight, 0);
 
 	initShaders();
 }
@@ -93,6 +64,8 @@ void Game::gameLoop()
 		processInput();
 		_time += 0.01;
 	
+		_camera.update();
+		
 		drawGame();
 		calculateFPS();
 		
@@ -119,6 +92,9 @@ void Game::processInput()
 {
     SDL_Event evnt;
 
+    const float CAMERA_SPEED = 20.0f;
+    const float SCALE_SPEED = 0.1f;	
+	
     //Will keep looping until there are no more events to process
     while (SDL_PollEvent(&evnt)) {
         switch (evnt.type) {
@@ -128,6 +104,29 @@ void Game::processInput()
             case SDL_MOUSEMOTION:
                 //std::cout << evnt.motion.x << " " << evnt.motion.y << std::endl;
                 break;
+	    case SDL_KEYDOWN:
+		switch(evnt.key.keysym.sym)
+		{
+		    case SDLK_w:
+			_camera.setPosition(_camera.getPosition() + glm::vec2(0.0, CAMERA_SPEED));
+			break;
+		    case SDLK_s:
+			_camera.setPosition(_camera.getPosition() + glm::vec2(0.0, -CAMERA_SPEED));
+			break;
+       		    case SDLK_a:
+			_camera.setPosition(_camera.getPosition() + glm::vec2(CAMERA_SPEED, 0.0f));
+			break;
+		    case SDLK_d:
+			_camera.setPosition(_camera.getPosition() + glm::vec2(-CAMERA_SPEED, 0.0f));
+			break;
+		    case SDLK_q:
+			_camera.setScale(_camera.getScale() + SCALE_SPEED);
+			break;
+		    case SDLK_e:
+			_camera.setScale(_camera.getScale() - SCALE_SPEED);
+			break;		
+		}
+		
         }
     }
 }
@@ -140,15 +139,27 @@ void Game::drawGame()
 	// Clearing the Colour and Depth buffers
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	//Enable the shader
 	_colorProgram.use();
-	glActiveTexture(GL_TEXTURE0);
 
+	//using texture unit0
+	glActiveTexture(GL_TEXTURE0);
+	//get the uniform location
 	GLint textureLocation = _colorProgram.getUniformLocation("mySampler");	
+	//tell the shader that the texture is in texture unit 0	
 	glUniform1i(textureLocation, 0);
 	
+	//set the constantly chaning time variable
 	GLuint timeLocation = _colorProgram.getUniformLocation("time");
 	glUniform1f(timeLocation, _time);
 	
+	//set the camera matrix
+	GLuint pLocation = _colorProgram.getUniformLocation("P");
+	glm::mat4 cameraMatrix = _camera.getCameraMatrix();
+
+	glUniformMatrix4fv(pLocation, 1, GL_FALSE, &(cameraMatrix[0][0]));
+	
+	//draw out sprites!
 	for(int i = 0; i < _sprites.size(); i++)
 	{
 		_sprites[i]->draw();
@@ -158,7 +169,7 @@ void Game::drawGame()
 	_colorProgram.unuse();
 
 	// Swap the buffers and draw everything onto the screencd 
-	SDL_GL_SwapWindow(_window);
+	_window.swapBuffer();
 }
 
 void Game::calculateFPS()

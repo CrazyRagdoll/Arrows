@@ -9,6 +9,8 @@
 #include "GLSLProgram.h"
 #include "Sprite.h"
 #include "GLTexture.h"
+#include "Window.h"
+#include "Camera.h"
 
 enum class GameState {PLAY, EXIT};
 
@@ -28,7 +30,7 @@ private:
 	void drawGame();
 	void calculateFPS();
 
-	SDL_Window* _window;
+	Window _window;
 	int _screenWidth;
 	int _screenHeight;
 	GameState _gameState;	
@@ -36,6 +38,7 @@ private:
 	std::vector <Sprite*> _sprites;
 
 	GLSLProgram _colorProgram;
+	Camera _camera;
 
 	float _fps;
 	float _maxFPS;
