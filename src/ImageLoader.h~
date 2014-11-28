@@ -1,14 +1,12 @@
-#ifndef IMAGELOADER_H_
-#define IMAGELOADER_H_
-
+#pragma once
 #include "GLTexture.h"
 
 #include <string>
 
+//Loads images into GLTextures
 class ImageLoader
 {
 public:
-	GLTexture loadPNG(std::string filePath);
+    static GLTexture loadPNG(std::string filePath);
 };
 
-#endif

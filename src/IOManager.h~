@@ -1,12 +1,12 @@
-#ifndef IOMANAGER_H_
-#define IOMANAGER_H_
+#pragma once
 
 #include <vector>
+
+#include <string>
 
 class IOManager
 {
 public:
-	static bool readFileToBuffer(std::string filePath, std::vector<unsigned char>& buffer);
+    static bool readFileToBuffer(std::string filePath, std::vector<unsigned char>& buffer);
 };
 
-#endif

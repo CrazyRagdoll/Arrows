@@ -111,30 +111,6 @@ Arrows/fast:
 	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/build
 .PHONY : Arrows/fast
 
-home/sam/Documents/Arrows/src/Camera.o: home/sam/Documents/Arrows/src/Camera.cpp.o
-.PHONY : home/sam/Documents/Arrows/src/Camera.o
-
-# target to build an object file
-home/sam/Documents/Arrows/src/Camera.cpp.o:
-	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Camera.cpp.o
-.PHONY : home/sam/Documents/Arrows/src/Camera.cpp.o
-
-home/sam/Documents/Arrows/src/Camera.i: home/sam/Documents/Arrows/src/Camera.cpp.i
-.PHONY : home/sam/Documents/Arrows/src/Camera.i
-
-# target to preprocess a source file
-home/sam/Documents/Arrows/src/Camera.cpp.i:
-	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Camera.cpp.i
-.PHONY : home/sam/Documents/Arrows/src/Camera.cpp.i
-
-home/sam/Documents/Arrows/src/Camera.s: home/sam/Documents/Arrows/src/Camera.cpp.s
-.PHONY : home/sam/Documents/Arrows/src/Camera.s
-
-# target to generate assembly for a file
-home/sam/Documents/Arrows/src/Camera.cpp.s:
-	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Camera.cpp.s
-.PHONY : home/sam/Documents/Arrows/src/Camera.cpp.s
-
 home/sam/Documents/Arrows/src/Errors.o: home/sam/Documents/Arrows/src/Errors.cpp.o
 .PHONY : home/sam/Documents/Arrows/src/Errors.o
 
@@ -207,29 +183,77 @@ home/sam/Documents/Arrows/src/Game.cpp.s:
 	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Game.cpp.s
 .PHONY : home/sam/Documents/Arrows/src/Game.cpp.s
 
-home/sam/Documents/Arrows/src/Main.o: home/sam/Documents/Arrows/src/Main.cpp.o
-.PHONY : home/sam/Documents/Arrows/src/Main.o
+home/sam/Documents/Arrows/src/IOManager.o: home/sam/Documents/Arrows/src/IOManager.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/IOManager.o
 
 # target to build an object file
-home/sam/Documents/Arrows/src/Main.cpp.o:
-	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Main.cpp.o
-.PHONY : home/sam/Documents/Arrows/src/Main.cpp.o
+home/sam/Documents/Arrows/src/IOManager.cpp.o:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/IOManager.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/IOManager.cpp.o
 
-home/sam/Documents/Arrows/src/Main.i: home/sam/Documents/Arrows/src/Main.cpp.i
-.PHONY : home/sam/Documents/Arrows/src/Main.i
+home/sam/Documents/Arrows/src/IOManager.i: home/sam/Documents/Arrows/src/IOManager.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/IOManager.i
 
 # target to preprocess a source file
-home/sam/Documents/Arrows/src/Main.cpp.i:
-	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Main.cpp.i
-.PHONY : home/sam/Documents/Arrows/src/Main.cpp.i
+home/sam/Documents/Arrows/src/IOManager.cpp.i:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/IOManager.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/IOManager.cpp.i
 
-home/sam/Documents/Arrows/src/Main.s: home/sam/Documents/Arrows/src/Main.cpp.s
-.PHONY : home/sam/Documents/Arrows/src/Main.s
+home/sam/Documents/Arrows/src/IOManager.s: home/sam/Documents/Arrows/src/IOManager.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/IOManager.s
 
 # target to generate assembly for a file
-home/sam/Documents/Arrows/src/Main.cpp.s:
-	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Main.cpp.s
-.PHONY : home/sam/Documents/Arrows/src/Main.cpp.s
+home/sam/Documents/Arrows/src/IOManager.cpp.s:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/IOManager.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/IOManager.cpp.s
+
+home/sam/Documents/Arrows/src/ImageLoader.o: home/sam/Documents/Arrows/src/ImageLoader.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/ImageLoader.o
+
+# target to build an object file
+home/sam/Documents/Arrows/src/ImageLoader.cpp.o:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/ImageLoader.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/ImageLoader.cpp.o
+
+home/sam/Documents/Arrows/src/ImageLoader.i: home/sam/Documents/Arrows/src/ImageLoader.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/ImageLoader.i
+
+# target to preprocess a source file
+home/sam/Documents/Arrows/src/ImageLoader.cpp.i:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/ImageLoader.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/ImageLoader.cpp.i
+
+home/sam/Documents/Arrows/src/ImageLoader.s: home/sam/Documents/Arrows/src/ImageLoader.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/ImageLoader.s
+
+# target to generate assembly for a file
+home/sam/Documents/Arrows/src/ImageLoader.cpp.s:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/ImageLoader.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/ImageLoader.cpp.s
+
+home/sam/Documents/Arrows/src/ResourceManager.o: home/sam/Documents/Arrows/src/ResourceManager.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/ResourceManager.o
+
+# target to build an object file
+home/sam/Documents/Arrows/src/ResourceManager.cpp.o:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/ResourceManager.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/ResourceManager.cpp.o
+
+home/sam/Documents/Arrows/src/ResourceManager.i: home/sam/Documents/Arrows/src/ResourceManager.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/ResourceManager.i
+
+# target to preprocess a source file
+home/sam/Documents/Arrows/src/ResourceManager.cpp.i:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/ResourceManager.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/ResourceManager.cpp.i
+
+home/sam/Documents/Arrows/src/ResourceManager.s: home/sam/Documents/Arrows/src/ResourceManager.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/ResourceManager.s
+
+# target to generate assembly for a file
+home/sam/Documents/Arrows/src/ResourceManager.cpp.s:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/ResourceManager.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/ResourceManager.cpp.s
 
 home/sam/Documents/Arrows/src/Sprite.o: home/sam/Documents/Arrows/src/Sprite.cpp.o
 .PHONY : home/sam/Documents/Arrows/src/Sprite.o
@@ -255,6 +279,78 @@ home/sam/Documents/Arrows/src/Sprite.cpp.s:
 	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Sprite.cpp.s
 .PHONY : home/sam/Documents/Arrows/src/Sprite.cpp.s
 
+home/sam/Documents/Arrows/src/TextureCache.o: home/sam/Documents/Arrows/src/TextureCache.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/TextureCache.o
+
+# target to build an object file
+home/sam/Documents/Arrows/src/TextureCache.cpp.o:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/TextureCache.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/TextureCache.cpp.o
+
+home/sam/Documents/Arrows/src/TextureCache.i: home/sam/Documents/Arrows/src/TextureCache.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/TextureCache.i
+
+# target to preprocess a source file
+home/sam/Documents/Arrows/src/TextureCache.cpp.i:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/TextureCache.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/TextureCache.cpp.i
+
+home/sam/Documents/Arrows/src/TextureCache.s: home/sam/Documents/Arrows/src/TextureCache.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/TextureCache.s
+
+# target to generate assembly for a file
+home/sam/Documents/Arrows/src/TextureCache.cpp.s:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/TextureCache.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/TextureCache.cpp.s
+
+home/sam/Documents/Arrows/src/main.o: home/sam/Documents/Arrows/src/main.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/main.o
+
+# target to build an object file
+home/sam/Documents/Arrows/src/main.cpp.o:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/main.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/main.cpp.o
+
+home/sam/Documents/Arrows/src/main.i: home/sam/Documents/Arrows/src/main.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/main.i
+
+# target to preprocess a source file
+home/sam/Documents/Arrows/src/main.cpp.i:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/main.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/main.cpp.i
+
+home/sam/Documents/Arrows/src/main.s: home/sam/Documents/Arrows/src/main.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/main.s
+
+# target to generate assembly for a file
+home/sam/Documents/Arrows/src/main.cpp.s:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/main.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/main.cpp.s
+
+home/sam/Documents/Arrows/src/picoPNG.o: home/sam/Documents/Arrows/src/picoPNG.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/picoPNG.o
+
+# target to build an object file
+home/sam/Documents/Arrows/src/picoPNG.cpp.o:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/picoPNG.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/picoPNG.cpp.o
+
+home/sam/Documents/Arrows/src/picoPNG.i: home/sam/Documents/Arrows/src/picoPNG.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/picoPNG.i
+
+# target to preprocess a source file
+home/sam/Documents/Arrows/src/picoPNG.cpp.i:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/picoPNG.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/picoPNG.cpp.i
+
+home/sam/Documents/Arrows/src/picoPNG.s: home/sam/Documents/Arrows/src/picoPNG.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/picoPNG.s
+
+# target to generate assembly for a file
+home/sam/Documents/Arrows/src/picoPNG.cpp.s:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/picoPNG.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/picoPNG.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -264,9 +360,6 @@ help:
 	@echo "... Arrows"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... home/sam/Documents/Arrows/src/Camera.o"
-	@echo "... home/sam/Documents/Arrows/src/Camera.i"
-	@echo "... home/sam/Documents/Arrows/src/Camera.s"
 	@echo "... home/sam/Documents/Arrows/src/Errors.o"
 	@echo "... home/sam/Documents/Arrows/src/Errors.i"
 	@echo "... home/sam/Documents/Arrows/src/Errors.s"
@@ -276,12 +369,27 @@ help:
 	@echo "... home/sam/Documents/Arrows/src/Game.o"
 	@echo "... home/sam/Documents/Arrows/src/Game.i"
 	@echo "... home/sam/Documents/Arrows/src/Game.s"
-	@echo "... home/sam/Documents/Arrows/src/Main.o"
-	@echo "... home/sam/Documents/Arrows/src/Main.i"
-	@echo "... home/sam/Documents/Arrows/src/Main.s"
+	@echo "... home/sam/Documents/Arrows/src/IOManager.o"
+	@echo "... home/sam/Documents/Arrows/src/IOManager.i"
+	@echo "... home/sam/Documents/Arrows/src/IOManager.s"
+	@echo "... home/sam/Documents/Arrows/src/ImageLoader.o"
+	@echo "... home/sam/Documents/Arrows/src/ImageLoader.i"
+	@echo "... home/sam/Documents/Arrows/src/ImageLoader.s"
+	@echo "... home/sam/Documents/Arrows/src/ResourceManager.o"
+	@echo "... home/sam/Documents/Arrows/src/ResourceManager.i"
+	@echo "... home/sam/Documents/Arrows/src/ResourceManager.s"
 	@echo "... home/sam/Documents/Arrows/src/Sprite.o"
 	@echo "... home/sam/Documents/Arrows/src/Sprite.i"
 	@echo "... home/sam/Documents/Arrows/src/Sprite.s"
+	@echo "... home/sam/Documents/Arrows/src/TextureCache.o"
+	@echo "... home/sam/Documents/Arrows/src/TextureCache.i"
+	@echo "... home/sam/Documents/Arrows/src/TextureCache.s"
+	@echo "... home/sam/Documents/Arrows/src/main.o"
+	@echo "... home/sam/Documents/Arrows/src/main.i"
+	@echo "... home/sam/Documents/Arrows/src/main.s"
+	@echo "... home/sam/Documents/Arrows/src/picoPNG.o"
+	@echo "... home/sam/Documents/Arrows/src/picoPNG.i"
+	@echo "... home/sam/Documents/Arrows/src/picoPNG.s"
 .PHONY : help
 
 
