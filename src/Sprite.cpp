@@ -84,6 +84,8 @@ void Sprite::draw()
 	//tell opengl that we want to use the first arrribute array.
 	//We only need one array right now since we are only using position.
 	glEnableVertexAttribArray(0);
+	glEnableVertexAttribArray(1);
+	glEnableVertexAttribArray(2);
 
 	//This is the position attribute pointer
 	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, position));
@@ -97,6 +99,8 @@ void Sprite::draw()
 
 	//disable the vertex attrib array. Not optional
 	glDisableVertexAttribArray(0);
+	glDisableVertexAttribArray(1);
+	glDisableVertexAttribArray(2);
 
 	//unbind the vbo
 	glBindBuffer(GL_ARRAY_BUFFER, 0);

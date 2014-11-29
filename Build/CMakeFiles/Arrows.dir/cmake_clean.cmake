@@ -9,6 +9,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/picoPNG.cpp.o"
   "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/ResourceManager.cpp.o"
   "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Sprite.cpp.o"
+  "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.o"
   "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/TextureCache.cpp.o"
   "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Window.cpp.o"
   "Arrows.pdb"

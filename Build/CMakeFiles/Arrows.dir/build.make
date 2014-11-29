@@ -279,9 +279,32 @@ CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Sprite.cpp.o.provides: CMake
 
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Sprite.cpp.o.provides.build: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Sprite.cpp.o
 
+CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.o: CMakeFiles/Arrows.dir/flags.make
+CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.o: /home/sam/Documents/Arrows/src/SpriteBatch.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/sam/Documents/Arrows/Build/CMakeFiles $(CMAKE_PROGRESS_11)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.o -c /home/sam/Documents/Arrows/src/SpriteBatch.cpp
+
+CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/sam/Documents/Arrows/src/SpriteBatch.cpp > CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.i
+
+CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/sam/Documents/Arrows/src/SpriteBatch.cpp -o CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.s
+
+CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.o.requires:
+.PHONY : CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.o.requires
+
+CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.o.provides: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.o.provides.build
+.PHONY : CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.o.provides
+
+CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.o.provides.build: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.o
+
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/TextureCache.cpp.o: CMakeFiles/Arrows.dir/flags.make
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/TextureCache.cpp.o: /home/sam/Documents/Arrows/src/TextureCache.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/sam/Documents/Arrows/Build/CMakeFiles $(CMAKE_PROGRESS_11)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/sam/Documents/Arrows/Build/CMakeFiles $(CMAKE_PROGRESS_12)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/TextureCache.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/TextureCache.cpp.o -c /home/sam/Documents/Arrows/src/TextureCache.cpp
 
@@ -304,7 +327,7 @@ CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/TextureCache.cpp.o.provides.
 
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Window.cpp.o: CMakeFiles/Arrows.dir/flags.make
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Window.cpp.o: /home/sam/Documents/Arrows/src/Window.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/sam/Documents/Arrows/Build/CMakeFiles $(CMAKE_PROGRESS_12)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/sam/Documents/Arrows/Build/CMakeFiles $(CMAKE_PROGRESS_13)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Window.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Window.cpp.o -c /home/sam/Documents/Arrows/src/Window.cpp
 
@@ -337,6 +360,7 @@ Arrows_OBJECTS = \
 "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/picoPNG.cpp.o" \
 "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/ResourceManager.cpp.o" \
 "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Sprite.cpp.o" \
+"CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.o" \
 "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/TextureCache.cpp.o" \
 "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Window.cpp.o"
 
@@ -353,6 +377,7 @@ Arrows: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/IOManager.cpp.o
 Arrows: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/picoPNG.cpp.o
 Arrows: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/ResourceManager.cpp.o
 Arrows: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Sprite.cpp.o
+Arrows: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.o
 Arrows: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/TextureCache.cpp.o
 Arrows: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Window.cpp.o
 Arrows: CMakeFiles/Arrows.dir/build.make
@@ -377,6 +402,7 @@ CMakeFiles/Arrows.dir/requires: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/
 CMakeFiles/Arrows.dir/requires: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/picoPNG.cpp.o.requires
 CMakeFiles/Arrows.dir/requires: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/ResourceManager.cpp.o.requires
 CMakeFiles/Arrows.dir/requires: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Sprite.cpp.o.requires
+CMakeFiles/Arrows.dir/requires: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.o.requires
 CMakeFiles/Arrows.dir/requires: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/TextureCache.cpp.o.requires
 CMakeFiles/Arrows.dir/requires: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Window.cpp.o.requires
 .PHONY : CMakeFiles/Arrows.dir/requires

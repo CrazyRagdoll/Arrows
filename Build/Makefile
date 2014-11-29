@@ -303,6 +303,30 @@ home/sam/Documents/Arrows/src/Sprite.cpp.s:
 	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Sprite.cpp.s
 .PHONY : home/sam/Documents/Arrows/src/Sprite.cpp.s
 
+home/sam/Documents/Arrows/src/SpriteBatch.o: home/sam/Documents/Arrows/src/SpriteBatch.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/SpriteBatch.o
+
+# target to build an object file
+home/sam/Documents/Arrows/src/SpriteBatch.cpp.o:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/SpriteBatch.cpp.o
+
+home/sam/Documents/Arrows/src/SpriteBatch.i: home/sam/Documents/Arrows/src/SpriteBatch.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/SpriteBatch.i
+
+# target to preprocess a source file
+home/sam/Documents/Arrows/src/SpriteBatch.cpp.i:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/SpriteBatch.cpp.i
+
+home/sam/Documents/Arrows/src/SpriteBatch.s: home/sam/Documents/Arrows/src/SpriteBatch.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/SpriteBatch.s
+
+# target to generate assembly for a file
+home/sam/Documents/Arrows/src/SpriteBatch.cpp.s:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/SpriteBatch.cpp.s
+
 home/sam/Documents/Arrows/src/TextureCache.o: home/sam/Documents/Arrows/src/TextureCache.cpp.o
 .PHONY : home/sam/Documents/Arrows/src/TextureCache.o
 
@@ -432,6 +456,9 @@ help:
 	@echo "... home/sam/Documents/Arrows/src/Sprite.o"
 	@echo "... home/sam/Documents/Arrows/src/Sprite.i"
 	@echo "... home/sam/Documents/Arrows/src/Sprite.s"
+	@echo "... home/sam/Documents/Arrows/src/SpriteBatch.o"
+	@echo "... home/sam/Documents/Arrows/src/SpriteBatch.i"
+	@echo "... home/sam/Documents/Arrows/src/SpriteBatch.s"
 	@echo "... home/sam/Documents/Arrows/src/TextureCache.o"
 	@echo "... home/sam/Documents/Arrows/src/TextureCache.i"
 	@echo "... home/sam/Documents/Arrows/src/TextureCache.s"

@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "Errors.h"
+#include "ResourceManager.h"
 
 #include <iostream>
 #include <string>
@@ -23,12 +24,6 @@ void Game::run()
 {
 	initSystems();
 
-	_sprites.push_back(new Sprite());
-	_sprites.back()->init(0.0f, 0.0f, _screenWidth / 2, _screenWidth / 2, "../src/Textures/PNG/CharacterRight_Standing.png");
-
-	_sprites.push_back(new Sprite());
-	_sprites.back()->init(_screenWidth / 2, 0.0f, _screenWidth / 2, _screenWidth / 2, "../src/Textures/PNG/CharacterRight_Standing.png");
-
 	gameLoop();
 }
 
@@ -43,6 +38,8 @@ void Game::initSystems()
 	_window.create("Arrows", _screenWidth, _screenHeight, 0);
 
 	initShaders();
+
+	_spriteBatch.init();
 }
 
 void Game::initShaders()
@@ -113,10 +110,10 @@ void Game::processInput()
 		    case SDLK_s:
 			_camera.setPosition(_camera.getPosition() + glm::vec2(0.0, -CAMERA_SPEED));
 			break;
-       		    case SDLK_a:
+       		    case SDLK_d:
 			_camera.setPosition(_camera.getPosition() + glm::vec2(CAMERA_SPEED, 0.0f));
 			break;
-		    case SDLK_d:
+		    case SDLK_a:
 			_camera.setPosition(_camera.getPosition() + glm::vec2(-CAMERA_SPEED, 0.0f));
 			break;
 		    case SDLK_q:
@@ -158,12 +155,26 @@ void Game::drawGame()
 	glm::mat4 cameraMatrix = _camera.getCameraMatrix();
 
 	glUniformMatrix4fv(pLocation, 1, GL_FALSE, &(cameraMatrix[0][0]));
+
+	_spriteBatch.begin();
 	
-	//draw out sprites!
-	for(int i = 0; i < _sprites.size(); i++)
-	{
-		_sprites[i]->draw();
-	}
+	glm::vec4 pos(0.0f,0.0f,50.0f,50.0f);
+	glm::vec4 uv(0.0f, 0.0f, 1.0f, 1.0f);
+	GLTexture texture = ResourceManager::getTexture("../src/Textures/PNG/CharacterRight_Standing.png");
+	Color color;
+	color.r = 255;
+	color.g = 255;
+	color.b = 255;
+	color.a = 255;
+
+	_spriteBatch.draw(pos, uv, texture.id, 0.0f, color);
+
+	_spriteBatch.end();
+
+	_spriteBatch.renderBatch();
+
+	//unbind the texture
+	glBindTexture(GL_TEXTURE_2D, 0);
 
 	//glBindTexture(GL_TEXTURE_2D, 0);
 	_colorProgram.unuse();

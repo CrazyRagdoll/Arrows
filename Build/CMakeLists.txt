@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 project("Arrows")
 
 #set the source files and path
-set(SOURCES ../src/main.cpp ../src/Camera.h ../src/Camera.cpp ../src/Errors.h ../src/Errors.cpp ../src/Game.h ../src/Game.cpp ../src/GLSLProgram.h ../src/GLSLProgram.cpp ../src/GLTexture.h ../src/ImageLoader.h ../src/ImageLoader.cpp ../src/IOManager.h ../src/IOManager.cpp ../src/picoPNG.h ../src/picoPNG.cpp ../src/ResourceManager.h ../src/ResourceManager.cpp ../src/Sprite.h ../src/Sprite.cpp ../src/TextureCache.h ../src/TextureCache.cpp ../src/Vertex.h ../src/Window.h ../src/Window.cpp)
+set(SOURCES ../src/main.cpp ../src/Camera.h ../src/Camera.cpp ../src/Errors.h ../src/Errors.cpp ../src/Game.h ../src/Game.cpp ../src/GLSLProgram.h ../src/GLSLProgram.cpp ../src/GLTexture.h ../src/ImageLoader.h ../src/ImageLoader.cpp ../src/IOManager.h ../src/IOManager.cpp ../src/picoPNG.h ../src/picoPNG.cpp ../src/ResourceManager.h ../src/ResourceManager.cpp ../src/Sprite.h ../src/Sprite.cpp ../src/SpriteBatch.h ../src/SpriteBatch.cpp ../src/TextureCache.h ../src/TextureCache.cpp ../src/Vertex.h ../src/Window.h ../src/Window.cpp)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/../Modules)
 
 #Checking all packages are installed

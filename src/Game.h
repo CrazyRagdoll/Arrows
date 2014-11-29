@@ -11,6 +11,7 @@
 #include "GLTexture.h"
 #include "Window.h"
 #include "Camera.h"
+#include "SpriteBatch.h"
 
 enum class GameState {PLAY, EXIT};
 
@@ -35,10 +36,10 @@ private:
 	int _screenHeight;
 	GameState _gameState;	
 
-	std::vector <Sprite*> _sprites;
-
 	GLSLProgram _colorProgram;
 	Camera _camera;
+
+	SpriteBatch _spriteBatch;
 
 	float _fps;
 	float _maxFPS;

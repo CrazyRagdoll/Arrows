@@ -12,6 +12,7 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "/home/sam/Documents/Arrows/src/ImageLoader.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/ImageLoader.cpp.o"
   "/home/sam/Documents/Arrows/src/ResourceManager.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/ResourceManager.cpp.o"
   "/home/sam/Documents/Arrows/src/Sprite.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Sprite.cpp.o"
+  "/home/sam/Documents/Arrows/src/SpriteBatch.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.o"
   "/home/sam/Documents/Arrows/src/TextureCache.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/TextureCache.cpp.o"
   "/home/sam/Documents/Arrows/src/Window.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Window.cpp.o"
   "/home/sam/Documents/Arrows/src/main.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/main.cpp.o"
