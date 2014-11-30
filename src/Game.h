@@ -12,6 +12,8 @@
 #include "Window.h"
 #include "Camera.h"
 #include "SpriteBatch.h"
+#include "InputManager.h"
+#include "Timing.h"
 
 enum class GameState {PLAY, EXIT};
 
@@ -29,7 +31,6 @@ private:
 	void gameLoop();
 	void processInput();
 	void drawGame();
-	void calculateFPS();
 
 	Window _window;
 	int _screenWidth;
@@ -41,10 +42,12 @@ private:
 
 	SpriteBatch _spriteBatch;
 
-	float _fps;
-	float _maxFPS;
-	float _frameTime;
+	InputManager _inputManager;
 
+	FpsLimiter _fpsLimiter;
+
+	float _maxFPS;
+	float _fps;
 	float _time;
 };
 

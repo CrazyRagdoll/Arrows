@@ -187,9 +187,32 @@ CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/ImageLoader.cpp.o.provides: 
 
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/ImageLoader.cpp.o.provides.build: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/ImageLoader.cpp.o
 
+CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/InputManager.cpp.o: CMakeFiles/Arrows.dir/flags.make
+CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/InputManager.cpp.o: /home/sam/Documents/Arrows/src/InputManager.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/sam/Documents/Arrows/Build/CMakeFiles $(CMAKE_PROGRESS_7)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/InputManager.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/InputManager.cpp.o -c /home/sam/Documents/Arrows/src/InputManager.cpp
+
+CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/InputManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/InputManager.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/sam/Documents/Arrows/src/InputManager.cpp > CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/InputManager.cpp.i
+
+CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/InputManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/InputManager.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/sam/Documents/Arrows/src/InputManager.cpp -o CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/InputManager.cpp.s
+
+CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/InputManager.cpp.o.requires:
+.PHONY : CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/InputManager.cpp.o.requires
+
+CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/InputManager.cpp.o.provides: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/InputManager.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/InputManager.cpp.o.provides.build
+.PHONY : CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/InputManager.cpp.o.provides
+
+CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/InputManager.cpp.o.provides.build: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/InputManager.cpp.o
+
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/IOManager.cpp.o: CMakeFiles/Arrows.dir/flags.make
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/IOManager.cpp.o: /home/sam/Documents/Arrows/src/IOManager.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/sam/Documents/Arrows/Build/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/sam/Documents/Arrows/Build/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/IOManager.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/IOManager.cpp.o -c /home/sam/Documents/Arrows/src/IOManager.cpp
 
@@ -212,7 +235,7 @@ CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/IOManager.cpp.o.provides.bui
 
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/picoPNG.cpp.o: CMakeFiles/Arrows.dir/flags.make
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/picoPNG.cpp.o: /home/sam/Documents/Arrows/src/picoPNG.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/sam/Documents/Arrows/Build/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/sam/Documents/Arrows/Build/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/picoPNG.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/picoPNG.cpp.o -c /home/sam/Documents/Arrows/src/picoPNG.cpp
 
@@ -235,7 +258,7 @@ CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/picoPNG.cpp.o.provides.build
 
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/ResourceManager.cpp.o: CMakeFiles/Arrows.dir/flags.make
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/ResourceManager.cpp.o: /home/sam/Documents/Arrows/src/ResourceManager.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/sam/Documents/Arrows/Build/CMakeFiles $(CMAKE_PROGRESS_9)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/sam/Documents/Arrows/Build/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/ResourceManager.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/ResourceManager.cpp.o -c /home/sam/Documents/Arrows/src/ResourceManager.cpp
 
@@ -258,7 +281,7 @@ CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/ResourceManager.cpp.o.provid
 
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Sprite.cpp.o: CMakeFiles/Arrows.dir/flags.make
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Sprite.cpp.o: /home/sam/Documents/Arrows/src/Sprite.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/sam/Documents/Arrows/Build/CMakeFiles $(CMAKE_PROGRESS_10)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/sam/Documents/Arrows/Build/CMakeFiles $(CMAKE_PROGRESS_11)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Sprite.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Sprite.cpp.o -c /home/sam/Documents/Arrows/src/Sprite.cpp
 
@@ -281,7 +304,7 @@ CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Sprite.cpp.o.provides.build:
 
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.o: CMakeFiles/Arrows.dir/flags.make
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.o: /home/sam/Documents/Arrows/src/SpriteBatch.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/sam/Documents/Arrows/Build/CMakeFiles $(CMAKE_PROGRESS_11)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/sam/Documents/Arrows/Build/CMakeFiles $(CMAKE_PROGRESS_12)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.o -c /home/sam/Documents/Arrows/src/SpriteBatch.cpp
 
@@ -304,7 +327,7 @@ CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.o.provides.b
 
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/TextureCache.cpp.o: CMakeFiles/Arrows.dir/flags.make
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/TextureCache.cpp.o: /home/sam/Documents/Arrows/src/TextureCache.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/sam/Documents/Arrows/Build/CMakeFiles $(CMAKE_PROGRESS_12)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/sam/Documents/Arrows/Build/CMakeFiles $(CMAKE_PROGRESS_13)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/TextureCache.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/TextureCache.cpp.o -c /home/sam/Documents/Arrows/src/TextureCache.cpp
 
@@ -325,9 +348,32 @@ CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/TextureCache.cpp.o.provides:
 
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/TextureCache.cpp.o.provides.build: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/TextureCache.cpp.o
 
+CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Timing.cpp.o: CMakeFiles/Arrows.dir/flags.make
+CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Timing.cpp.o: /home/sam/Documents/Arrows/src/Timing.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/sam/Documents/Arrows/Build/CMakeFiles $(CMAKE_PROGRESS_14)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Timing.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Timing.cpp.o -c /home/sam/Documents/Arrows/src/Timing.cpp
+
+CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Timing.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Timing.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/sam/Documents/Arrows/src/Timing.cpp > CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Timing.cpp.i
+
+CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Timing.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Timing.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/sam/Documents/Arrows/src/Timing.cpp -o CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Timing.cpp.s
+
+CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Timing.cpp.o.requires:
+.PHONY : CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Timing.cpp.o.requires
+
+CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Timing.cpp.o.provides: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Timing.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Timing.cpp.o.provides.build
+.PHONY : CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Timing.cpp.o.provides
+
+CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Timing.cpp.o.provides.build: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Timing.cpp.o
+
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Window.cpp.o: CMakeFiles/Arrows.dir/flags.make
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Window.cpp.o: /home/sam/Documents/Arrows/src/Window.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/sam/Documents/Arrows/Build/CMakeFiles $(CMAKE_PROGRESS_13)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/sam/Documents/Arrows/Build/CMakeFiles $(CMAKE_PROGRESS_15)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Window.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Window.cpp.o -c /home/sam/Documents/Arrows/src/Window.cpp
 
@@ -356,12 +402,14 @@ Arrows_OBJECTS = \
 "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Game.cpp.o" \
 "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/GLSLProgram.cpp.o" \
 "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/ImageLoader.cpp.o" \
+"CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/InputManager.cpp.o" \
 "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/IOManager.cpp.o" \
 "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/picoPNG.cpp.o" \
 "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/ResourceManager.cpp.o" \
 "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Sprite.cpp.o" \
 "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.o" \
 "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/TextureCache.cpp.o" \
+"CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Timing.cpp.o" \
 "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Window.cpp.o"
 
 # External object files for target Arrows
@@ -373,12 +421,14 @@ Arrows: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Errors.cpp.o
 Arrows: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Game.cpp.o
 Arrows: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/GLSLProgram.cpp.o
 Arrows: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/ImageLoader.cpp.o
+Arrows: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/InputManager.cpp.o
 Arrows: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/IOManager.cpp.o
 Arrows: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/picoPNG.cpp.o
 Arrows: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/ResourceManager.cpp.o
 Arrows: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Sprite.cpp.o
 Arrows: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.o
 Arrows: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/TextureCache.cpp.o
+Arrows: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Timing.cpp.o
 Arrows: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Window.cpp.o
 Arrows: CMakeFiles/Arrows.dir/build.make
 Arrows: /usr/lib/x86_64-linux-gnu/libSDL2main.a
@@ -398,12 +448,14 @@ CMakeFiles/Arrows.dir/requires: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/
 CMakeFiles/Arrows.dir/requires: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Game.cpp.o.requires
 CMakeFiles/Arrows.dir/requires: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/GLSLProgram.cpp.o.requires
 CMakeFiles/Arrows.dir/requires: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/ImageLoader.cpp.o.requires
+CMakeFiles/Arrows.dir/requires: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/InputManager.cpp.o.requires
 CMakeFiles/Arrows.dir/requires: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/IOManager.cpp.o.requires
 CMakeFiles/Arrows.dir/requires: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/picoPNG.cpp.o.requires
 CMakeFiles/Arrows.dir/requires: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/ResourceManager.cpp.o.requires
 CMakeFiles/Arrows.dir/requires: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Sprite.cpp.o.requires
 CMakeFiles/Arrows.dir/requires: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.o.requires
 CMakeFiles/Arrows.dir/requires: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/TextureCache.cpp.o.requires
+CMakeFiles/Arrows.dir/requires: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Timing.cpp.o.requires
 CMakeFiles/Arrows.dir/requires: CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Window.cpp.o.requires
 .PHONY : CMakeFiles/Arrows.dir/requires
 

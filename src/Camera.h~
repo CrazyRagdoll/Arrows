@@ -2,7 +2,7 @@
 
 #define GLM_FORCE_RADIANS
 #include "glm/glm.hpp"
-//#include "glm/gtc/matrix_transform.hpp"
+#include "glm/gtc/matrix_transform.hpp"
 
 //Camera class for 2D games
 class Camera
@@ -16,6 +16,8 @@ public:
 
 	//updates the camera matrix if needed
 	void update();
+
+	glm::vec2 convertScreenToWorld(glm::vec2 screenCoords);
 
 	//setters
 	void setPosition(const glm::vec2& newPosition) { _position = newPosition; _needsMatrixUpdate = true; }

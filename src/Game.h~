@@ -12,6 +12,8 @@
 #include "Window.h"
 #include "Camera.h"
 #include "SpriteBatch.h"
+#include "InputManager.h"
+#include "Timing.h"
 
 enum class GameState {PLAY, EXIT};
 
@@ -29,24 +31,22 @@ private:
 	void gameLoop();
 	void processInput();
 	void drawGame();
-	void calculateFPS();
 
 	Window _window;
 	int _screenWidth;
 	int _screenHeight;
 	GameState _gameState;	
 
-	std::vector <Sprite*> _sprites;
-
 	GLSLProgram _colorProgram;
 	Camera _camera;
 
 	SpriteBatch _spriteBatch;
 
-	float _fps;
-	float _maxFPS;
-	float _frameTime;
+	InputManager _inputManager;
 
+	FpsLimiter _fpsLimiter;
+
+	float _fps;
 	float _time;
 };
 

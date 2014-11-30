@@ -38,3 +38,15 @@ void Camera::update() {
 		_needsMatrixUpdate = false;
 	}
 }
+
+glm::vec2 Camera::convertScreenToWorld(glm::vec2 screenCoords)
+{
+	//make it so that 0,0 is the centre 
+	screenCoords -= glm::vec2(_screenWidth / 2, _screenHeight / 2);
+	//scaling the coordinates
+	screenCoords /= _scale;
+	//translate with the camera position
+	screenCoords += _position;
+	
+	return screenCoords;
+}

@@ -255,6 +255,30 @@ home/sam/Documents/Arrows/src/ImageLoader.cpp.s:
 	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/ImageLoader.cpp.s
 .PHONY : home/sam/Documents/Arrows/src/ImageLoader.cpp.s
 
+home/sam/Documents/Arrows/src/InputManager.o: home/sam/Documents/Arrows/src/InputManager.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/InputManager.o
+
+# target to build an object file
+home/sam/Documents/Arrows/src/InputManager.cpp.o:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/InputManager.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/InputManager.cpp.o
+
+home/sam/Documents/Arrows/src/InputManager.i: home/sam/Documents/Arrows/src/InputManager.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/InputManager.i
+
+# target to preprocess a source file
+home/sam/Documents/Arrows/src/InputManager.cpp.i:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/InputManager.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/InputManager.cpp.i
+
+home/sam/Documents/Arrows/src/InputManager.s: home/sam/Documents/Arrows/src/InputManager.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/InputManager.s
+
+# target to generate assembly for a file
+home/sam/Documents/Arrows/src/InputManager.cpp.s:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/InputManager.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/InputManager.cpp.s
+
 home/sam/Documents/Arrows/src/ResourceManager.o: home/sam/Documents/Arrows/src/ResourceManager.cpp.o
 .PHONY : home/sam/Documents/Arrows/src/ResourceManager.o
 
@@ -350,6 +374,30 @@ home/sam/Documents/Arrows/src/TextureCache.s: home/sam/Documents/Arrows/src/Text
 home/sam/Documents/Arrows/src/TextureCache.cpp.s:
 	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/TextureCache.cpp.s
 .PHONY : home/sam/Documents/Arrows/src/TextureCache.cpp.s
+
+home/sam/Documents/Arrows/src/Timing.o: home/sam/Documents/Arrows/src/Timing.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/Timing.o
+
+# target to build an object file
+home/sam/Documents/Arrows/src/Timing.cpp.o:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Timing.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/Timing.cpp.o
+
+home/sam/Documents/Arrows/src/Timing.i: home/sam/Documents/Arrows/src/Timing.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/Timing.i
+
+# target to preprocess a source file
+home/sam/Documents/Arrows/src/Timing.cpp.i:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Timing.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/Timing.cpp.i
+
+home/sam/Documents/Arrows/src/Timing.s: home/sam/Documents/Arrows/src/Timing.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/Timing.s
+
+# target to generate assembly for a file
+home/sam/Documents/Arrows/src/Timing.cpp.s:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Timing.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/Timing.cpp.s
 
 home/sam/Documents/Arrows/src/Window.o: home/sam/Documents/Arrows/src/Window.cpp.o
 .PHONY : home/sam/Documents/Arrows/src/Window.o
@@ -450,6 +498,9 @@ help:
 	@echo "... home/sam/Documents/Arrows/src/ImageLoader.o"
 	@echo "... home/sam/Documents/Arrows/src/ImageLoader.i"
 	@echo "... home/sam/Documents/Arrows/src/ImageLoader.s"
+	@echo "... home/sam/Documents/Arrows/src/InputManager.o"
+	@echo "... home/sam/Documents/Arrows/src/InputManager.i"
+	@echo "... home/sam/Documents/Arrows/src/InputManager.s"
 	@echo "... home/sam/Documents/Arrows/src/ResourceManager.o"
 	@echo "... home/sam/Documents/Arrows/src/ResourceManager.i"
 	@echo "... home/sam/Documents/Arrows/src/ResourceManager.s"
@@ -462,6 +513,9 @@ help:
 	@echo "... home/sam/Documents/Arrows/src/TextureCache.o"
 	@echo "... home/sam/Documents/Arrows/src/TextureCache.i"
 	@echo "... home/sam/Documents/Arrows/src/TextureCache.s"
+	@echo "... home/sam/Documents/Arrows/src/Timing.o"
+	@echo "... home/sam/Documents/Arrows/src/Timing.i"
+	@echo "... home/sam/Documents/Arrows/src/Timing.s"
 	@echo "... home/sam/Documents/Arrows/src/Window.o"
 	@echo "... home/sam/Documents/Arrows/src/Window.i"
 	@echo "... home/sam/Documents/Arrows/src/Window.s"

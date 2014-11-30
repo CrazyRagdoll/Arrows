@@ -28,11 +28,11 @@ GLTexture TextureCache::getTexture(std::string texturePath)
 		//inseter it into the map
 		_textureMap.insert(make_pair(texturePath, newTexture));
 
-		std::cout << "Used cached texture!\n";
+		std::cout << "Loaded texture!\n";
 
 		return newTexture;
 	}
 
-	std::cout << "Loaded texture!\n";
+	std::cout << "Used cached texture!\n";
 	return mit->second;
 }
