@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+/home/sam/Documents/Arrows/src/Bullet.h
+glm/glm.hpp
+/home/sam/Documents/Arrows/src/glm/glm.hpp
+SpriteBatch.h
+/home/sam/Documents/Arrows/src/SpriteBatch.h
+
+/home/sam/Documents/Arrows/src/Camera.cpp
+Camera.h
+/home/sam/Documents/Arrows/src/Camera.h
+
 /home/sam/Documents/Arrows/src/Camera.h
 glm/glm.hpp
 /home/sam/Documents/Arrows/src/glm/glm.hpp
@@ -63,6 +73,8 @@ InputManager.h
 /home/sam/Documents/Arrows/src/InputManager.h
 Timing.h
 /home/sam/Documents/Arrows/src/Timing.h
+Bullet.h
+/home/sam/Documents/Arrows/src/Bullet.h
 
 /home/sam/Documents/Arrows/src/InputManager.h
 unordered_map

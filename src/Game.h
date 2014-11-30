@@ -14,6 +14,7 @@
 #include "SpriteBatch.h"
 #include "InputManager.h"
 #include "Timing.h"
+#include "Bullet.h"
 
 enum class GameState {PLAY, EXIT};
 
@@ -45,6 +46,8 @@ private:
 	InputManager _inputManager;
 
 	FpsLimiter _fpsLimiter;
+
+	std::vector<Bullet> _bullets;
 
 	float _maxFPS;
 	float _fps;

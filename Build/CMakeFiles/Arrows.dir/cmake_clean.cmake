@@ -1,5 +1,6 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/main.cpp.o"
+  "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Bullet.cpp.o"
   "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Camera.cpp.o"
   "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Errors.cpp.o"
   "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Game.cpp.o"

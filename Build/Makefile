@@ -111,6 +111,30 @@ Arrows/fast:
 	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/build
 .PHONY : Arrows/fast
 
+home/sam/Documents/Arrows/src/Bullet.o: home/sam/Documents/Arrows/src/Bullet.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/Bullet.o
+
+# target to build an object file
+home/sam/Documents/Arrows/src/Bullet.cpp.o:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Bullet.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/Bullet.cpp.o
+
+home/sam/Documents/Arrows/src/Bullet.i: home/sam/Documents/Arrows/src/Bullet.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/Bullet.i
+
+# target to preprocess a source file
+home/sam/Documents/Arrows/src/Bullet.cpp.i:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Bullet.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/Bullet.cpp.i
+
+home/sam/Documents/Arrows/src/Bullet.s: home/sam/Documents/Arrows/src/Bullet.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/Bullet.s
+
+# target to generate assembly for a file
+home/sam/Documents/Arrows/src/Bullet.cpp.s:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Bullet.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/Bullet.cpp.s
+
 home/sam/Documents/Arrows/src/Camera.o: home/sam/Documents/Arrows/src/Camera.cpp.o
 .PHONY : home/sam/Documents/Arrows/src/Camera.o
 
@@ -480,6 +504,9 @@ help:
 	@echo "... Arrows"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... home/sam/Documents/Arrows/src/Bullet.o"
+	@echo "... home/sam/Documents/Arrows/src/Bullet.i"
+	@echo "... home/sam/Documents/Arrows/src/Bullet.s"
 	@echo "... home/sam/Documents/Arrows/src/Camera.o"
 	@echo "... home/sam/Documents/Arrows/src/Camera.i"
 	@echo "... home/sam/Documents/Arrows/src/Camera.s"

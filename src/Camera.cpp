@@ -41,6 +41,8 @@ void Camera::update() {
 
 glm::vec2 Camera::convertScreenToWorld(glm::vec2 screenCoords)
 {
+	//invert y direction
+	screenCoords.y = _screenHeight - screenCoords.y;
 	//make it so that 0,0 is the centre 
 	screenCoords -= glm::vec2(_screenWidth / 2, _screenHeight / 2);
 	//scaling the coordinates

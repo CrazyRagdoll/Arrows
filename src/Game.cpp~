@@ -63,6 +63,18 @@ void Game::gameLoop()
 		_time += 0.01;
 	
 		_camera.update();
+
+		//update all the bullets
+		for (int i = 0; i < _bullets.size();)
+		{
+			if(_bullets[i].update() == true)
+			{
+				_bullets[i] = _bullets.back();
+				_bullets.pop_back();
+			} else {
+				i++;
+			}
+		}
 		
 		drawGame();
 
@@ -126,13 +138,18 @@ void Game::processInput()
 		_camera.setScale(_camera.getScale() + SCALE_SPEED);
 	}
 	if (_inputManager.isKeyPressed(SDLK_e)){
-		_camera.setScale(_camera.getScale() - SCALE_SPEED);
+		_camera.setScale(_camera.getScale() - SCALE_SPEED);	
 	}
 
 	if (_inputManager.isKeyPressed(SDL_BUTTON_LEFT)){
 		glm::vec2 mouseCoords = _inputManager.getMouseCoords();
 		mouseCoords = _camera.convertScreenToWorld(mouseCoords);
-		std::cout << mouseCoords.x << " " << mouseCoords.y << std::endl;
+
+		glm::vec2 playerPosition(0.0f);
+		glm::vec2 direction = mouseCoords - playerPosition;
+		direction = glm::normalize(direction);
+
+		_bullets.emplace_back(playerPosition, direction, 5.0f, 1000);
 	}
 }
 
@@ -164,7 +181,7 @@ void Game::drawGame()
 	
 	glm::vec4 pos(0.0f,0.0f,50.0f,50.0f);
 	glm::vec4 uv(0.0f, 0.0f, 1.0f, 1.0f);
-	GLTexture texture = ResourceManager::getTexture("../src/Textures/PNG/AngryCloud.png");
+	GLTexture texture = ResourceManager::getTexture("../src/Textures/PNG/CharacterRight_Standing.png");
 	Color color;
 	color.r = 255;
 	color.g = 255;
@@ -172,6 +189,11 @@ void Game::drawGame()
 	color.a = 255;
 
 	_spriteBatch.draw(pos, uv, texture.id, 0.0f, color);
+
+	for (int i = 0; i < _bullets.size(); i++)
+	{
+		_bullets[i].draw(_spriteBatch);
+	}
 
 	_spriteBatch.end();
 
