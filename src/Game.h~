@@ -16,7 +16,7 @@
 #include "Timing.h"
 #include "Bullet.h"
 
-enum class GameState {PLAY, EXIT};
+enum class GameState {PLAY, MAIN_MENU, EXIT};
 
 class Game
 {
@@ -36,9 +36,11 @@ private:
 	Window _window;
 	int _screenWidth;
 	int _screenHeight;
+
 	GameState _gameState;	
 
 	GLSLProgram _colorProgram;
+
 	Camera _camera;
 
 	SpriteBatch _spriteBatch;
@@ -46,6 +48,8 @@ private:
 	InputManager _inputManager;
 
 	FpsLimiter _fpsLimiter;
+
+	std::vector<Bullet> _bullets;
 
 	float _maxFPS;
 	float _fps;
