@@ -123,16 +123,16 @@ void Game::processInput()
 		}
 
 	if (_inputManager.isKeyPressed(SDLK_w)){
-		_camera.setPosition(_camera.getPosition() + glm::vec2(0.0, CAMERA_SPEED));
+		_camera.setPosition(_camera.getPosition() + glm::vec3(0.0f, CAMERA_SPEED, 0.0f));
 	}
 	if (_inputManager.isKeyPressed(SDLK_s)){
-		_camera.setPosition(_camera.getPosition() + glm::vec2(0.0, -CAMERA_SPEED));
+		_camera.setPosition(_camera.getPosition() + glm::vec3(0.0f, -CAMERA_SPEED, 0.0f));
 	}
 	if (_inputManager.isKeyPressed(SDLK_d)){
-		_camera.setPosition(_camera.getPosition() + glm::vec2(CAMERA_SPEED, 0.0f));
+		_camera.setPosition(_camera.getPosition() + glm::vec3(CAMERA_SPEED, 0.0f, 0.0f));
 	}
 	if (_inputManager.isKeyPressed(SDLK_a)){
-		_camera.setPosition(_camera.getPosition() + glm::vec2(-CAMERA_SPEED, 0.0f));
+		_camera.setPosition(_camera.getPosition() + glm::vec3(-CAMERA_SPEED, 0.0f, 0.0f));
 	}
 	if (_inputManager.isKeyPressed(SDLK_q)){
 		_camera.setScale(_camera.getScale() + SCALE_SPEED);
@@ -142,11 +142,11 @@ void Game::processInput()
 	}
 
 	if (_inputManager.isKeyPressed(SDL_BUTTON_LEFT)){
-		glm::vec2 mouseCoords = _inputManager.getMouseCoords();
+		glm::vec3 mouseCoords = glm::vec3(_inputManager.getMouseCoords(), 0.0f);
 		mouseCoords = _camera.convertScreenToWorld(mouseCoords);
 
-		glm::vec2 playerPosition(0.0f);
-		glm::vec2 direction = mouseCoords - playerPosition;
+		glm::vec3 playerPosition(0.0f);
+		glm::vec3 direction = mouseCoords - playerPosition;
 		direction = glm::normalize(direction);
 
 		_bullets.emplace_back(playerPosition, direction, 5.0f, 1000);
@@ -182,7 +182,7 @@ void Game::drawGame()
 	glm::vec4 pos(0.0f,0.0f,50.0f,50.0f);
 	glm::vec4 uv(0.0f, 0.0f, 1.0f, 1.0f);
 	GLTexture texture = ResourceManager::getTexture("../src/Textures/PNG/CharacterRight_Standing.png");
-	color = Color(255,255,255,255);
+	Color color = Color(255,255,255,255);
 
 	_spriteBatch.draw(pos, uv, texture.id, 0.0f, color);
 

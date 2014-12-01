@@ -28,7 +28,7 @@ void Camera::update() {
 	if (_needsMatrixUpdate) {
 
 		//Camera Translation
-		glm::vec3 translate(-_position.x + _screenWidth / 2, -_position.y + _screenHeight / 2, 0.0f);
+		glm::vec3 translate(-_position.x + _screenWidth / 2, -_position.y + _screenHeight / 2, -_position.z / 2);
 		_cameraMatrix = glm::translate(_orthoMatrix, translate);
 
 		//Camera Scale
@@ -44,7 +44,7 @@ glm::vec3 Camera::convertScreenToWorld(glm::vec3 screenCoords)
 	//invert y direction
 	screenCoords.y = _screenHeight - screenCoords.y;
 	//make it so that 0,0 is the centre 
-	screenCoords -= glm::vec2(_screenWidth / 2, _screenHeight / 2);
+	screenCoords -= glm::vec3(_screenWidth / 2, _screenHeight / 2, 0.0f);
 	//scaling the coordinates
 	screenCoords /= _scale;
 	//translate with the camera position

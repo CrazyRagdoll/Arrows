@@ -6,8 +6,8 @@
 
 class Bullet 
 {
-public
-	Bullet(glm::vec2 pos, glm::vec2 dir, float speed, int lifeTime);
+public:
+	Bullet(glm::vec3 pos, glm::vec3 dir, float speed, int lifeTime);
 	~Bullet();
 
 	void draw(SpriteBatch& spriteBatch);

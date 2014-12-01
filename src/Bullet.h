@@ -7,7 +7,7 @@
 class Bullet 
 {
 public:
-	Bullet(glm::vec2 pos, glm::vec2 dir, float speed, int lifeTime);
+	Bullet(glm::vec3 pos, glm::vec3 dir, float speed, int lifeTime);
 	~Bullet();
 
 	void draw(SpriteBatch& spriteBatch);
@@ -17,7 +17,7 @@ public:
 private:
 	int _lifeTime;
 	float _speed;
-	glm::vec2 _direction;
-	glm::vec2 _position;
+	glm::vec3 _direction;
+	glm::vec3 _position;
 	
 };
