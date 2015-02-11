@@ -13,6 +13,7 @@ Game::Game() :
 	_maxFPS(60.0f)
 {
 	_camera.init(_screenWidth, _screenHeight);
+	SDL_WarpMouseInWindow(_window.getWindow(), _screenWidth/2, _screenHeight/2);
 }
 
 Game::~Game()

@@ -36,7 +36,7 @@ private:
 	
 	vec3 _position, _direction, _right, _up;
 
-	float _horizontalAngle, _verticalAngle, _fov, _mouseSpeed, _speed;
+	float _horizontalAngle, _verticalAngle, _fov, _mouseSpeed, _speed, _vertFoV;
 
 	mat4 _viewMatrix, _projectionMatrix;
 };

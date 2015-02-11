@@ -19,6 +19,7 @@ public:
 	//camera translation functions for player movement
 	void move(float speed, float dt);
 	void strafe(float speed, float dt);
+	void jump(float speed, float dt);
 
 	//mouse rotation movement for the player view
 	void rotate(double xpos, double ypos);

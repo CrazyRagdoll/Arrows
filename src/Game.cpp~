@@ -100,7 +100,7 @@ void Game::processInput()
 {
 	SDL_Event evnt;
 
-	static float SPEED = 0.5f;
+	static float SPEED = 0.05f;
 
 	//This block of code is used to rotate the camera using mouse input.
 	static double lastTime = SDL_GetTicks();

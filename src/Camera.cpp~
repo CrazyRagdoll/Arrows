@@ -3,13 +3,16 @@
 #include <iostream>
 #include <string>
 
+double TO_DEG = 180/3.14;
+
 Camera::Camera() : _position(0.0f, 0.0f, 10.0f),
 	_horizontalAngle(3.14f),
 	_verticalAngle(0.0f),
 	_fov(45.0f),
 	_mouseSpeed(0.01f),
 	_speed(3.0f),
-	_projectionMatrix(1.0f)
+	_projectionMatrix(1.0f),
+	_vertFoV(60.0f)
 {
 }
 
@@ -27,7 +30,8 @@ void Camera::init(int screenWidth, int screenHeight) {
 
 void Camera::move(float speed, float dt)
 {
-	_position += _direction * dt * speed;
+	_position.x += _direction.x * dt * speed;
+	_position.z += _direction.z * dt * speed;
 	updateViewMatrix();
 }
 void Camera::strafe(float speed, float dt)
@@ -43,8 +47,13 @@ void Camera::jump(float speed, float dt)
 
 void Camera::rotate(double xpos, double ypos)
 {
-	_horizontalAngle += _mouseSpeed * float(_screenWidth/2 + xpos);
-	_verticalAngle += _mouseSpeed * float(_screenHeight/2 - ypos);
+	_horizontalAngle += _mouseSpeed * float(_screenWidth/2 - xpos);
+	float verticalDeg = (_verticalAngle + (_mouseSpeed * float(_screenHeight/2 - ypos))) * TO_DEG ;
+	std::cout << verticalDeg << std::endl;
+	if(verticalDeg > -_vertFoV && verticalDeg < _vertFoV)
+	{
+		_verticalAngle += _mouseSpeed * float(_screenHeight/2 - ypos);
+	}	
 	updateViewMatrix();
 }
 
