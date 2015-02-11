@@ -1,15 +1,17 @@
 #include "Camera.h"
 
-Camera::Camera() : _position(0.0f, 0.0f),
-	_cameraMatrix(1.0f),
-	_orthoMatrix(1.0f),
-	_scale(1.0f),
-	_needsMatrixUpdate(true),
-	_screenWidth(500),
-	_screenHeight(500)
+#include <iostream>
+#include <string>
+
+Camera::Camera() : _position(0.0f, 0.0f, 5.0f),
+	_horizontalAngle(3.14f),
+	_verticalAngle(0.0f),
+	_fov(45.0f),
+	_speed(3.0f),
+	_mouseSpeed(0.00f),
+	_projectionMatrix(1.0f)
 {
 }
-
 
 Camera::~Camera()
 {
@@ -18,37 +20,49 @@ Camera::~Camera()
 void Camera::init(int screenWidth, int screenHeight) {
 	_screenWidth = screenWidth;
 	_screenHeight = screenHeight;
-	_orthoMatrix = glm::ortho(0.0f, (float)_screenWidth, 0.0f, (float)_screenHeight);
+
+	update();
 }
 
-//updates the camera matrix if needed
-void Camera::update() {
-
-	//Only update if our position or scale have changed
-	if (_needsMatrixUpdate) {
-
-		//Camera Translation
-		glm::vec3 translate(-_position.x + _screenWidth / 2, -_position.y + _screenHeight / 2, 0.0f);
-		_cameraMatrix = glm::translate(_orthoMatrix, translate);
-
-		//Camera Scale
-		glm::vec3 scale(_scale, _scale, 0.0f);
-		_cameraMatrix = glm::scale(glm::mat4(1.0f), scale) * _cameraMatrix;
-
-		_needsMatrixUpdate = false;
-	}
-}
-
-glm::vec2 Camera::convertScreenToWorld(glm::vec2 screenCoords)
+void Camera::move(glm::vec3 v)
 {
-	//invert y direction
-	screenCoords.y = _screenHeight - screenCoords.y;
-	//make it so that 0,0 is the centre 
-	screenCoords -= glm::vec2(_screenWidth / 2, _screenHeight / 2);
-	//scaling the coordinates
-	screenCoords /= _scale;
-	//translate with the camera position
-	screenCoords += _position;
-	
-	return screenCoords;
+	_position += v;
+	update();
 }
+
+void Camera::update()
+{
+	updateProjectionMatrix();
+	updateViewMatrix();
+}
+
+void Camera::updateProjectionMatrix()
+{
+	//projection matrix
+	_projectionMatrix = glm::perspective(_fov, 4.0f / 3.0f, 0.1f, 100.0f);
+}
+
+void Camera::updateViewMatrix()
+{
+	glm::vec3 right = glm::vec3(
+		sin(_horizontalAngle - 3.14f/2.0f),
+		0,
+		cos(_horizontalAngle - 3.14f/2.0f)
+	);
+	
+	glm::vec3 direction(
+		cos(_verticalAngle) * sin(_horizontalAngle),
+		sin(_verticalAngle),
+		cos(_verticalAngle) * cos(_horizontalAngle)
+	);
+
+	glm::vec3 up = glm::cross(right, direction);
+
+	//camera matrix
+	_viewMatrix = glm::lookAt(
+				_position, 		//where the camera currently is
+				_position + direction,  //it will look here,
+				up			//which way is up (0.1.0)
+				);
+}
+

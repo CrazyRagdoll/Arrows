@@ -1,6 +1,6 @@
 #include "Camera.h"
 
-Camera::Camera() : _position(0.0f, 0.0f, 0.0f),
+Camera::Camera() : _position(0.0f, 0.0f),
 	_cameraMatrix(1.0f),
 	_orthoMatrix(1.0f),
 	_scale(1.0f),
@@ -39,7 +39,7 @@ void Camera::update() {
 	}
 }
 
-glm::vec3 Camera::convertScreenToWorld(glm::vec3 screenCoords)
+glm::vec2 Camera::convertScreenToWorld(glm::vec2 screenCoords)
 {
 	//invert y direction
 	screenCoords.y = _screenHeight - screenCoords.y;

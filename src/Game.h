@@ -15,6 +15,7 @@
 #include "InputManager.h"
 #include "Timing.h"
 #include "Bullet.h"
+#include "Cube.h"
 
 enum class GameState {PLAY, MAIN_MENU, EXIT};
 
@@ -36,6 +37,8 @@ private:
 	Window _window;
 	int _screenWidth;
 	int _screenHeight;
+
+	Cube _cube;	
 
 	GameState _gameState;	
 
