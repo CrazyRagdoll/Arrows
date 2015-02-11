@@ -421,6 +421,7 @@ CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/GLSLProgram.cpp.o: /home/sam
 
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Game.cpp.o: /home/sam/Documents/Arrows/src/Bullet.h
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Game.cpp.o: /home/sam/Documents/Arrows/src/Camera.h
+CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Game.cpp.o: /home/sam/Documents/Arrows/src/Cube.h
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Game.cpp.o: /home/sam/Documents/Arrows/src/Errors.h
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Game.cpp.o: /home/sam/Documents/Arrows/src/GLSLProgram.h
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Game.cpp.o: /home/sam/Documents/Arrows/src/GLTexture.h
@@ -794,6 +795,7 @@ CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Window.cpp.o: /home/sam/Docu
 
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/main.cpp.o: /home/sam/Documents/Arrows/src/Bullet.h
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/main.cpp.o: /home/sam/Documents/Arrows/src/Camera.h
+CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/main.cpp.o: /home/sam/Documents/Arrows/src/Cube.h
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/main.cpp.o: /home/sam/Documents/Arrows/src/GLSLProgram.h
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/main.cpp.o: /home/sam/Documents/Arrows/src/GLTexture.h
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/main.cpp.o: /home/sam/Documents/Arrows/src/Game.h

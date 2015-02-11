@@ -16,7 +16,13 @@ public:
 
 	void update();
 
-	void move(vec3 v);
+	//camera translation functions for player movement
+	void move(float speed, float dt);
+	void strafe(float speed, float dt);
+	void jump(float speed, float dt);
+
+	//mouse rotation movement for the player view
+	void rotate(double xpos, double ypos);
 
 	mat4 getViewMatrix(){ return _viewMatrix; }
 	mat4 getProjectionMatrix(){ return _projectionMatrix; }
@@ -28,9 +34,9 @@ private:
 
 	int _screenWidth, _screenHeight;
 	
-	vec3 _position;
+	vec3 _position, _direction, _right, _up;
 
-	float _horizontalAngle, _verticalAngle, _fov, _speed, _mouseSpeed;
+	float _horizontalAngle, _verticalAngle, _fov, _mouseSpeed, _speed;
 
 	mat4 _viewMatrix, _projectionMatrix;
 };

@@ -100,6 +100,15 @@ void Game::processInput()
 {
 	SDL_Event evnt;
 
+	static float SPEED = 0.05f;
+
+	//This block of code is used to rotate the camera using mouse input.
+	static double lastTime = SDL_GetTicks();
+	
+	//finding the time since the current and last frame
+	double currentTime = SDL_GetTicks();
+	float deltaTime = float(currentTime - lastTime);
+
 	//Will keep looping until there are no more events to process
 	while (SDL_PollEvent(&evnt)) {
 		switch (evnt.type) {
@@ -124,28 +133,40 @@ void Game::processInput()
 			}
 		}
 	if (_inputManager.isKeyPressed(SDLK_w)){
-		_camera.move(glm::vec3(0.0f, 0.1f, 0.0f));
+		_camera.move(SPEED, deltaTime);
 	}
 	if (_inputManager.isKeyPressed(SDLK_s)){
-		_camera.move(glm::vec3(0.0f, -0.1f, 0.0f));
+		_camera.move(-SPEED, deltaTime);
 	}
 	if (_inputManager.isKeyPressed(SDLK_a)){
-		_camera.move(glm::vec3(0.1f, 0.0f, 0.0f));
+		_camera.strafe(-SPEED/2, deltaTime);
 	}
 	if (_inputManager.isKeyPressed(SDLK_d)){
-		_camera.move(glm::vec3(-0.1f, 0.0f, 0.0f));
-	}	
-	if (_inputManager.isKeyPressed(SDLK_q)){
-		_camera.move(glm::vec3(0.0f, 0.0f, 0.1f));
+		_camera.strafe(SPEED/2, deltaTime);
 	}
-	if (_inputManager.isKeyPressed(SDLK_e)){
-		_camera.move(glm::vec3(0.0f, 0.0f, -0.1f));
+	if (_inputManager.isKeyPressed(SDLK_SPACE)){
+		_camera.jump(SPEED/2, deltaTime);
+	}
+	if (_inputManager.isKeyPressed(SDLK_LCTRL)){
+		_camera.jump(-SPEED/2, deltaTime);
 	}
 	if (_inputManager.isKeyPressed(SDLK_m)){
 		SDL_ShowCursor(1);		
 	} else {
 		SDL_ShowCursor(0);
 	}
+
+	//get the postion of the mouse at this frame
+	int xMousePos, yMousePos;
+	SDL_GetMouseState(&xMousePos, &yMousePos);
+
+	//reset the mouse position
+	SDL_WarpMouseInWindow(_window.getWindow(), _screenWidth/2, _screenHeight/2);
+
+	//update the rotation of the camera
+	_camera.rotate(xMousePos, yMousePos);
+
+	lastTime = currentTime;	
 }
 
 void Game::drawGame()
