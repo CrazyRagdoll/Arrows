@@ -46,7 +46,11 @@ int Window::create(std::string windowName, int screenWidth, int screenHeight, un
 	std::printf("***   OpenGL Version: %s   ***\n", glGetString(GL_VERSION));
 	
 	//Set the background color to blue
-	glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
+	glClearColor(0.0f, 0.0f, 1.0f, 0.0f);
+
+	//Enable depth test
+	glEnable(GL_DEPTH_TEST);
+	glDepthFunc(GL_LESS);
 	
 	//Set VSYNC
 	SDL_GL_SetSwapInterval(1);

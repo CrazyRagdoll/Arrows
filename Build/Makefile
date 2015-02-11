@@ -183,6 +183,30 @@ home/sam/Documents/Arrows/src/Camera.cpp.s:
 	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Camera.cpp.s
 .PHONY : home/sam/Documents/Arrows/src/Camera.cpp.s
 
+home/sam/Documents/Arrows/src/Cube.o: home/sam/Documents/Arrows/src/Cube.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/Cube.o
+
+# target to build an object file
+home/sam/Documents/Arrows/src/Cube.cpp.o:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Cube.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/Cube.cpp.o
+
+home/sam/Documents/Arrows/src/Cube.i: home/sam/Documents/Arrows/src/Cube.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/Cube.i
+
+# target to preprocess a source file
+home/sam/Documents/Arrows/src/Cube.cpp.i:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Cube.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/Cube.cpp.i
+
+home/sam/Documents/Arrows/src/Cube.s: home/sam/Documents/Arrows/src/Cube.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/Cube.s
+
+# target to generate assembly for a file
+home/sam/Documents/Arrows/src/Cube.cpp.s:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Cube.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/Cube.cpp.s
+
 home/sam/Documents/Arrows/src/Enemy.o: home/sam/Documents/Arrows/src/Enemy.cpp.o
 .PHONY : home/sam/Documents/Arrows/src/Enemy.o
 
@@ -609,6 +633,9 @@ help:
 	@echo "... home/sam/Documents/Arrows/src/Camera.o"
 	@echo "... home/sam/Documents/Arrows/src/Camera.i"
 	@echo "... home/sam/Documents/Arrows/src/Camera.s"
+	@echo "... home/sam/Documents/Arrows/src/Cube.o"
+	@echo "... home/sam/Documents/Arrows/src/Cube.i"
+	@echo "... home/sam/Documents/Arrows/src/Cube.s"
 	@echo "... home/sam/Documents/Arrows/src/Enemy.o"
 	@echo "... home/sam/Documents/Arrows/src/Enemy.i"
 	@echo "... home/sam/Documents/Arrows/src/Enemy.s"

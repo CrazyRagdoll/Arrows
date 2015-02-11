@@ -6,6 +6,7 @@
 struct Position{
 	float x;
 	float y;
+	float z;
 };
 
 struct Color {
@@ -29,10 +30,11 @@ struct Vertex {
 	Color color;
 	UV uv;
 
-	void setPosition(float x, float y)
+	void setPosition(float x, float y, float z)
 	{
 		position.x = x;
 		position.y = y;
+		position.z = z;
 	}
 	
 	void setColor(GLubyte r, GLubyte g, GLubyte b, GLubyte a)
@@ -45,6 +47,15 @@ struct Vertex {
 	
 	void setUV(float u, float v)
 	{
+		uv.u = u;
+		uv.v = v;
+	}
+
+	void setPosUV(float x, float y, float z, float u, float v)
+	{
+		position.x = x;
+		position.y = y;
+		position.z = z;
 		uv.u = u;
 		uv.v = v;
 	}
