@@ -158,8 +158,11 @@ void Game::processInput()
 		//Crouch button
 	}
 	if (_inputManager.isKeyPressed(SDLK_x)){
-		glm::vec3 position(0.0f, 0.0f, 0.0f);
-		glm::vec3 direction(0.0f, 0.0f, 1.0f);
+		glm::vec3 displacement = glm::vec3(_camera.getDirection());
+		normalize(displacement);
+		displacement *=2;
+		glm::vec3 position = glm::vec3(_camera.getPosition() + displacement);
+		glm::vec3 direction = glm::vec3(_camera.getDirection());
 
 		_arrows.emplace_back(position, direction, 1.0f, 1000);
  	}

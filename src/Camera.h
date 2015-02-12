@@ -24,8 +24,12 @@ public:
 	//mouse rotation movement for the player view
 	void rotate(double xpos, double ypos);
 
+	//Getters
 	mat4 getViewMatrix(){ return _viewMatrix; }
 	mat4 getProjectionMatrix(){ return _projectionMatrix; }
+	vec3 getPosition(){ return _position; }
+	vec3 getDirection(){ return _direction; }
+	vec3 getUp(){ return _up; }
 
 	void updateProjectionMatrix();	
 	void updateViewMatrix();
