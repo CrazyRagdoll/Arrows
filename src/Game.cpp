@@ -157,14 +157,14 @@ void Game::processInput()
 	if (_inputManager.isKeyPressed(SDLK_LCTRL)){
 		//Crouch button
 	}
-	if (_inputManager.isKeyPressed(SDLK_x)){
+	if (_inputManager.isKeyPressed(SDL_BUTTON_LEFT)){
 		glm::vec3 displacement = glm::vec3(_camera.getDirection());
 		normalize(displacement);
-		displacement *=2;
+		displacement *=3;
 		glm::vec3 position = glm::vec3(_camera.getPosition() + displacement);
 		glm::vec3 direction = glm::vec3(_camera.getDirection());
 
-		_arrows.emplace_back(position, direction, 1.0f, 1000);
+		_arrows.emplace_back(position, direction, 1.0f, 100);
  	}
 	if (_inputManager.isKeyPressed(SDLK_m)){
 		SDL_ShowCursor(1);		
