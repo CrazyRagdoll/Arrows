@@ -135,6 +135,30 @@ home/sam/Documents/Arrows/src/Agent.cpp.s:
 	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Agent.cpp.s
 .PHONY : home/sam/Documents/Arrows/src/Agent.cpp.s
 
+home/sam/Documents/Arrows/src/Arrow.o: home/sam/Documents/Arrows/src/Arrow.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/Arrow.o
+
+# target to build an object file
+home/sam/Documents/Arrows/src/Arrow.cpp.o:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Arrow.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/Arrow.cpp.o
+
+home/sam/Documents/Arrows/src/Arrow.i: home/sam/Documents/Arrows/src/Arrow.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/Arrow.i
+
+# target to preprocess a source file
+home/sam/Documents/Arrows/src/Arrow.cpp.i:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Arrow.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/Arrow.cpp.i
+
+home/sam/Documents/Arrows/src/Arrow.s: home/sam/Documents/Arrows/src/Arrow.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/Arrow.s
+
+# target to generate assembly for a file
+home/sam/Documents/Arrows/src/Arrow.cpp.s:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Arrow.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/Arrow.cpp.s
+
 home/sam/Documents/Arrows/src/Bullet.o: home/sam/Documents/Arrows/src/Bullet.cpp.o
 .PHONY : home/sam/Documents/Arrows/src/Bullet.o
 
@@ -627,6 +651,9 @@ help:
 	@echo "... home/sam/Documents/Arrows/src/Agent.o"
 	@echo "... home/sam/Documents/Arrows/src/Agent.i"
 	@echo "... home/sam/Documents/Arrows/src/Agent.s"
+	@echo "... home/sam/Documents/Arrows/src/Arrow.o"
+	@echo "... home/sam/Documents/Arrows/src/Arrow.i"
+	@echo "... home/sam/Documents/Arrows/src/Arrow.s"
 	@echo "... home/sam/Documents/Arrows/src/Bullet.o"
 	@echo "... home/sam/Documents/Arrows/src/Bullet.i"
 	@echo "... home/sam/Documents/Arrows/src/Bullet.s"

@@ -41,7 +41,7 @@ void Camera::strafe(float speed, float dt)
 }
 void Camera::jump(float speed, float dt)
 {
-	_position += _up * dt * speed;
+	_position.y += _up.y * dt * speed;
 	updateViewMatrix();
 }
 
@@ -49,7 +49,6 @@ void Camera::rotate(double xpos, double ypos)
 {
 	_horizontalAngle += _mouseSpeed * float(_screenWidth/2 - xpos);
 	float verticalDeg = (_verticalAngle + (_mouseSpeed * float(_screenHeight/2 - ypos))) * TO_DEG ;
-	std::cout << verticalDeg << std::endl;
 	if(verticalDeg > -_vertFoV && verticalDeg < _vertFoV)
 	{
 		_verticalAngle += _mouseSpeed * float(_screenHeight/2 - ypos);

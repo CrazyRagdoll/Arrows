@@ -1,0 +1,29 @@
+#include "Arrow.h"
+#include "Cube.h"
+
+Arrow::Arrow(glm::vec3 pos, glm::vec3 dir, float speed, int lifeTime)
+{
+	_lifeTime = lifeTime;
+	_position = pos;
+	_direction = dir;
+	_speed = speed;
+}
+
+Arrow::~Arrow()
+{
+
+}
+
+void Arrow::draw(Cube& cube)
+{
+	cube.init(_position.x, _position.y, _position.z, 1.0f);
+	cube.draw();
+}
+
+bool Arrow::update()
+{
+	_position += _direction * _speed; //could also apply gravity here
+	_lifeTime--;
+	if(_lifeTime == 0) { return true; }
+	return false;
+}

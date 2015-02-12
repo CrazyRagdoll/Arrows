@@ -70,13 +70,13 @@ void Game::gameLoop()
 	
 		_camera.update();
 
-		//update all the bullets
-		for (int i = 0; i < _bullets.size();)
+		//update all the arrows
+		for (int i = 0; i < _arrows.size();)
 		{
-			if(_bullets[i].update() == true)
+			if(_arrows[i].update() == true)
 			{
-				_bullets[i] = _bullets.back();
-				_bullets.pop_back();
+				_arrows[i] = _arrows.back();
+				_arrows.pop_back();
 			} else {
 				i++;
 			}
@@ -91,7 +91,7 @@ void Game::gameLoop()
 		frameCounter++;
 		if (frameCounter == 1000)
 		{
-			std::cout << _fps << std::endl;
+			std::cout << "Fps: " << _fps << std::endl;
 			frameCounter = 0;
 		}
 	}
@@ -101,7 +101,7 @@ void Game::processInput()
 {
 	SDL_Event evnt;
 
-	static float SPEED = 0.05f;
+	float SPEED = 0.05f;
 
 	//This block of code is used to rotate the camera using mouse input.
 	static double lastTime = SDL_GetTicks();
@@ -133,6 +133,9 @@ void Game::processInput()
 				break;		
 			}
 		}
+	if (_inputManager.isKeyPressed(SDLK_LSHIFT)){
+		SPEED *= 2;
+	}
 	if (_inputManager.isKeyPressed(SDLK_w)){
 		_camera.move(SPEED, deltaTime);
 	}
@@ -140,17 +143,26 @@ void Game::processInput()
 		_camera.move(-SPEED, deltaTime);
 	}
 	if (_inputManager.isKeyPressed(SDLK_a)){
-		_camera.strafe(-SPEED/2, deltaTime);
+		_camera.strafe(-SPEED, deltaTime);
 	}
 	if (_inputManager.isKeyPressed(SDLK_d)){
-		_camera.strafe(SPEED/2, deltaTime);
+		_camera.strafe(SPEED, deltaTime);
 	}
 	if (_inputManager.isKeyPressed(SDLK_SPACE)){
 		_camera.jump(SPEED/2, deltaTime);
 	}
-	if (_inputManager.isKeyPressed(SDLK_LCTRL)){
+	if (_inputManager.isKeyPressed(SDLK_z)){
 		_camera.jump(-SPEED/2, deltaTime);
 	}
+	if (_inputManager.isKeyPressed(SDLK_LCTRL)){
+		//Crouch button
+	}
+	if (_inputManager.isKeyPressed(SDLK_x)){
+		glm::vec3 position(0.0f, 0.0f, 0.0f);
+		glm::vec3 direction(0.0f, 0.0f, 1.0f);
+
+		_arrows.emplace_back(position, direction, 1.0f, 1000);
+ 	}
 	if (_inputManager.isKeyPressed(SDLK_m)){
 		SDL_ShowCursor(1);		
 	} else {
@@ -199,6 +211,11 @@ void Game::drawGame()
 
 	_cube.init(0.0f, 0.0f, 0.0f, 5.0f);
 	_cube.draw();
+	
+	for (int i = 0; i < _arrows.size(); i++)
+	{
+		_arrows[i].draw(_cube);
+	}
 
 	//unbind the texture
 	glBindTexture(GL_TEXTURE_2D, 0);

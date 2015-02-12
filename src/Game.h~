@@ -52,7 +52,7 @@ private:
 
 	FpsLimiter _fpsLimiter;
 
-	std::vector<Bullet> _bullets;
+	std::vector<Arrow> _arrows;
 
 	float _maxFPS;
 	float _fps;
