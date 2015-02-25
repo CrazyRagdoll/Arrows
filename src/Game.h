@@ -33,6 +33,7 @@ private:
 	void gameLoop();
 	void processInput();
 	void drawGame();
+	void setJump(bool x);
 
 	Window _window;
 	int _screenWidth;

@@ -130,7 +130,7 @@ void Game::processInput()
 				break;
 			case SDL_MOUSEBUTTONUP:
 				_inputManager.releaseKey(evnt.button.button);
-				break;		
+				break;
 			}
 		}
 	if (_inputManager.isKeyPressed(SDLK_LSHIFT)){
@@ -149,7 +149,9 @@ void Game::processInput()
 		_camera.strafe(SPEED, deltaTime);
 	}
 	if (_inputManager.isKeyPressed(SDLK_SPACE)){
-		_camera.jump(SPEED/2, deltaTime);
+		if(!_camera._jumping && !_camera._falling){
+			_camera.jump(SPEED/2, deltaTime);		
+		}
 	}
 	if (_inputManager.isKeyPressed(SDLK_z)){
 		_camera.jump(-SPEED/2, deltaTime);
@@ -228,4 +230,3 @@ void Game::drawGame()
 	// Swap the buffers and draw everything onto the screencd 
 	_window.swapBuffer();
 }
-

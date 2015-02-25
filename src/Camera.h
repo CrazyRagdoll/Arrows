@@ -34,6 +34,8 @@ public:
 	void updateProjectionMatrix();	
 	void updateViewMatrix();
 
+	bool _jumping, _falling;
+
 private:
 
 	int _screenWidth, _screenHeight;
@@ -41,6 +43,7 @@ private:
 	vec3 _position, _direction, _right, _up;
 
 	float _horizontalAngle, _verticalAngle, _fov, _mouseSpeed, _speed, _vertFoV;
+	float _initJumpSpeed, _jumpSpeed, _gravityIntensity;
 
 	mat4 _viewMatrix, _projectionMatrix;
 };

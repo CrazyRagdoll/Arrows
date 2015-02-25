@@ -24,6 +24,7 @@ public:
 	//mouse rotation movement for the player view
 	void rotate(double xpos, double ypos);
 
+	//Getters
 	mat4 getViewMatrix(){ return _viewMatrix; }
 	mat4 getProjectionMatrix(){ return _projectionMatrix; }
 	vec3 getPosition(){ return _position; }
@@ -35,11 +36,14 @@ public:
 
 private:
 
+	bool _jumping, _falling;
+
 	int _screenWidth, _screenHeight;
 	
 	vec3 _position, _direction, _right, _up;
 
-	float _horizontalAngle, _verticalAngle, _fov, _mouseSpeed, _speed, _vertFoV;
+	float _horizontalAngle, _verticalAngle, _fov, _mouseSpeed, _speed, _vertFoV'
+	float _initJumpSpeed, _jumpSpeed, _gravityIntensity;
 
 	mat4 _viewMatrix, _projectionMatrix;
 };

@@ -5,14 +5,19 @@
 
 double TO_DEG = 180/3.14;
 
-Camera::Camera() : _position(0.0f, 0.0f, 10.0f),
+Camera::Camera() : _position(0.0f, 10.0f, 10.0f),
 	_horizontalAngle(3.14f),
 	_verticalAngle(0.0f),
 	_fov(45.0f),
 	_mouseSpeed(0.01f),
 	_speed(3.0f),
 	_projectionMatrix(1.0f),
-	_vertFoV(75.0f)
+	_vertFoV(75.0f),
+	_jumping(false),
+	_falling(false),
+	_initJumpSpeed(1.0f),
+	_jumpSpeed(_initJumpSpeed),
+	_gravityIntensity(0.90)
 {
 }
 
@@ -40,8 +45,10 @@ void Camera::strafe(float speed, float dt)
 	updateViewMatrix();
 }
 void Camera::jump(float speed, float dt)
-{
-	_position.y += _up.y * dt * speed;
+{ 
+	_jumping = true;
+		
+	//_position.y += _up.y * dt * speed;
 	updateViewMatrix();
 }
 
@@ -49,6 +56,7 @@ void Camera::rotate(double xpos, double ypos)
 {
 	_horizontalAngle += _mouseSpeed * float(_screenWidth/2 - xpos);
 	float verticalDeg = (_verticalAngle + (_mouseSpeed * float(_screenHeight/2 - ypos))) * TO_DEG ;
+	//To make sure the player cannot look past the vertical view distance
 	if(verticalDeg > -_vertFoV && verticalDeg < _vertFoV)
 	{
 		_verticalAngle += _mouseSpeed * float(_screenHeight/2 - ypos);
@@ -71,6 +79,25 @@ void Camera::update()
 	);
 
 	_up = glm::cross(_right, _direction);
+
+	if(_jumping){
+		_jumpSpeed *= _gravityIntensity;
+		_position.y += _up.y * _jumpSpeed;
+		if(_jumpSpeed < 0.5)
+		{
+			_jumping = false;
+			_falling = true;
+			_jumpSpeed = _initJumpSpeed;
+		}
+	}
+	if(_falling){
+		_jumpSpeed *= 2 - _gravityIntensity;
+		if(_position.y > 0){
+			_position.y -= _up.y * _jumpSpeed;
+		} else {
+			_falling = false;
+		}
+	} 
 }
 
 void Camera::updateProjectionMatrix()

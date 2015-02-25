@@ -152,7 +152,7 @@ void Game::processInput()
 		_camera.jump(SPEED/2, deltaTime);
 	}
 	if (_inputManager.isKeyPressed(SDLK_z)){
-		_camera.jump(-SPEED/2, deltaTime);
+		//_camera.jump(-SPEED/2, deltaTime);
 	}
 	if (_inputManager.isKeyPressed(SDLK_LCTRL)){
 		//Crouch button
@@ -160,7 +160,7 @@ void Game::processInput()
 	if (_inputManager.isKeyPressed(SDL_BUTTON_LEFT)){
 		glm::vec3 displacement = glm::vec3(_camera.getDirection());
 		normalize(displacement);
-		displacement *=2;
+		displacement *=3;
 		glm::vec3 position = glm::vec3(_camera.getPosition() + displacement);
 		glm::vec3 direction = glm::vec3(_camera.getDirection());
 

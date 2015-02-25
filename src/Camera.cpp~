@@ -5,14 +5,19 @@
 
 double TO_DEG = 180/3.14;
 
-Camera::Camera() : _position(0.0f, 0.0f, 10.0f),
+Camera::Camera() : _position(0.0f, 10.0f, 10.0f),
 	_horizontalAngle(3.14f),
 	_verticalAngle(0.0f),
-	_fov(55.0f),
+	_fov(45.0f),
 	_mouseSpeed(0.01f),
 	_speed(3.0f),
 	_projectionMatrix(1.0f),
-	_vertFoV(75.0f)
+	_vertFoV(75.0f),
+	_jumping(false),
+	_falling(false),
+	_initJumpSpeed(10.0f)
+	_jumpSpeed(_initJumpSpeed),
+	_gravityIntensity(0.75)
 {
 }
 
@@ -40,8 +45,23 @@ void Camera::strafe(float speed, float dt)
 	updateViewMatrix();
 }
 void Camera::jump(float speed, float dt)
-{
-	_position.y += _up.y * dt * speed;
+{ 
+	_jumping = true;
+	if(_jumping){
+		_jumpSpeed *= _gravityIntensity;
+		_position.y += _up.y * dt * _jumpSpeed;
+		if(_jumpSpeed < 0.5)
+		{
+			_jumping = false;
+			_falling = true;
+		}
+		_jumpSpeed = _initJumpSpeed;
+	}
+	if(_falling){
+		
+		
+		
+	//_position.y += _up.y * dt * speed;
 	updateViewMatrix();
 }
 
