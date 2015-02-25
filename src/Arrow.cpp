@@ -1,7 +1,9 @@
 #include "Arrow.h"
 #include "Cube.h"
 
-Arrow::Arrow(glm::vec3 pos, glm::vec3 dir, float speed, int lifeTime)
+Arrow::Arrow(glm::vec3 pos, glm::vec3 dir, float speed, int lifeTime) :
+	_gravity(0.010f),
+	_floorTime(100)
 {
 	_lifeTime = lifeTime;
 	_position = pos;
@@ -21,9 +23,16 @@ void Arrow::draw(Cube& cube)
 }
 
 bool Arrow::update()
-{
-	_position += _direction * _speed; //could also apply gravity here
-	_lifeTime--;
-	if(_lifeTime == 0) { return true; }
+{	
+	//checking to see if the arrow is still in flight or not, then updating its position and deleting after a certain time
+	if((_position.y + (_direction.y * _speed)) < -0.5){
+		_floorTime--;
+	} else {
+		_direction.y -= _gravity;
+		_position += _direction * _speed;
+		_lifeTime--;
+	}
+
+	if(_lifeTime == 0 || _floorTime == 0) { return true; }
 	return false;
 }

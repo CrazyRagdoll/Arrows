@@ -10,7 +10,9 @@ Game::Game() :
 	_screenHeight(768), 
 	_time(0.0f),  
 	_gameState(GameState::PLAY),
-	_maxFPS(60.0f)
+	_maxFPS(60.0f),
+	_SHOTSPEED(100.0f),
+	_shotTimer(100.0f)
 {
 	_camera.init(_screenWidth, _screenHeight);
 	SDL_WarpMouseInWindow(_window.getWindow(), _screenWidth/2, _screenHeight/2);
@@ -81,6 +83,8 @@ void Game::gameLoop()
 				i++;
 			}
 		}
+		//Incrementing shot timer to regulate shotting speed
+		_shotTimer++;
 		
 		drawGame();
 
@@ -160,13 +164,16 @@ void Game::processInput()
 		//Crouch button
 	}
 	if (_inputManager.isKeyPressed(SDL_BUTTON_LEFT)){
-		glm::vec3 displacement = glm::vec3(_camera.getDirection());
-		normalize(displacement);
-		displacement *=3;
-		glm::vec3 position = glm::vec3(_camera.getPosition() + displacement);
-		glm::vec3 direction = glm::vec3(_camera.getDirection());
+		if(_shotTimer >= _SHOTSPEED){
+			_shotTimer = 0.0f;
+			glm::vec3 displacement = glm::vec3(_camera.getDirection());
+			normalize(displacement);
+			displacement *=3;
+			glm::vec3 position = glm::vec3(_camera.getPosition() + displacement);
+			glm::vec3 direction = glm::vec3(_camera.getDirection());
 
-		_arrows.emplace_back(position, direction, 1.0f, 100);
+			_arrows.emplace_back(position, direction, 1.0f, 250);			
+		}
  	}
 	if (_inputManager.isKeyPressed(SDLK_m)){
 		SDL_ShowCursor(1);		

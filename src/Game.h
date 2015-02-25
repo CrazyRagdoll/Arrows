@@ -33,7 +33,6 @@ private:
 	void gameLoop();
 	void processInput();
 	void drawGame();
-	void setJump(bool x);
 
 	Window _window;
 	int _screenWidth;
@@ -58,6 +57,7 @@ private:
 	float _maxFPS;
 	float _fps;
 	float _time;
+	float _shotTimer, _SHOTSPEED;
 };
 
 #endif

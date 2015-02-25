@@ -92,7 +92,7 @@ void Camera::update()
 	}
 	if(_falling){
 		_jumpSpeed *= 2 - _gravityIntensity;
-		if(_position.y > 0){
+		if(_position.y > 1){
 			_position.y -= _up.y * _jumpSpeed;
 		} else {
 			_falling = false;

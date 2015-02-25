@@ -7,6 +7,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Cube.cpp.o"
   "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Enemy.cpp.o"
   "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Errors.cpp.o"
+  "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Floor.cpp.o"
   "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Game.cpp.o"
   "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/GLSLProgram.cpp.o"
   "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/ImageLoader.cpp.o"

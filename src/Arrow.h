@@ -19,4 +19,7 @@ private:
 	float _speed;
 	glm::vec3 _direction;
 	glm::vec3 _position;
+
+	float _gravity;
+	int _floorTime;
 };
