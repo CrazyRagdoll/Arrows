@@ -4,29 +4,19 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/sam/Documents/Arrows/src/Agent.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Agent.cpp.o"
   "/home/sam/Documents/Arrows/src/Arrow.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Arrow.cpp.o"
-  "/home/sam/Documents/Arrows/src/Bullet.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Bullet.cpp.o"
   "/home/sam/Documents/Arrows/src/Camera.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Camera.cpp.o"
   "/home/sam/Documents/Arrows/src/Cube.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Cube.cpp.o"
-  "/home/sam/Documents/Arrows/src/Enemy.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Enemy.cpp.o"
   "/home/sam/Documents/Arrows/src/Errors.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Errors.cpp.o"
   "/home/sam/Documents/Arrows/src/Floor.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Floor.cpp.o"
   "/home/sam/Documents/Arrows/src/GLSLProgram.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/GLSLProgram.cpp.o"
   "/home/sam/Documents/Arrows/src/Game.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Game.cpp.o"
   "/home/sam/Documents/Arrows/src/IOManager.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/IOManager.cpp.o"
-  "/home/sam/Documents/Arrows/src/ImageLoader.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/ImageLoader.cpp.o"
   "/home/sam/Documents/Arrows/src/InputManager.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/InputManager.cpp.o"
   "/home/sam/Documents/Arrows/src/Level.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Level.cpp.o"
-  "/home/sam/Documents/Arrows/src/Player.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Player.cpp.o"
-  "/home/sam/Documents/Arrows/src/ResourceManager.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/ResourceManager.cpp.o"
-  "/home/sam/Documents/Arrows/src/Sprite.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Sprite.cpp.o"
-  "/home/sam/Documents/Arrows/src/SpriteBatch.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/SpriteBatch.cpp.o"
-  "/home/sam/Documents/Arrows/src/TextureCache.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/TextureCache.cpp.o"
   "/home/sam/Documents/Arrows/src/Timing.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Timing.cpp.o"
   "/home/sam/Documents/Arrows/src/Window.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Window.cpp.o"
   "/home/sam/Documents/Arrows/src/main.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/main.cpp.o"
-  "/home/sam/Documents/Arrows/src/picoPNG.cpp" "/home/sam/Documents/Arrows/Build/CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/picoPNG.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

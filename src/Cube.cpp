@@ -1,6 +1,5 @@
 #include "Cube.h"
 #include "Vertex.h"
-#include "ResourceManager.h"
 
 #include <cstddef>
 

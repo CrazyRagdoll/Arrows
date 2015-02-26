@@ -1,6 +1,5 @@
 #include "Game.h"
 #include "Errors.h"
-#include "ResourceManager.h"
 
 #include <iostream>
 #include <string>
@@ -46,8 +45,6 @@ void Game::initSystems()
 
 	//initialize the shaders.
 	initShaders();
-
-	_spriteBatch.init();
 
 	_fpsLimiter.init(_maxFPS);
 }

@@ -7,11 +7,8 @@
 #include <vector>
 
 #include "GLSLProgram.h"
-#include "Sprite.h"
-#include "GLTexture.h"
 #include "Window.h"
 #include "Camera.h"
-#include "SpriteBatch.h"
 #include "InputManager.h"
 #include "Timing.h"
 #include "Arrow.h"
@@ -45,8 +42,6 @@ private:
 	GLSLProgram _colorProgram;
 
 	Camera _camera;
-
-	SpriteBatch _spriteBatch;
 
 	InputManager _inputManager;
 
