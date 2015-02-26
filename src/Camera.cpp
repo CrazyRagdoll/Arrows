@@ -5,7 +5,7 @@
 
 double TO_DEG = 180/3.14;
 
-Camera::Camera() : _position(0.0f, 10.0f, 10.0f),
+Camera::Camera() : _position(0.0f, 5.0f, 10.0f),
 	_horizontalAngle(3.14f),
 	_verticalAngle(0.0f),
 	_fov(45.0f),
@@ -15,9 +15,10 @@ Camera::Camera() : _position(0.0f, 10.0f, 10.0f),
 	_vertFoV(75.0f),
 	_jumping(false),
 	_falling(false),
-	_initJumpSpeed(1.0f),
+	_initJumpSpeed(5.0f),
 	_jumpSpeed(_initJumpSpeed),
-	_gravityIntensity(0.90)
+	_gravityIntensity(0.9),
+	_FLOOR(2.5f)
 {
 }
 
@@ -83,21 +84,21 @@ void Camera::update()
 	if(_jumping){
 		_jumpSpeed *= _gravityIntensity;
 		_position.y += _up.y * _jumpSpeed;
-		if(_jumpSpeed < 0.5)
+		if(_jumpSpeed < 0.25)
 		{
 			_jumping = false;
 			_falling = true;
-			_jumpSpeed = _initJumpSpeed;
 		}
 	}
 	if(_falling){
 		_jumpSpeed *= 2 - _gravityIntensity;
-		if(_position.y > 1){
+		if(_position.y > _FLOOR){
 			_position.y -= _up.y * _jumpSpeed;
 		} else {
 			_falling = false;
+			_jumpSpeed = _initJumpSpeed;
 		}
-	} 
+	} 	
 }
 
 void Camera::updateProjectionMatrix()

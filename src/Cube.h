@@ -3,6 +3,9 @@
 #include "glm/glm.hpp"
 
 #include "GLTexture.h"
+#include <string>
+
+using namespace std;
 
 class Cube 
 {

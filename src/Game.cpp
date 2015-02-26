@@ -157,9 +157,6 @@ void Game::processInput()
 			_camera.jump(SPEED/2, deltaTime);		
 		}
 	}
-	if (_inputManager.isKeyPressed(SDLK_z)){
-		_camera.jump(-SPEED/2, deltaTime);
-	}
 	if (_inputManager.isKeyPressed(SDLK_LCTRL)){
 		//Crouch button
 	}
@@ -221,7 +218,7 @@ void Game::drawGame()
 
 	glUniformMatrix4fv(pLocation, 1, GL_FALSE, &(cameraMatrix[0][0]));
 
-	_cube.init(0.0f, 0.0f, 0.0f, 5.0f);
+	_cube.init(0.0f, 10.0f, 0.0f, 5.0f);
 	_cube.draw();
 	
 	for (int i = 0; i < _arrows.size(); i++)
