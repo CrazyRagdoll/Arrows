@@ -40,56 +40,56 @@ void Cube::init(float x, float y, float z, float width)
 		glGenBuffers(1, &_vboID);
 	}
 
-	    // Make a cube out of triangles (two triangles per side)
-    	Vertex vertexData[36];
-        //  X     Y     Z       U     V
-        // bottom
-        vertexData[0].setPosUV(-_width + x,-_width + y,-_width + z,   0.0f, 0.0f);
-        vertexData[1].setPosUV( _width + x,-_width + y,-_width + z,   1.0f, 0.0f);
-        vertexData[2].setPosUV(-_width + x,-_width + y, _width + z,   0.0f, 1.0f);
-        vertexData[3].setPosUV( _width + x,-_width + y,-_width + z,   1.0f, 0.0f);
-        vertexData[4].setPosUV( _width + x,-_width + y, _width + z,   1.0f, 1.0f);
-        vertexData[5].setPosUV(-_width + x,-_width + y, _width + z,   0.0f, 1.0f);
+    // Make a cube out of triangles (two triangles per side)
+	Vertex vertexData[36];
+    //  X     Y     Z       U     V
+    // bottom
+    vertexData[0].setPosUV(-_width + x,-_width + y,-_width + z,   0.0f, 0.0f);
+    vertexData[1].setPosUV( _width + x,-_width + y,-_width + z,   1.0f, 0.0f);
+    vertexData[2].setPosUV(-_width + x,-_width + y, _width + z,   0.0f, 1.0f);
+    vertexData[3].setPosUV( _width + x,-_width + y,-_width + z,   1.0f, 0.0f);
+    vertexData[4].setPosUV( _width + x,-_width + y, _width + z,   1.0f, 1.0f);
+    vertexData[5].setPosUV(-_width + x,-_width + y, _width + z,   0.0f, 1.0f);
 
-        // top
-        vertexData[6].setPosUV(-_width + x, _width + y,-_width + z,   0.0f, 0.0f);
-        vertexData[7].setPosUV(-_width + x, _width + y, _width + z,   0.0f, 1.0f);
-        vertexData[8].setPosUV( _width + x, _width + y,-_width + z,   1.0f, 0.0f);
-        vertexData[9].setPosUV( _width + x, _width + y,-_width + z,   1.0f, 0.0f);
-        vertexData[10].setPosUV(-_width + x, _width + y, _width + z,   0.0f, 1.0f);
-        vertexData[11].setPosUV( _width + x, _width + y, _width + z,   1.0f, 1.0f);
+    // top
+    vertexData[6].setPosUV(-_width + x, _width + y,-_width + z,   0.0f, 0.0f);
+    vertexData[7].setPosUV(-_width + x, _width + y, _width + z,   0.0f, 1.0f);
+    vertexData[8].setPosUV( _width + x, _width + y,-_width + z,   1.0f, 0.0f);
+    vertexData[9].setPosUV( _width + x, _width + y,-_width + z,   1.0f, 0.0f);
+    vertexData[10].setPosUV(-_width + x, _width + y, _width + z,   0.0f, 1.0f);
+    vertexData[11].setPosUV( _width + x, _width + y, _width + z,   1.0f, 1.0f);
 
-        // right
-        vertexData[12].setPosUV( _width + x,-_width + y, _width + z,   1.0f, 0.0f); 
-        vertexData[13].setPosUV( _width + x,-_width + y,-_width + z,   0.0f, 0.0f); 
-        vertexData[14].setPosUV( _width + x, _width + y,-_width + z,   0.0f, 1.0f); 
-        vertexData[15].setPosUV( _width + x,-_width + y, _width + z,   1.0f, 0.0f); 
-        vertexData[16].setPosUV( _width + x, _width + y,-_width + z,   0.0f, 1.0f); 
-        vertexData[17].setPosUV( _width + x, _width + y, _width + z,   1.0f, 1.0f); 
+    // right
+    vertexData[12].setPosUV( _width + x,-_width + y, _width + z,   1.0f, 0.0f); 
+    vertexData[13].setPosUV( _width + x,-_width + y,-_width + z,   0.0f, 0.0f); 
+    vertexData[14].setPosUV( _width + x, _width + y,-_width + z,   0.0f, 1.0f); 
+    vertexData[15].setPosUV( _width + x,-_width + y, _width + z,   1.0f, 0.0f); 
+    vertexData[16].setPosUV( _width + x, _width + y,-_width + z,   0.0f, 1.0f); 
+    vertexData[17].setPosUV( _width + x, _width + y, _width + z,   1.0f, 1.0f); 
 
 	// left
-        vertexData[18].setPosUV(-_width + x,-_width + y, _width + z,   1.0f, 1.0f);
-        vertexData[19].setPosUV(-_width + x, _width + y,-_width + z,   0.0f, 0.0f);
-        vertexData[20].setPosUV(-_width + x,-_width + y,-_width + z,   1.0f, 0.0f);
-        vertexData[21].setPosUV(-_width + x,-_width + y, _width + z,   0.0f, 1.0f);
-        vertexData[22].setPosUV(-_width + x, _width + y, _width + z,   1.0f, 0.0f);
-        vertexData[23].setPosUV(-_width + x, _width + y,-_width + z,   0.0f, 0.0f);
+    vertexData[18].setPosUV(-_width + x,-_width + y, _width + z,   0.0f, 0.0f);
+    vertexData[19].setPosUV(-_width + x, _width + y,-_width + z,   1.0f, 1.0f);
+    vertexData[20].setPosUV(-_width + x,-_width + y,-_width + z,   1.0f, 0.0f);
+    vertexData[21].setPosUV(-_width + x,-_width + y, _width + z,   0.0f, 0.0f);
+    vertexData[22].setPosUV(-_width + x, _width + y, _width + z,   0.0f, 1.0f);
+    vertexData[23].setPosUV(-_width + x, _width + y,-_width + z,   1.0f, 1.0f);
 
-        // front
-        vertexData[24].setPosUV(-_width + x,-_width + y, _width + z,   1.0f, 0.0f);
-        vertexData[25].setPosUV( _width + x,-_width + y, _width + z,   0.0f, 0.0f);
-        vertexData[26].setPosUV(-_width + x, _width + y, _width + z,   1.0f, 1.0f);
-        vertexData[27].setPosUV( _width + x,-_width + y, _width + z,   0.0f, 0.0f);
-        vertexData[28].setPosUV( _width + x, _width + y, _width + z,   0.0f, 1.0f);
-        vertexData[29].setPosUV(-_width + x, _width + y, _width + z,   1.0f, 1.0f);
+    // front
+    vertexData[24].setPosUV(-_width + x,-_width + y, _width + z,   1.0f, 0.0f);
+    vertexData[25].setPosUV( _width + x,-_width + y, _width + z,   0.0f, 0.0f);
+    vertexData[26].setPosUV(-_width + x, _width + y, _width + z,   1.0f, 1.0f);
+    vertexData[27].setPosUV( _width + x,-_width + y, _width + z,   0.0f, 0.0f);
+    vertexData[28].setPosUV( _width + x, _width + y, _width + z,   0.0f, 1.0f);
+    vertexData[29].setPosUV(-_width + x, _width + y, _width + z,   1.0f, 1.0f);
 
-        // back
-        vertexData[30].setPosUV(-_width + x,-_width + y,-_width + z,   0.0f, 0.0f);
-        vertexData[31].setPosUV(-_width + x, _width + y,-_width + z,   0.0f, 1.0f);
-        vertexData[32].setPosUV( _width + x,-_width + y,-_width + z,   1.0f, 0.0f);
-        vertexData[33].setPosUV( _width + x,-_width + y,-_width + z,   1.0f, 0.0f);
-        vertexData[34].setPosUV(-_width + x, _width + y,-_width + z,   0.0f, 1.0f);
-        vertexData[35].setPosUV( _width + x, _width + y,-_width + z,   1.0f, 1.0f);
+    // back
+    vertexData[30].setPosUV(-_width + x,-_width + y,-_width + z,   0.0f, 0.0f);
+    vertexData[31].setPosUV(-_width + x, _width + y,-_width + z,   0.0f, 1.0f);
+    vertexData[32].setPosUV( _width + x,-_width + y,-_width + z,   1.0f, 0.0f);
+    vertexData[33].setPosUV( _width + x,-_width + y,-_width + z,   1.0f, 0.0f);
+    vertexData[34].setPosUV(-_width + x, _width + y,-_width + z,   0.0f, 1.0f);
+    vertexData[35].setPosUV( _width + x, _width + y,-_width + z,   1.0f, 1.0f);
 
 	for (int i = 0; i < 36; i++) {
 		vertexData[i].setColor(255, 255, 255, 255);
