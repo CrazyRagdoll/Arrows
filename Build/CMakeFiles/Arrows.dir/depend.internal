@@ -254,12 +254,12 @@ CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Errors.cpp.o
  /home/sam/Documents/Arrows/src/Errors.cpp
  /home/sam/Documents/Arrows/src/Errors.h
 CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Floor.cpp.o
- /home/sam/Documents/Arrows/src/Cube.h
  /home/sam/Documents/Arrows/src/Floor.cpp
  /home/sam/Documents/Arrows/src/Floor.h
  /home/sam/Documents/Arrows/src/GLSLProgram.h
  /home/sam/Documents/Arrows/src/GLTexture.h
  /home/sam/Documents/Arrows/src/TextureLoader.h
+ /home/sam/Documents/Arrows/src/Vertex.h
  /home/sam/Documents/Arrows/src/glm/common.hpp
  /home/sam/Documents/Arrows/src/glm/detail/_fixes.hpp
  /home/sam/Documents/Arrows/src/glm/detail/_swizzle.hpp
@@ -346,6 +346,7 @@ CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Game.cpp.o
  /home/sam/Documents/Arrows/src/Camera.h
  /home/sam/Documents/Arrows/src/Cube.h
  /home/sam/Documents/Arrows/src/Errors.h
+ /home/sam/Documents/Arrows/src/Floor.h
  /home/sam/Documents/Arrows/src/GLSLProgram.h
  /home/sam/Documents/Arrows/src/GLTexture.h
  /home/sam/Documents/Arrows/src/Game.cpp
@@ -534,6 +535,7 @@ CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/main.cpp.o
  /home/sam/Documents/Arrows/src/Arrow.h
  /home/sam/Documents/Arrows/src/Camera.h
  /home/sam/Documents/Arrows/src/Cube.h
+ /home/sam/Documents/Arrows/src/Floor.h
  /home/sam/Documents/Arrows/src/GLSLProgram.h
  /home/sam/Documents/Arrows/src/GLTexture.h
  /home/sam/Documents/Arrows/src/Game.h

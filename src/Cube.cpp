@@ -128,6 +128,9 @@ void Cube::draw()
 	glDisableVertexAttribArray(1);
 	glDisableVertexAttribArray(2);
 
+	//unbind the  texture
+	glBindTexture(GL_TEXTURE_2D, 0);
+
 	//unbind the vbo
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }

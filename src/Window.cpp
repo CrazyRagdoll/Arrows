@@ -49,7 +49,7 @@ int Window::create(std::string windowName, int screenWidth, int screenHeight, un
 	glEnable(GL_TEXTURE_2D);
 
 	//Set the background color to blue
-	glClearColor(0.0f, 0.0f, 1.0f, 0.0f);
+	glClearColor(0.0f, 0.0f, 0.75f, 0.0f);
 
 	//Enable depth test
 	glEnable(GL_DEPTH_TEST);

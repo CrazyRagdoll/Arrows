@@ -80,7 +80,7 @@ void Game::gameLoop()
 				i++;
 			}
 		}
-		//Incrementing shot timer to regulate shotting speed
+		//Incrementing shot timer to regulate shooting speed
 		_shotTimer++;
 		
 		drawGame();
@@ -214,12 +214,18 @@ void Game::drawGame()
 	//creating and drawing a cube
 	_cube.init(0.0f, 10.0f, 0.0f, 5.0f);
 	_cube.draw();
+
+	//Adding a floor to the scene
+	_floor.init(0.0f, 0.0f, 0.0f, 1000.0f);
+	_floor.draw();
+
 	
 	for (int i = 0; i < _arrows.size(); i++)
 	{
 		_arrows[i].draw(_cube);
 	}
 
+	//disable the shaders
 	_colorProgram.unuse();
 
 	// Swap the buffers and draw everything onto the screencd 

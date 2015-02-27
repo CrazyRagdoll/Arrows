@@ -24,8 +24,9 @@ int TextureLoader::loadGLTexture(string imagePath)
 	if(_texture[0] == 0)
 		return false;
 
+	//Activating and binding the texture
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, _texture[0]);
-
+	
 	return _texture[0];
 }
