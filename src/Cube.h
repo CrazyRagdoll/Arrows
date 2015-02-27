@@ -4,6 +4,8 @@
 
 #include "GLTexture.h"
 #include <string>
+#include "TextureLoader.h"
+#include "GLSLProgram.h"
 
 using namespace std;
 
@@ -27,4 +29,8 @@ private:
 
 	GLuint _vboID; //vertex buffer object ID
 	GLTexture _texture;
+
+	TextureLoader _textureLoader;
+
+	GLSLProgram _colorProgram;	
 };

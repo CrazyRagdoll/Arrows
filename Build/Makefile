@@ -351,6 +351,30 @@ home/sam/Documents/Arrows/src/Level.cpp.s:
 	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Level.cpp.s
 .PHONY : home/sam/Documents/Arrows/src/Level.cpp.s
 
+home/sam/Documents/Arrows/src/TextureLoader.o: home/sam/Documents/Arrows/src/TextureLoader.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/TextureLoader.o
+
+# target to build an object file
+home/sam/Documents/Arrows/src/TextureLoader.cpp.o:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/TextureLoader.cpp.o
+.PHONY : home/sam/Documents/Arrows/src/TextureLoader.cpp.o
+
+home/sam/Documents/Arrows/src/TextureLoader.i: home/sam/Documents/Arrows/src/TextureLoader.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/TextureLoader.i
+
+# target to preprocess a source file
+home/sam/Documents/Arrows/src/TextureLoader.cpp.i:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/TextureLoader.cpp.i
+.PHONY : home/sam/Documents/Arrows/src/TextureLoader.cpp.i
+
+home/sam/Documents/Arrows/src/TextureLoader.s: home/sam/Documents/Arrows/src/TextureLoader.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/TextureLoader.s
+
+# target to generate assembly for a file
+home/sam/Documents/Arrows/src/TextureLoader.cpp.s:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/TextureLoader.cpp.s
+.PHONY : home/sam/Documents/Arrows/src/TextureLoader.cpp.s
+
 home/sam/Documents/Arrows/src/Timing.o: home/sam/Documents/Arrows/src/Timing.cpp.o
 .PHONY : home/sam/Documents/Arrows/src/Timing.o
 
@@ -462,6 +486,9 @@ help:
 	@echo "... home/sam/Documents/Arrows/src/Level.o"
 	@echo "... home/sam/Documents/Arrows/src/Level.i"
 	@echo "... home/sam/Documents/Arrows/src/Level.s"
+	@echo "... home/sam/Documents/Arrows/src/TextureLoader.o"
+	@echo "... home/sam/Documents/Arrows/src/TextureLoader.i"
+	@echo "... home/sam/Documents/Arrows/src/TextureLoader.s"
 	@echo "... home/sam/Documents/Arrows/src/Timing.o"
 	@echo "... home/sam/Documents/Arrows/src/Timing.i"
 	@echo "... home/sam/Documents/Arrows/src/Timing.s"

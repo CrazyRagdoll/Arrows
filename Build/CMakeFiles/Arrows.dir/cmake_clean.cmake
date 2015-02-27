@@ -10,6 +10,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/InputManager.cpp.o"
   "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/IOManager.cpp.o"
   "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Level.cpp.o"
+  "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/TextureLoader.cpp.o"
   "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Timing.cpp.o"
   "CMakeFiles/Arrows.dir/home/sam/Documents/Arrows/src/Window.cpp.o"
   "Arrows.pdb"

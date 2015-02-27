@@ -166,7 +166,7 @@ void Game::processInput()
 			glm::vec3 position = glm::vec3(_camera.getPosition() + displacement);
 			glm::vec3 direction = glm::vec3(_camera.getDirection());
 
-			_arrows.emplace_back(position, direction, 1.0f, 250);			
+			_arrows.emplace_back(position, direction, 2.5f, 250);			
 		}
  	}
 	if (_inputManager.isKeyPressed(SDLK_m)){
@@ -199,13 +199,9 @@ void Game::drawGame()
 	//Enable the shader
 	_colorProgram.use();
 
-	//using texture unit0
-	glActiveTexture(GL_TEXTURE0);
-	//get the uniform location
-	GLint textureLocation = _colorProgram.getUniformLocation("mySampler");	
-	//tell the shader that the texture is in texture unit 0	
-	glUniform1i(textureLocation, 0);
-	
+	//setting the texture location inside the fragment shader
+	glUniform1i(_colorProgram.getUniformLocation("mySampler"), 0);
+
 	//set the camera matrix
 	GLuint pLocation = _colorProgram.getUniformLocation("P");
 	glm::mat4 projectionMatrix = _camera.getProjectionMatrix();
@@ -215,6 +211,7 @@ void Game::drawGame()
 
 	glUniformMatrix4fv(pLocation, 1, GL_FALSE, &(cameraMatrix[0][0]));
 
+	//creating and drawing a cube
 	_cube.init(0.0f, 10.0f, 0.0f, 5.0f);
 	_cube.draw();
 	
@@ -222,9 +219,6 @@ void Game::drawGame()
 	{
 		_arrows[i].draw(_cube);
 	}
-
-	//unbind the texture
-	glBindTexture(GL_TEXTURE_2D, 0);
 
 	_colorProgram.unuse();
 

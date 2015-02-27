@@ -1,6 +1,7 @@
 #include "Cube.h"
 #include "Vertex.h"
 
+#include <iostream>
 #include <cstddef>
 
 Cube::Cube()
@@ -25,6 +26,13 @@ void Cube::init(float x, float y, float z, float width)
 	_width = width;
 
 	_position = glm::vec3(x,y,z);
+
+	_texture.id = _textureLoader.loadGLTexture("../src/Textures/NeHe.bmp");
+
+	if(_texture.id == 0)
+	{
+		std::cout << "Could not find texture" << std::endl;
+	}
 
 	// If the vertex buffer is 0, use OpenGL to set it.
 	if( _vboID == 0 )
@@ -52,20 +60,20 @@ void Cube::init(float x, float y, float z, float width)
         vertexData[11].setPosUV( _width + x, _width + y, _width + z,   1.0f, 1.0f);
 
         // right
-        vertexData[12].setPosUV( _width + x,-_width + y, _width + z,   0.0f, 1.0f); 
-        vertexData[13].setPosUV( _width + x,-_width + y,-_width + z,   1.0f, 0.0f); 
-        vertexData[14].setPosUV( _width + x, _width + y,-_width + z,   0.0f, 0.0f); 
-        vertexData[15].setPosUV( _width + x,-_width + y, _width + z,   0.0f, 1.0f); 
-        vertexData[16].setPosUV( _width + x, _width + y,-_width + z,   1.0f, 1.0f); 
-        vertexData[17].setPosUV( _width + x, _width + y, _width + z,   1.0f, 0.0f); 
+        vertexData[12].setPosUV( _width + x,-_width + y, _width + z,   1.0f, 0.0f); 
+        vertexData[13].setPosUV( _width + x,-_width + y,-_width + z,   0.0f, 0.0f); 
+        vertexData[14].setPosUV( _width + x, _width + y,-_width + z,   0.0f, 1.0f); 
+        vertexData[15].setPosUV( _width + x,-_width + y, _width + z,   1.0f, 0.0f); 
+        vertexData[16].setPosUV( _width + x, _width + y,-_width + z,   0.0f, 1.0f); 
+        vertexData[17].setPosUV( _width + x, _width + y, _width + z,   1.0f, 1.0f); 
 
 	// left
         vertexData[18].setPosUV(-_width + x,-_width + y, _width + z,   1.0f, 1.0f);
-        vertexData[19].setPosUV(-_width + x, _width + y,-_width + z,   1.0f, 0.0f);
-        vertexData[20].setPosUV(-_width + x,-_width + y,-_width + z,   0.0f, 0.0f);
-        vertexData[21].setPosUV(-_width + x,-_width + y, _width + z,   1.0f, 1.0f);
-        vertexData[22].setPosUV(-_width + x, _width + y, _width + z,   0.0f, 1.0f);
-        vertexData[23].setPosUV(-_width + x, _width + y,-_width + z,   0.0f, 1.0f);
+        vertexData[19].setPosUV(-_width + x, _width + y,-_width + z,   0.0f, 0.0f);
+        vertexData[20].setPosUV(-_width + x,-_width + y,-_width + z,   1.0f, 0.0f);
+        vertexData[21].setPosUV(-_width + x,-_width + y, _width + z,   0.0f, 1.0f);
+        vertexData[22].setPosUV(-_width + x, _width + y, _width + z,   1.0f, 0.0f);
+        vertexData[23].setPosUV(-_width + x, _width + y,-_width + z,   0.0f, 0.0f);
 
         // front
         vertexData[24].setPosUV(-_width + x,-_width + y, _width + z,   1.0f, 0.0f);
@@ -97,8 +105,6 @@ void Cube::init(float x, float y, float z, float width)
 
 void Cube::draw()
 {
-	glBindTexture(GL_TEXTURE_3D, _texture.id);
-
 	//bind the buffer object
 	glBindBuffer(GL_ARRAY_BUFFER, _vboID);
 

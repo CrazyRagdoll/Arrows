@@ -45,6 +45,9 @@ int Window::create(std::string windowName, int screenWidth, int screenHeight, un
 	//Check the OpenGL version
 	std::printf("***   OpenGL Version: %s   ***\n", glGetString(GL_VERSION));
 	
+	//Enable texture mapping
+	glEnable(GL_TEXTURE_2D);
+
 	//Set the background color to blue
 	glClearColor(0.0f, 0.0f, 1.0f, 0.0f);
 

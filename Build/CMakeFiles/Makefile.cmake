@@ -13,6 +13,7 @@ SET(CMAKE_MAKEFILE_DEPENDS
   "CMakeLists.txt"
   "/home/sam/Documents/Arrows/Modules/FindGLEW.cmake"
   "/home/sam/Documents/Arrows/Modules/FindSDL2.cmake"
+  "/home/sam/Documents/Arrows/Modules/FindSOIL.cmake"
   "/home/sam/Documents/Arrows/Modules/FindVECTORMATH.cmake"
   "/usr/share/cmake-2.8/Modules/CMakeCInformation.cmake"
   "/usr/share/cmake-2.8/Modules/CMakeCXXInformation.cmake"

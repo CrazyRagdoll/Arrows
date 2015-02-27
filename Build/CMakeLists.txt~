@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 project("Arrows")
 
 #set the source files and path
-set(SOURCES ../src/main.cpp ../src/Arrow.h ../src/Arrow.cpp ../src/Camera.h ../src/Camera.cpp ../src/Cube.h ../src/Cube.cpp ../src/Errors.h ../src/Errors.cpp ../src/Floor.h ../src/Floor.cpp ../src/Game.h ../src/Game.cpp ../src/GLSLProgram.h ../src/GLSLProgram.cpp ../src/GLTexture ../src/InputManager.h ../src/InputManager.cpp ../src/IOManager.h ../src/IOManager.cpp ../src/Level.h ../src/Level.cpp ../src/Player.h ../src/Player.cpp ../src/Timing.h ../src/Timing.cpp ../src/Vertex.h ../src/Window.h ../src/Window.cpp)
+set(SOURCES ../src/main.cpp ../src/Arrow.h ../src/Arrow.cpp ../src/Camera.h ../src/Camera.cpp ../src/Cube.h ../src/Cube.cpp ../src/Errors.h ../src/Errors.cpp ../src/Floor.h ../src/Floor.cpp ../src/Game.h ../src/Game.cpp ../src/GLSLProgram.h ../src/GLSLProgram.cpp ../src/GLTexture ../src/InputManager.h ../src/InputManager.cpp ../src/IOManager.h ../src/IOManager.cpp ../src/Level.h ../src/Level.cpp ../src/Timing.h ../src/Timing.cpp ../src/Vertex.h ../src/Window.h ../src/Window.cpp)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/../Modules)
 
 #Checking all packages are installed
@@ -32,6 +32,12 @@ if(NOT GLEW_FOUND)
 	message(ERROR " GLEW not found!")
 endif(NOT GLEW_FOUND)
 
+#SOIL library
+find_package(SOIL REQUIRED)
+if(NOT SOIL_FOUND)
+	message(ERROR " SOIL not found!")
+endif(NOT SOIL_FOUND)
+
 #Vectormath library
 find_package(VECTORMATH REQUIRED)
 if(NOT VECTORMATH_FOUND)
@@ -39,11 +45,11 @@ if(NOT VECTORMATH_FOUND)
 endif(NOT VECTORMATH_FOUND)
 
 #Include directories 
-include_directories(${SDL2_INCLUDE_DIRS} ${OpenGL_INCLUDE_DIRS} ${Vectormath_INCLUDE_DIRS} ${GLEW_INCLUDE_DIRS})
+include_directories(${SDL2_INCLUDE_DIRS} ${OpenGL_INCLUDE_DIRS} ${Vectormath_INCLUDE_DIRS} ${GLEW_INCLUDE_DIRS} ${SOIL_INCLUDE_DIRS})
 #Linker directories
-link_directories(${SDL2_LIBRARY_DIRS} ${OpenGL_LIBRARY_DIRS} ${Vectormath_LIBRARY_DIRS} ${GLEW_LIBRARY_DIRS})
+link_directories(${SDL2_LIBRARY_DIRS} ${OpenGL_LIBRARY_DIRS} ${Vectormath_LIBRARY_DIRS} ${GLEW_LIBRARY_DIRS} ${SOIL_LIBRARY_DIRS})
 #Definitions 
-add_definitions(${SDL_DEFINITIONS} ${OpenGL_DEFINITIONS} ${Vectormath_DEFINITIONS} ${GLEW_DEFINITIONS})
+add_definitions(${SDL_DEFINITIONS} ${OpenGL_DEFINITIONS} ${Vectormath_DEFINITIONS} ${GLEW_DEFINITIONS} ${SOIL_DEFINITIONS})
 
 #Compiler flags depending on the OS 
 if (UNIX)
@@ -60,11 +66,11 @@ message(status " ** CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
 add_definitions("-std=c++0x")
 
 #setting and linking the libraries
-set(LIBS ${LIBS} ${SDL2_LIBRARY} ${OpenGL_LIBRARY} ${GLEW_LIBRARY} ${Vectormath_LIBRARIES})
+set(LIBS ${LIBS} ${SDL2_LIBRARY} ${OpenGL_LIBRARY} ${GLEW_LIBRARY} ${Vectormath_LIBRARIES} ${SOIL_LIBRARIES})
 link_libraries(${LIBS})
 
 #Create the executable file 
 add_executable(Arrows ${SOURCES})
 
 ### LINKER ###
-target_link_libraries(Arrows GL GLU GLEW SDL2)
+target_link_libraries(Arrows GL GLU GLEW SDL2 SOIL)

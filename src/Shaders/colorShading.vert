@@ -2,12 +2,10 @@
 //The vertex shader operates on each vertex
 
 //input data from the VBO. Each vertex is 2 floats
-//in vec2 vertexPosition; 
 in vec3 vertexPosition; 
 in vec4 vertexColor;
 in vec2 vertexUV;
 
-//out vec2 fragmentPosition;
 out vec3 fragmentPosition;
 out vec4 fragmentColor;
 out vec2 fragmentUV;
@@ -22,5 +20,5 @@ void main() {
 
 	fragmentColor = vertexColor;
 
-	fragmentUV = vec2(vertexUV.x, 1.0 - vertexUV.y);
+	fragmentUV = vec2(1 - vertexUV.x, vertexUV.y);
 }

@@ -13,6 +13,8 @@
 #include "Timing.h"
 #include "Arrow.h"
 #include "Cube.h"
+#include "GLTexture.h"
+#include "TextureLoader.h"
 
 enum class GameState {PLAY, MAIN_MENU, EXIT};
 
@@ -53,6 +55,10 @@ private:
 	float _fps;
 	float _time;
 	float _shotTimer, _SHOTSPEED;
+
+	GLTexture _texture;
+
+	TextureLoader _textureLoader;
 };
 
 #endif
