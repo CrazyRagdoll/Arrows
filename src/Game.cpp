@@ -11,7 +11,8 @@ Game::Game() :
 	_gameState(GameState::PLAY),
 	_maxFPS(60.0f),
 	_SHOTSPEED(100.0f),
-	_shotTimer(100.0f)
+	_shotTimer(100.0f),
+	_shotPower(0.0f)
 {
 	_camera.init(_screenWidth, _screenHeight);
 	SDL_WarpMouseInWindow(_window.getWindow(), _screenWidth/2, _screenHeight/2);
@@ -62,6 +63,14 @@ void Game::gameLoop()
 {
 	while (_gameState != GameState::EXIT)
 	{
+			
+		//This block of code is used to rotate the camera using mouse input.
+		static double lastTime = SDL_GetTicks();
+		
+		//finding the time since the current and last frame
+		double currentTime = SDL_GetTicks();
+		float deltaTime = float(currentTime - lastTime);
+
 		_fpsLimiter.begin();
 		
 		processInput();
@@ -72,7 +81,7 @@ void Game::gameLoop()
 		//update all the arrows
 		for (int i = 0; i < _arrows.size();)
 		{
-			if(_arrows[i].update() == true)
+			if(_arrows[i].update(deltaTime) == true)
 			{
 				_arrows[i] = _arrows.back();
 				_arrows.pop_back();
@@ -86,9 +95,10 @@ void Game::gameLoop()
 		
 		drawGame();
 
+		//Checking collisions between the arrows and the box in the middle of the map
 		for (int i = 0; i < _arrows.size(); i++)
 		{
-			if(_arrows[i].checkCollision(_cube)) {std::cout << "Hit" << std::endl;	}
+			if(_arrows[i].checkCollision(_cube)) {std::cout << "Hit" << std::endl; _arrows[i].hit();}
 		}
 
 		_fps = _fpsLimiter.end();
@@ -101,6 +111,8 @@ void Game::gameLoop()
 			std::cout << "Fps: " << _fps << std::endl;
 			frameCounter = 0;
 		}
+
+		lastTime = currentTime;	
 	}
 }
 
@@ -164,16 +176,25 @@ void Game::processInput()
 		//Crouch button
 	}
 	if (_inputManager.isKeyPressed(SDL_BUTTON_LEFT)){
-		if(_shotTimer >= _SHOTSPEED){
+		if(_shotPower < 4.9){
+			_shotPower += 0.10;
+		}
+		std::cout << _shotPower << std::endl;
+ 	}
+ 	if (!_inputManager.isKeyPressed(SDL_BUTTON_LEFT) && _shotPower > 0)
+ 	{
+ 		if(_shotTimer >= _SHOTSPEED){
 			_shotTimer = 0.0f;
 			glm::vec3 displacement = glm::vec3(_camera.getDirection());
 			normalize(displacement);
-			displacement *=3;
+			displacement *= 3;
 			glm::vec3 position = glm::vec3(_camera.getPosition() + displacement);
-			glm::vec3 direction = glm::vec3(_camera.getDirection());
-
-			_arrows.emplace_back(position, direction, 2.5f, 250);			
+			glm::vec3 direction = glm::vec3(_camera.getDirection());	
+			normalize(direction);
+			_arrows.emplace_back(position, direction, _shotPower, 250);		
 		}
+ 		std::cout << "Shot Speed: " << _shotPower << std::endl;
+ 		_shotPower = 0.0f;
  	}
 	if (_inputManager.isKeyPressed(SDLK_m)){
 		SDL_ShowCursor(1);		

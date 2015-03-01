@@ -106,8 +106,6 @@ bool Cube::checkCollision(Cube& cube)
 		_y - _width < cube._y + cube._width &&
 		_z + _width > cube._z - cube._width &&
 		_z - _width < cube._z + cube._width); 
-	
-	
 }
 
 void Cube::draw()

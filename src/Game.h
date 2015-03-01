@@ -55,7 +55,7 @@ private:
 	float _maxFPS;
 	float _fps;
 	float _time;
-	float _shotTimer, _SHOTSPEED;
+	float _shotTimer, _SHOTSPEED, _shotPower;
 };
 
 #endif
