@@ -16,10 +16,14 @@ Arrow::~Arrow()
 
 }
 
-void Arrow::draw(Cube& cube)
+void Arrow::init()
 {
-	cube.init(_position.x, _position.y, _position.z, 1.0f);
-	cube.draw();
+	Cube::init(_position.x, _position.y, _position.z, 1.0f);
+}
+
+void Arrow::draw()
+{
+	Cube::draw();
 }
 
 bool Arrow::update()

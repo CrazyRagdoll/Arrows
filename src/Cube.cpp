@@ -29,11 +29,6 @@ void Cube::init(float x, float y, float z, float width)
 
 	_texture.id = _textureLoader.loadGLTexture("../src/Textures/NeHe.bmp");
 
-	if(_texture.id == 0)
-	{
-		std::cout << "Could not find texture" << std::endl;
-	}
-
 	// If the vertex buffer is 0, use OpenGL to set it.
 	if( _vboID == 0 )
 	{
@@ -103,10 +98,29 @@ void Cube::init(float x, float y, float z, float width)
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
+bool Cube::checkCollision(Cube& cube)
+{
+	return(this->_x + this->_width > cube._x - cube._width &&
+		_x - _width < cube._x + cube._width &&
+		_y + _width > cube._y - cube._width &&
+		_y - _width < cube._y + cube._width &&
+		_z + _width > cube._z - cube._width &&
+		_z - _width < cube._z + cube._width); 
+	
+	
+}
+
 void Cube::draw()
 {
 	//bind the buffer object
 	glBindBuffer(GL_ARRAY_BUFFER, _vboID);
+
+	//Activating and binding the texture
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, _texture.id);
+
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
 
 	//tell opengl that we want to use the first arrribute array.
 	glEnableVertexAttribArray(0);

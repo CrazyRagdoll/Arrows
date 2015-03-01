@@ -2,6 +2,7 @@
 
 #include "SOIL.h"
 #include <string>
+#include <iostream>
 #include <GL/glew.h>
 #include <GL/gl.h>
 

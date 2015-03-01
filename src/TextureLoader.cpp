@@ -21,12 +21,10 @@ int TextureLoader::loadGLTexture(string imagePath)
 		SOIL_FLAG_INVERT_Y
 		);
 
-	if(_texture[0] == 0)
+	if(_texture[0] == 0){
+		std::cout << "Count not find texture: " << imagePath << std::endl;
 		return false;
+	}
 
-	//Activating and binding the texture
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, _texture[0]);
-	
-	return _texture[0];
+   	return _texture[0];
 }

@@ -80,10 +80,16 @@ void Game::gameLoop()
 				i++;
 			}
 		}
+
 		//Incrementing shot timer to regulate shooting speed
 		_shotTimer++;
 		
 		drawGame();
+
+		for (int i = 0; i < _arrows.size(); i++)
+		{
+			if(_arrows[i].checkCollision(_cube)) {std::cout << "Hit" << std::endl;	}
+		}
 
 		_fps = _fpsLimiter.end();
 		
@@ -216,13 +222,14 @@ void Game::drawGame()
 	_cube.draw();
 
 	//Adding a floor to the scene
-	_floor.init(0.0f, 0.0f, 0.0f, 1000.0f);
+	_floor.init(0.0f, 0.0f, 0.0f, 500.0f);
 	_floor.draw();
 
 	
 	for (int i = 0; i < _arrows.size(); i++)
 	{
-		_arrows[i].draw(_cube);
+		_arrows[i].init();
+		_arrows[i].draw();
 	}
 
 	//disable the shaders

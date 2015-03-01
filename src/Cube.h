@@ -17,13 +17,12 @@ public:
 
 	void init(float x, float y, float z, float width);
 
+	bool checkCollision(Cube& cube);
+
 	void draw();
 
 private:
-	float _x;
-	float _y;
-	float _z;
-	float _width;
+	float _x, _y, _z, _width;
 
 	glm::vec3 _position;
 

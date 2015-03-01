@@ -4,14 +4,16 @@
 
 #include "Cube.h"
 
-class Arrow 
+class Arrow : public Cube
 {
 public:
 	Arrow(glm::vec3 pos, glm::vec3 dir, float speed, int lifeTime);
 	~Arrow();
 
-	void draw(Cube& cube);
-	//returns true when we are out of life	
+	void init();
+
+	void draw();
+
 	bool update();
 
 private:

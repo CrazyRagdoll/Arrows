@@ -27,12 +27,7 @@ void Floor::init(float x, float y, float z, float width)
 
 	_position = glm::vec3(x,y,z);
 
-	_texture.id = _textureLoader.loadGLTexture("../src/Textures/floor.bmp");
-
-	if(_texture.id == 0)
-	{
-		std::cout << "Count not find texture" << std::endl;
-	}
+	_texture.id = _textureLoader.loadGLTexture("../src/Textures/NeHe.bmp");
 
 	// If the vertex buffer is 0, use OpenGL to set it.
 	if( _vboID == 0 )
@@ -45,11 +40,11 @@ void Floor::init(float x, float y, float z, float width)
     //  X     Y     Z       U     V
     // floor
     vertexData[0].setPosUV(-_width + x, y,-_width + z,   0.0f, 0.0f);
-    vertexData[1].setPosUV( _width + x, y,-_width + z,   1.0f, 0.0f);
-    vertexData[2].setPosUV(-_width + x, y, _width + z,   0.0f, 1.0f);
-    vertexData[3].setPosUV( _width + x, y,-_width + z,   1.0f, 0.0f);
-    vertexData[4].setPosUV( _width + x, y, _width + z,   1.0f, 1.0f);
-    vertexData[5].setPosUV(-_width + x, y, _width + z,   0.0f, 1.0f);
+    vertexData[1].setPosUV( _width + x, y,-_width + z,   4.0f, 0.0f);
+    vertexData[2].setPosUV(-_width + x, y, _width + z,   0.0f, 4.0f);
+    vertexData[3].setPosUV( _width + x, y,-_width + z,   4.0f, 0.0f);
+    vertexData[4].setPosUV( _width + x, y, _width + z,   4.0f, 4.0f);
+    vertexData[5].setPosUV(-_width + x, y, _width + z,   0.0f, 4.0f);
 
     for (int i = 0; i < 6; i++) {
 		vertexData[i].setColor(255, 255, 255, 255);
@@ -68,6 +63,13 @@ void Floor::draw()
 {
 		//bind the buffer object
 	glBindBuffer(GL_ARRAY_BUFFER, _vboID);
+
+	//Activating and binding the texture
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, _texture.id);
+
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
 
 	//tell opengl that we want to use the first arrribute array.
 	glEnableVertexAttribArray(0);
