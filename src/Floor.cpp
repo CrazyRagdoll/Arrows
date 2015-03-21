@@ -18,14 +18,12 @@ Floor::~Floor()
 	}
 }
 
-void Floor::init(float x, float y, float z, float width)
+void Floor::initFloor(float x, float y, float z, float width)
 {
 	_x = x;
 	_y = y;
 	_z = z;
 	_width = width;
-
-	_position = glm::vec3(x,y,z);
 
 	_texture.id = _textureLoader.loadGLTexture("../src/Textures/NeHe.bmp");
 
@@ -39,12 +37,12 @@ void Floor::init(float x, float y, float z, float width)
 
     //  X     Y     Z       U     V
     // floor
-    vertexData[0].setPosUV(-_width + x, y,-_width + z,   0.0f, 0.0f);
-    vertexData[1].setPosUV( _width + x, y,-_width + z,   4.0f, 0.0f);
-    vertexData[2].setPosUV(-_width + x, y, _width + z,   0.0f, 4.0f);
-    vertexData[3].setPosUV( _width + x, y,-_width + z,   4.0f, 0.0f);
-    vertexData[4].setPosUV( _width + x, y, _width + z,   4.0f, 4.0f);
-    vertexData[5].setPosUV(-_width + x, y, _width + z,   0.0f, 4.0f);
+    vertexData[0].setPosUV(-_width, 0,-_width,   0.0f, 0.0f);
+    vertexData[1].setPosUV( _width, 0,-_width,   10.0f, 0.0f);
+    vertexData[2].setPosUV(-_width, 0, _width,   0.0f, 10.0f);
+    vertexData[3].setPosUV( _width, 0,-_width,   10.0f, 0.0f);
+    vertexData[4].setPosUV( _width, 0, _width,   10.0f, 10.0f);
+    vertexData[5].setPosUV(-_width, 0, _width,   0.0f, 10.0f);
 
     for (int i = 0; i < 6; i++) {
 		vertexData[i].setColor(255, 255, 255, 255);

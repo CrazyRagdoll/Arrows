@@ -1,4 +1,4 @@
-# Install script for directory: /home/sam/Documents/Arrows/Build
+# Install script for directory: /home/dell/Documents/Final Year/Arrows/Build
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,7 +38,7 @@ ELSE(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 ENDIF(CMAKE_INSTALL_COMPONENT)
 
-FILE(WRITE "/home/sam/Documents/Arrows/Build/${CMAKE_INSTALL_MANIFEST}" "")
+FILE(WRITE "/home/dell/Documents/Final Year/Arrows/Build/${CMAKE_INSTALL_MANIFEST}" "")
 FOREACH(file ${CMAKE_INSTALL_MANIFEST_FILES})
-  FILE(APPEND "/home/sam/Documents/Arrows/Build/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
+  FILE(APPEND "/home/dell/Documents/Final Year/Arrows/Build/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
 ENDFOREACH(file)

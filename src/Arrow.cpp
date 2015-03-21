@@ -1,5 +1,4 @@
 #include "Arrow.h"
-#include "Cube.h"
 
 Arrow::Arrow(glm::vec3 pos, glm::vec3 dir, float speed, int lifeTime) :
 	_gravity(-0.002f),

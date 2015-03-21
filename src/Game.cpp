@@ -78,6 +78,9 @@ void Game::gameLoop()
 	
 		_camera.update();
 
+		//update the camera to see if the player is falling or not
+		if(_camera.checkFloorCollision(_floor)) { _camera._onFloor = true; } else { _camera._onFloor = false; }
+
 		//update all the arrows
 		for (int i = 0; i < _arrows.size();)
 		{
@@ -176,10 +179,9 @@ void Game::processInput()
 		//Crouch button
 	}
 	if (_inputManager.isKeyPressed(SDL_BUTTON_LEFT)){
-		if(_shotPower < 4.9){
+		if(_shotPower < 9.9){
 			_shotPower += 0.10;
 		}
-		std::cout << _shotPower << std::endl;
  	}
  	if (!_inputManager.isKeyPressed(SDL_BUTTON_LEFT) && _shotPower > 0)
  	{
@@ -243,7 +245,7 @@ void Game::drawGame()
 	_cube.draw();
 
 	//Adding a floor to the scene
-	_floor.init(0.0f, 0.0f, 0.0f, 500.0f);
+	_floor.initFloor(0.0f, 0.0f, 0.0f, 50.0f);
 	_floor.draw();
 
 	

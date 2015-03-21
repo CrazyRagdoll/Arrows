@@ -5,7 +5,7 @@
 
 double TO_DEG = 180/3.14;
 
-Camera::Camera() : _position(0.0f, 10.0f, 10.0f),
+Camera::Camera() : _position(0.0f, 50.0f, 10.0f),
 	_horizontalAngle(3.14f),
 	_verticalAngle(0.0f),
 	_fov(45.0f),
@@ -14,11 +14,12 @@ Camera::Camera() : _position(0.0f, 10.0f, 10.0f),
 	_projectionMatrix(1.0f),
 	_vertFoV(75.0f),
 	_jumping(false),
-	_falling(false),
+	_falling(true),
+	_onFloor(false),
 	_initJumpSpeed(5.0f),
 	_jumpSpeed(_initJumpSpeed),
-	_gravityIntensity(0.9),
-	_FLOOR(10.0f)
+	_playerSize(10.0f),
+	_gravityIntensity(0.9)
 {
 }
 
@@ -31,25 +32,6 @@ void Camera::init(int screenWidth, int screenHeight) {
 	_screenHeight = screenHeight;
 	update();
 	updateProjectionMatrix();
-	updateViewMatrix();
-}
-
-void Camera::move(float speed, float dt)
-{
-	_position.x += _direction.x * dt * speed;
-	_position.z += _direction.z * dt * speed;
-	updateViewMatrix();
-}
-void Camera::strafe(float speed, float dt)
-{
-	_position += _right * dt * speed;
-	updateViewMatrix();
-}
-void Camera::jump(float speed, float dt)
-{ 
-	_jumping = true;
-		
-	//_position.y += _up.y * dt * speed;
 	updateViewMatrix();
 }
 
@@ -81,10 +63,12 @@ void Camera::update()
 
 	_up = glm::cross(_right, _direction);
 
+	if(!_jumping){ _falling = true; }
+
 	if(_jumping){
 		_jumpSpeed *= _gravityIntensity;
 		_position.y += _up.y * _jumpSpeed;
-		if(_jumpSpeed < 0.25)
+		if(_jumpSpeed < 0.2)
 		{
 			_jumping = false;
 			_falling = true;
@@ -92,13 +76,25 @@ void Camera::update()
 	}
 	if(_falling){
 		_jumpSpeed *= 2 - _gravityIntensity;
-		if(_position.y > _FLOOR){
+		if(!_onFloor){
 			_position.y -= _up.y * _jumpSpeed;
 		} else {
 			_falling = false;
 			_jumpSpeed = _initJumpSpeed;
 		}
-	} 	
+	} 
+
+	//If the player falls through the floor reset his position
+	if(_position.y <= -5000){ resetCameraPosition(); }
+}
+
+void Camera::resetCameraPosition()
+{
+	_horizontalAngle = 3.14f;
+	_verticalAngle = 0.0f; 	
+	_position = vec3(0.0f, 5.0f, 10.0f);
+	updateProjectionMatrix();
+	updateViewMatrix();
 }
 
 void Camera::updateProjectionMatrix()
@@ -117,3 +113,30 @@ void Camera::updateViewMatrix()
 				);
 }
 
+/* ******** Player movement functions ******** */
+
+void Camera::move(float speed, float dt)
+{
+	_position.x += _direction.x * dt * speed;
+	_position.z += _direction.z * dt * speed;
+	updateViewMatrix();
+}
+void Camera::strafe(float speed, float dt)
+{
+	_position += _right * dt * speed;
+	updateViewMatrix();
+}
+void Camera::jump(float speed, float dt)
+{ 
+	_jumping = true;
+	updateViewMatrix();
+}
+
+bool Camera::checkFloorCollision(Floor& floor)
+{
+	return(_position.y - _playerSize < floor._y &&
+		   _position.x < floor._x + floor._width &&
+		   _position.x > floor._x - floor._width &&
+		   _position.z < floor._z + floor._width &&
+		   _position.z > floor._z - floor._width); 
+}

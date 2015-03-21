@@ -13,15 +13,16 @@ public:
 	Floor();
 	~Floor();
 
-	void init(float x, float y, float z, float width);
+	void initFloor(float x, float y, float z, float width);
 
 	void draw();
 
-private:
 	float _x;
 	float _y;
 	float _z;
 	float _width;
+
+private:
 
 	glm::vec3 _position;
 
