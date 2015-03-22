@@ -4,6 +4,7 @@
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 #include "Floor.h"
+#include "Terrain.h"
 using namespace glm;
 
 //Camera class for 2D games
@@ -28,6 +29,7 @@ public:
 	//Collision detection to regulate player movement
 	//(float dist is the position the player is going to move to on the next update)
 	bool checkFloorCollision(Floor& floor);
+	bool checkTerrainCollision(Terrain& terrain);
 
 	//Getters
 	mat4 getViewMatrix(){ return _viewMatrix; }

@@ -14,8 +14,9 @@ public:
 
 	void draw();
 
-private:
-
 	glm::vec3 _position;
 	float _size;
+
+private:
+
 };

@@ -99,6 +99,12 @@ void Game::gameLoop()
 			//update the camera to see if the player is falling or not
 			if(_camera.checkFloorCollision(_floor)) { _camera._onFloor = true; } else { _camera._onFloor = false; }
 
+			for( int i = 0; i < _terrain.size(); i++)
+			{
+				if(_camera.checkTerrainCollision(_terrain[i])) { std::cout << "Hit" << std::endl; }
+			}
+
+
 			//update all the arrows
 			for (int i = 0; i < _arrows.size();)
 			{

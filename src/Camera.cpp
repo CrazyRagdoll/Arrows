@@ -145,3 +145,13 @@ bool Camera::checkFloorCollision(Floor& floor)
 		   _position.z < floor._z + floor._width &&
 		   _position.z > floor._z - floor._width); 
 }
+
+bool Camera::checkTerrainCollision(Terrain& terrain)
+{
+	return(_position.x < terrain._position.x + terrain._size &&
+		   _position.x > terrain._position.x - terrain._size &&
+		   _position.y < terrain._position.y + terrain._size &&
+		   _position.y > terrain._position.y - terrain._size &&
+		   _position.z < terrain._position.z + terrain._size &&
+		   _position.z > terrain._position.z - terrain._size); 
+}

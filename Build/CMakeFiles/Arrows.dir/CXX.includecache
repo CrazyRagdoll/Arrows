@@ -19,6 +19,8 @@ glm/gtc/matrix_transform.hpp
 /home/dell/Documents/Final Year/Arrows/src/glm/gtc/matrix_transform.hpp
 Floor.h
 /home/dell/Documents/Final Year/Arrows/src/Floor.h
+Terrain.h
+/home/dell/Documents/Final Year/Arrows/src/Terrain.h
 
 /home/dell/Documents/Final Year/Arrows/src/Cube.h
 glm/glm.hpp
