@@ -10,6 +10,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/InputManager.cpp.o"
   "CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/IOManager.cpp.o"
   "CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Level.cpp.o"
+  "CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Terrain.cpp.o"
   "CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/TextureLoader.cpp.o"
   "CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Timing.cpp.o"
   "CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Window.cpp.o"

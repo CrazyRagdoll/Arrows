@@ -19,7 +19,7 @@ Arrow::~Arrow()
 
 void Arrow::init()
 {
-	Cube::init(_position.x, _position.y, _position.z, 1.0f);
+	Cube::init(_position.x, _position.y, _position.z, 1.0f, "NONE");
 }
 
 void Arrow::draw()

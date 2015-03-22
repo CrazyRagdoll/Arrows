@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <stdlib.h>
 
 int poop = 1;
 
@@ -46,6 +47,15 @@ void Game::initSystems()
 
 	//hiding the cursor
 	SDL_ShowCursor(0);		
+
+	//Adding some terrain to the game
+	for (int i = 0; i < 10; i++ )
+	{
+		int rand_x = rand() % 100 - 50;
+		int rand_z = rand() % 100 - 50;
+		glm::vec3 pos = glm::vec3(rand_x, 5.0f, rand_z);
+		_terrain.emplace_back(pos, 5.0f);
+	}
 
 	//initialize the shaders.
 	initShaders();
@@ -305,14 +315,21 @@ void Game::drawGame()
 	glUniformMatrix4fv(pLocation, 1, GL_FALSE, &(cameraMatrix[0][0]));
 
 	//creating and drawing a cube
-	_cube.init(0.0f, 10.0f, 0.0f, 5.0f);
+	_cube.init(0.0f, 10.0f, 0.0f, 5.0f, "../src/Textures/NeHe.bmp");
 	_cube.draw();
 
 	//Adding a floor to the scene
-	_floor.initFloor(0.0f, 0.0f, 0.0f, 50.0f);
+	_floor.init(50.0f);
 	_floor.draw();
 
-	
+	//Adding some "terrain"
+	for (int i = 0; i < _terrain.size(); i++)
+	{
+		_terrain[i].init();
+		_terrain[i].draw();
+	}
+
+	//Drawing the arrows into the scene
 	for (int i = 0; i < _arrows.size(); i++)
 	{
 		_arrows[i].init();

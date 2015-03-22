@@ -13,14 +13,11 @@ public:
 	Floor();
 	~Floor();
 
-	void initFloor(float x, float y, float z, float width);
+	void init(float width);
 
 	void draw();
 
-	float _x;
-	float _y;
-	float _z;
-	float _width;
+	float _x, _y, _z, _width;
 
 private:
 

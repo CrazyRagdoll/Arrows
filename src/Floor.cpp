@@ -5,9 +5,10 @@
 #include <cstddef>
 
 
-Floor::Floor()
+Floor::Floor() 
 {
 	_vboID = 0;
+	_x = _y = _z = 0;
 }
 
 Floor::~Floor()
@@ -18,11 +19,8 @@ Floor::~Floor()
 	}
 }
 
-void Floor::initFloor(float x, float y, float z, float width)
+void Floor::init(float width)
 {
-	_x = x;
-	_y = y;
-	_z = z;
 	_width = width;
 
 	_texture.id = _textureLoader.loadGLTexture("../src/Textures/NeHe.bmp");

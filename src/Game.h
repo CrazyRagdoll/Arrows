@@ -14,6 +14,7 @@
 #include "Arrow.h"
 #include "Cube.h"
 #include "Floor.h"
+#include "Terrain.h"
 
 enum class GameState {PLAY, PAUSE, MAIN_MENU, EXIT};
 
@@ -52,6 +53,8 @@ private:
 	FpsLimiter _fpsLimiter;
 
 	std::vector<Arrow> _arrows;
+
+	std::vector<Terrain> _terrain;
 
 	float _maxFPS;
 	float _fps;

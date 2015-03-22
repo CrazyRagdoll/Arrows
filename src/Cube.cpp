@@ -18,7 +18,7 @@ Cube::~Cube()
 	}
 }
 
-void Cube::init(float x, float y, float z, float width)
+void Cube::init(float x, float y, float z, float width, string texture)
 {
 	_x = x;
 	_y = y;
@@ -27,7 +27,10 @@ void Cube::init(float x, float y, float z, float width)
 
 	_position = glm::vec3(x,y,z);
 
-	_texture.id = _textureLoader.loadGLTexture("../src/Textures/NeHe.bmp");
+	if (texture != "NONE")
+	{
+		_texture.id = _textureLoader.loadGLTexture(texture);	
+	}
 
 	// If the vertex buffer is 0, use OpenGL to set it.
 	if( _vboID == 0 )

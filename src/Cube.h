@@ -15,7 +15,7 @@ public:
 	Cube();
 	~Cube();
 
-	void init(float x, float y, float z, float width);
+	void init(float x, float y, float z, float width, string textures);
 
 	bool checkCollision(Cube& cube);
 

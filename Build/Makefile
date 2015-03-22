@@ -351,6 +351,30 @@ home/dell/Documents/Final_Year/Arrows/src/Level.cpp.s:
 	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Level.cpp.s
 .PHONY : home/dell/Documents/Final_Year/Arrows/src/Level.cpp.s
 
+home/dell/Documents/Final_Year/Arrows/src/Terrain.o: home/dell/Documents/Final_Year/Arrows/src/Terrain.cpp.o
+.PHONY : home/dell/Documents/Final_Year/Arrows/src/Terrain.o
+
+# target to build an object file
+home/dell/Documents/Final_Year/Arrows/src/Terrain.cpp.o:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Terrain.cpp.o
+.PHONY : home/dell/Documents/Final_Year/Arrows/src/Terrain.cpp.o
+
+home/dell/Documents/Final_Year/Arrows/src/Terrain.i: home/dell/Documents/Final_Year/Arrows/src/Terrain.cpp.i
+.PHONY : home/dell/Documents/Final_Year/Arrows/src/Terrain.i
+
+# target to preprocess a source file
+home/dell/Documents/Final_Year/Arrows/src/Terrain.cpp.i:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Terrain.cpp.i
+.PHONY : home/dell/Documents/Final_Year/Arrows/src/Terrain.cpp.i
+
+home/dell/Documents/Final_Year/Arrows/src/Terrain.s: home/dell/Documents/Final_Year/Arrows/src/Terrain.cpp.s
+.PHONY : home/dell/Documents/Final_Year/Arrows/src/Terrain.s
+
+# target to generate assembly for a file
+home/dell/Documents/Final_Year/Arrows/src/Terrain.cpp.s:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Terrain.cpp.s
+.PHONY : home/dell/Documents/Final_Year/Arrows/src/Terrain.cpp.s
+
 home/dell/Documents/Final_Year/Arrows/src/TextureLoader.o: home/dell/Documents/Final_Year/Arrows/src/TextureLoader.cpp.o
 .PHONY : home/dell/Documents/Final_Year/Arrows/src/TextureLoader.o
 
@@ -486,6 +510,9 @@ help:
 	@echo "... home/dell/Documents/Final_Year/Arrows/src/Level.o"
 	@echo "... home/dell/Documents/Final_Year/Arrows/src/Level.i"
 	@echo "... home/dell/Documents/Final_Year/Arrows/src/Level.s"
+	@echo "... home/dell/Documents/Final_Year/Arrows/src/Terrain.o"
+	@echo "... home/dell/Documents/Final_Year/Arrows/src/Terrain.i"
+	@echo "... home/dell/Documents/Final_Year/Arrows/src/Terrain.s"
 	@echo "... home/dell/Documents/Final_Year/Arrows/src/TextureLoader.o"
 	@echo "... home/dell/Documents/Final_Year/Arrows/src/TextureLoader.i"
 	@echo "... home/dell/Documents/Final_Year/Arrows/src/TextureLoader.s"
