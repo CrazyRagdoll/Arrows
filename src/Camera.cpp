@@ -16,9 +16,11 @@ Camera::Camera() : _position(0.0f, 50.0f, 10.0f),
 	_jumping(false),
 	_falling(true),
 	_onFloor(false),
+	_crouched(false),
 	_initJumpSpeed(5.0f),
 	_jumpSpeed(_initJumpSpeed),
-	_playerSize(10.0f),
+	_playerHeight(10.0f),
+	_playerWidth(5.0f),
 	_gravityIntensity(0.9)
 {
 }
@@ -63,8 +65,10 @@ void Camera::update()
 
 	_up = glm::cross(_right, _direction);
 
+	// if you're not jumping then you're falling!!
 	if(!_jumping){ _falling = true; }
 
+	// Do the jumping & falling math to update the camera position!
 	if(_jumping){
 		_jumpSpeed *= _gravityIntensity;
 		_position.y += _up.y * _jumpSpeed;
@@ -75,8 +79,8 @@ void Camera::update()
 		}
 	}
 	if(_falling){
-		_jumpSpeed *= 2 - _gravityIntensity;
 		if(!_onFloor){
+			_jumpSpeed *= 2 - _gravityIntensity;
 			_position.y -= _up.y * _jumpSpeed;
 		} else {
 			_falling = false;
@@ -134,7 +138,8 @@ void Camera::jump(float speed, float dt)
 
 bool Camera::checkFloorCollision(Floor& floor)
 {
-	return(_position.y - _playerSize < floor._y &&
+	//if(_crouched) { _playerHeight = 5.0f; } else { _playerHeight = 10.0f; }
+	return(_position.y - _playerHeight < floor._y &&
 		   _position.x < floor._x + floor._width &&
 		   _position.x > floor._x - floor._width &&
 		   _position.z < floor._z + floor._width &&

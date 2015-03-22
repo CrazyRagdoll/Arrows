@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 
+int poop = 1;
+
 Game::Game() : 
 	_screenWidth(1024), 
 	_screenHeight(768), 
@@ -12,7 +14,8 @@ Game::Game() :
 	_maxFPS(60.0f),
 	_SHOTSPEED(100.0f),
 	_shotTimer(100.0f),
-	_shotPower(0.0f)
+	_shotPower(0.0f),
+	_paused(false)
 {
 	_camera.init(_screenWidth, _screenHeight);
 	SDL_WarpMouseInWindow(_window.getWindow(), _screenWidth/2, _screenHeight/2);
@@ -63,59 +66,69 @@ void Game::gameLoop()
 {
 	while (_gameState != GameState::EXIT)
 	{
+		while(_gameState == GameState::MAIN_MENU)
+		{
+
+		}
+		while(_gameState == GameState::PLAY)
+		{
+			//This block of code is used to rotate the camera using mouse input.
+			static double lastTime = SDL_GetTicks();
 			
-		//This block of code is used to rotate the camera using mouse input.
-		static double lastTime = SDL_GetTicks();
+			//finding the time since the current and last frame
+			double currentTime = SDL_GetTicks();
+			float deltaTime = float(currentTime - lastTime);
+
+			_fpsLimiter.begin();
+			
+			processInput();
+			_time += 0.01;
 		
-		//finding the time since the current and last frame
-		double currentTime = SDL_GetTicks();
-		float deltaTime = float(currentTime - lastTime);
+			_camera.update();
 
-		_fpsLimiter.begin();
-		
-		processInput();
-		_time += 0.01;
-	
-		_camera.update();
+			//update the camera to see if the player is falling or not
+			if(_camera.checkFloorCollision(_floor)) { _camera._onFloor = true; } else { _camera._onFloor = false; }
 
-		//update the camera to see if the player is falling or not
-		if(_camera.checkFloorCollision(_floor)) { _camera._onFloor = true; } else { _camera._onFloor = false; }
-
-		//update all the arrows
-		for (int i = 0; i < _arrows.size();)
-		{
-			if(_arrows[i].update(deltaTime) == true)
+			//update all the arrows
+			for (int i = 0; i < _arrows.size();)
 			{
-				_arrows[i] = _arrows.back();
-				_arrows.pop_back();
-			} else {
-				i++;
+				if(_arrows[i].update(deltaTime) == true)
+				{
+					_arrows[i] = _arrows.back();
+					_arrows.pop_back();
+				} else {
+					i++;
+				}
 			}
+
+			//Incrementing shot timer to regulate shooting speed
+			_shotTimer++;
+			
+			drawGame();
+
+			//Checking collisions between the arrows and the box in the middle of the map
+			for (int i = 0; i < _arrows.size(); i++)
+			{
+				if(_arrows[i].checkCollision(_cube)) {std::cout << "Hit" << std::endl; _arrows[i].hit();}
+			}
+
+			_fps = _fpsLimiter.end();
+			
+			//print only once every 10 frames
+			static int frameCounter = 0;
+			frameCounter++;
+			if (frameCounter == 1000)
+			{
+				std::cout << "Fps: " << _fps << std::endl;
+				frameCounter = 0;
+			}
+
+			lastTime = currentTime;
 		}
-
-		//Incrementing shot timer to regulate shooting speed
-		_shotTimer++;
-		
-		drawGame();
-
-		//Checking collisions between the arrows and the box in the middle of the map
-		for (int i = 0; i < _arrows.size(); i++)
+		while (_gameState == GameState::PAUSE)
 		{
-			if(_arrows[i].checkCollision(_cube)) {std::cout << "Hit" << std::endl; _arrows[i].hit();}
+			processPauseInput();
 		}
-
-		_fps = _fpsLimiter.end();
-		
-		//print only once every 10 frames
-		static int frameCounter = 0;
-		frameCounter++;
-		if (frameCounter == 1000)
-		{
-			std::cout << "Fps: " << _fps << std::endl;
-			frameCounter = 0;
-		}
-
-		lastTime = currentTime;	
 	}
 }
 
@@ -133,8 +146,10 @@ void Game::processInput()
 	float deltaTime = float(currentTime - lastTime);
 
 	//Will keep looping until there are no more events to process
-	while (SDL_PollEvent(&evnt)) {
-		switch (evnt.type) {
+	while (SDL_PollEvent(&evnt)) 
+	{
+		switch (evnt.type) 
+		{
 			case SDL_QUIT:
 				_gameState = GameState::EXIT;
 				break;
@@ -153,8 +168,18 @@ void Game::processInput()
 			case SDL_MOUSEBUTTONUP:
 				_inputManager.releaseKey(evnt.button.button);
 				break;
-			}
 		}
+	}
+	if (_inputManager.isKeyPressed(SDLK_ESCAPE)){
+		_paused = true;
+	}
+	if (!_inputManager.isKeyPressed(SDLK_ESCAPE) && _paused){
+		_gameState = GameState::PAUSE;
+		_paused = false;
+	}
+	if (_inputManager.isKeyPressed(SDLK_LCTRL)){
+		//_camera._crouched = true;
+	} else { /*_camera._crouched = false; */ }
 	if (_inputManager.isKeyPressed(SDLK_LSHIFT)){
 		SPEED *= 2;
 	}
@@ -175,12 +200,9 @@ void Game::processInput()
 			_camera.jump(SPEED/2, deltaTime);		
 		}
 	}
-	if (_inputManager.isKeyPressed(SDLK_LCTRL)){
-		//Crouch button
-	}
 	if (_inputManager.isKeyPressed(SDL_BUTTON_LEFT)){
-		if(_shotPower < 9.9){
-			_shotPower += 0.10;
+		if(_shotPower <= 10.0f){
+			_shotPower += 0.10f;
 		}
  	}
  	if (!_inputManager.isKeyPressed(SDL_BUTTON_LEFT) && _shotPower > 0)
@@ -202,7 +224,7 @@ void Game::processInput()
 		SDL_ShowCursor(1);		
 	} else {
 		SDL_ShowCursor(0);
-	}
+	} 
 
 	//get the postion of the mouse at this frame
 	int xMousePos, yMousePos;
@@ -215,6 +237,48 @@ void Game::processInput()
 	_camera.rotate(xMousePos, yMousePos);
 
 	lastTime = currentTime;	
+}
+
+void Game::processPauseInput()
+{
+	SDL_Event evnt;
+
+	//Will keep looping until there are no more events to process
+	while (SDL_PollEvent(&evnt)) 
+	{
+		switch (evnt.type) 
+		{
+			case SDL_QUIT:
+				_gameState = GameState::EXIT;
+				break;
+			case SDL_MOUSEMOTION:
+				_inputManager.setMouseCoords(evnt.motion.x, evnt.motion.y);
+				break;
+			case SDL_KEYDOWN:
+				_inputManager.pressKey(evnt.key.keysym.sym);
+				break;
+			case SDL_KEYUP:
+				_inputManager.releaseKey(evnt.key.keysym.sym);
+				break;
+			case SDL_MOUSEBUTTONDOWN:
+				_inputManager.pressKey(evnt.button.button);
+				break;
+			case SDL_MOUSEBUTTONUP:
+				_inputManager.releaseKey(evnt.button.button);
+				break;
+		}
+	}
+	if (_inputManager.isKeyPressed(SDLK_ESCAPE)){
+		_paused = true;
+	}
+	if (!_inputManager.isKeyPressed(SDLK_ESCAPE) && _paused){
+		_gameState = GameState::PLAY; 
+		_paused = false;
+	}
+
+	//reset the mouse position
+	SDL_WarpMouseInWindow(_window.getWindow(), _screenWidth/2, _screenHeight/2);
+
 }
 
 void Game::drawGame()
@@ -254,6 +318,9 @@ void Game::drawGame()
 		_arrows[i].init();
 		_arrows[i].draw();
 	}
+
+	//Crosshair
+
 
 	//disable the shaders
 	_colorProgram.unuse();

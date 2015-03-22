@@ -26,7 +26,7 @@ void InputManager::setMouseCoords(float x, float y)
 	_mouseCoords.y = y;
 }
 
-bool InputManager::isKeyPressed(unsigned int keyID)
+bool InputManager::isKeyDown(unsigned int keyID)
 {
 	auto it = _keyMap.find(keyID);
 	if (it != _keyMap.end())	
@@ -35,4 +35,32 @@ bool InputManager::isKeyPressed(unsigned int keyID)
 	} else {
 		return false;
 	}
+}
+
+bool InputManager::isKeyPressed(unsigned int keyID)
+{
+	if (isKeyDown(keyID) == true && wasKeyDown(keyID) == false) {
+        return true;
+    }
+    return false;
+}
+
+bool InputManager::onKeyRelease(unsigned int keyID)
+{
+	if (isKeyDown(keyID) == false && wasKeyDown(keyID) == true) {
+        return true;
+    }
+    return false;
+}
+
+
+bool InputManager::wasKeyDown(unsigned int keyID) 
+{
+    auto it = _previousKeyMap.find(keyID);
+    if (it != _previousKeyMap.end()) 
+    {
+        return it->second;
+    } else {
+        return false;
+    }
 }

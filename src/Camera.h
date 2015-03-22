@@ -40,7 +40,7 @@ public:
 	void updateViewMatrix();
 	void resetCameraPosition();
 
-	bool _jumping, _falling, _onFloor;
+	bool _jumping, _falling, _onFloor, _crouched;
 
 private:
 
@@ -49,7 +49,7 @@ private:
 	vec3 _position, _direction, _right, _up;
 
 	float _horizontalAngle, _verticalAngle, _fov, _mouseSpeed, _speed, _vertFoV;
-	float _initJumpSpeed, _jumpSpeed, _gravityIntensity, _playerSize;
+	float _initJumpSpeed, _jumpSpeed, _gravityIntensity, _playerHeight, _playerWidth;
 
 	mat4 _viewMatrix, _projectionMatrix;
 };

@@ -15,7 +15,7 @@
 #include "Cube.h"
 #include "Floor.h"
 
-enum class GameState {PLAY, MAIN_MENU, EXIT};
+enum class GameState {PLAY, PAUSE, MAIN_MENU, EXIT};
 
 class Game
 {
@@ -30,6 +30,7 @@ private:
 	void initShaders();
 	void gameLoop();
 	void processInput();
+	void processPauseInput();
 	void drawGame();
 
 	Window _window;
@@ -56,6 +57,8 @@ private:
 	float _fps;
 	float _time;
 	float _shotTimer, _SHOTSPEED, _shotPower;
+
+	bool _paused;
 };
 
 #endif
