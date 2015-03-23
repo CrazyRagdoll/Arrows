@@ -213,6 +213,7 @@ void Game::processInput()
 	}
 	if (_inputManager.isKeyPressed(SDLK_SPACE)){
 		if(!_camera._jumping && !_camera._falling){
+			_camera._jumpSpeed = _camera._initJumpSpeed;
 			_camera.jump(SPEED/2, deltaTime);		
 		}
 	}

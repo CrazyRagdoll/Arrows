@@ -84,7 +84,7 @@ void Camera::update()
 			_position.y -= _up.y * _jumpSpeed;
 		} else {
 			_falling = false;
-			_jumpSpeed = _initJumpSpeed;
+			_jumpSpeed = 0.2;
 		}
 	} 
 
