@@ -29,6 +29,8 @@ public:
 	//Collision detection to regulate player movement
 	//(float dist is the position the player is going to move to on the next update)
 	bool checkFloorCollision(Floor& floor);
+	bool checkOnTerrain(Terrain& terrain);
+	bool checkUnderTerrain(Terrain& terrain);
 	bool checkTerrainCollision(Terrain& terrain);
 
 	//Getters
@@ -42,8 +44,7 @@ public:
 	void updateViewMatrix();
 	void resetCameraPosition();
 
-	bool _jumping, _falling, _onFloor, _crouched;
-	float _initJumpSpeed, _jumpSpeed;
+	bool _jumping, _falling, _onFloor, _onTerrain, _crouched;
 
 private:
 
@@ -52,7 +53,7 @@ private:
 	vec3 _position, _direction, _right, _up;
 
 	float _horizontalAngle, _verticalAngle, _fov, _mouseSpeed, _speed, _vertFoV;
-	float _gravityIntensity, _playerHeight, _playerWidth;
+	float _initJumpSpeed, _jumpSpeed, _gravityIntensity, _playerHeight, _playerWidth;
 
 	mat4 _viewMatrix, _projectionMatrix;
 };

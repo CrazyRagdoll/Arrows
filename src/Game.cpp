@@ -16,7 +16,8 @@ Game::Game() :
 	_SHOTSPEED(100.0f),
 	_shotTimer(100.0f),
 	_shotPower(0.0f),
-	_paused(false)
+	_paused(false),
+	_floorSize(100.0f)
 {
 	_camera.init(_screenWidth, _screenHeight);
 	SDL_WarpMouseInWindow(_window.getWindow(), _screenWidth/2, _screenHeight/2);
@@ -49,13 +50,7 @@ void Game::initSystems()
 	SDL_ShowCursor(0);		
 
 	//Adding some terrain to the game
-	for (int i = 0; i < 10; i++ )
-	{
-		int rand_x = rand() % 100 - 50;
-		int rand_z = rand() % 100 - 50;
-		glm::vec3 pos = glm::vec3(rand_x, 5.0f, rand_z);
-		_terrain.emplace_back(pos, 5.0f);
-	}
+	generateTerrain(5, 5.0f, _floorSize);
 
 	//initialize the shaders.
 	initShaders();
@@ -99,11 +94,13 @@ void Game::gameLoop()
 			//update the camera to see if the player is falling or not
 			if(_camera.checkFloorCollision(_floor)) { _camera._onFloor = true; } else { _camera._onFloor = false; }
 
+			int hit = 0;
 			for( int i = 0; i < _terrain.size(); i++)
 			{
-				if(_camera.checkTerrainCollision(_terrain[i])) { std::cout << "Hit" << std::endl; }
+				if(_camera.checkOnTerrain(_terrain[i])) { hit++; } 
+				if( hit > 0 ) { _camera._onTerrain = true; } else { _camera._onTerrain = false; }
 			}
-
+			hit = 0;
 
 			//update all the arrows
 			for (int i = 0; i < _arrows.size();)
@@ -201,20 +198,35 @@ void Game::processInput()
 	}
 	if (_inputManager.isKeyPressed(SDLK_w)){
 		_camera.move(SPEED, deltaTime);
+		for( int i = 0; i < _terrain.size(); i++)
+		{
+			if(_camera.checkTerrainCollision(_terrain[i])) { _camera.move(-SPEED, deltaTime); }
+		}
 	}
 	if (_inputManager.isKeyPressed(SDLK_s)){
 		_camera.move(-SPEED, deltaTime);
+		for( int i = 0; i < _terrain.size(); i++)
+		{
+			if(_camera.checkTerrainCollision(_terrain[i])) { _camera.move(SPEED, deltaTime); }
+		}	
 	}
 	if (_inputManager.isKeyPressed(SDLK_a)){
 		_camera.strafe(-SPEED, deltaTime);
+		for( int i = 0; i < _terrain.size(); i++)
+		{
+			if(_camera.checkTerrainCollision(_terrain[i])) { _camera.strafe	(SPEED, deltaTime); }
+		}
 	}
 	if (_inputManager.isKeyPressed(SDLK_d)){
 		_camera.strafe(SPEED, deltaTime);
+		for( int i = 0; i < _terrain.size(); i++)
+		{
+			if(_camera.checkTerrainCollision(_terrain[i])) { _camera.strafe(-SPEED, deltaTime); }
+		}
 	}
 	if (_inputManager.isKeyPressed(SDLK_SPACE)){
 		if(!_camera._jumping && !_camera._falling){
-			_camera._jumpSpeed = _camera._initJumpSpeed;
-			_camera.jump(SPEED/2, deltaTime);		
+			_camera.jump(1.0f, deltaTime);		
 		}
 	}
 	if (_inputManager.isKeyPressed(SDL_BUTTON_LEFT)){
@@ -326,7 +338,7 @@ void Game::drawGame()
 	_cube.draw();
 
 	//Adding a floor to the scene
-	_floor.init(50.0f);
+	_floor.init(_floorSize);
 	_floor.draw();
 
 	//Adding some "terrain"
@@ -351,4 +363,43 @@ void Game::drawGame()
 
 	// Swap the buffers and draw everything onto the screencd 
 	_window.swapBuffer();
+}
+
+void Game::generateTerrain(int blocks, float size, float floorSize)
+{
+	for (int i = 0; i < blocks; i++ )
+	{
+		//dublicate position
+		bool dupe = false;
+		int floorSize2 = 2*floorSize;
+		//Randomize some coordinates
+		int rand_x = rand() % floorSize2 - floorSize;
+		int rand_z = rand() % floorSize2 - floorSize;
+		//Create the position vector
+		glm::vec3 pos = glm::vec3(rand_x, size, rand_z);
+		//_terrain.emplace_back(pos, size);
+
+		//If there are no other pieces of terrain create the first block
+		if( i == 0){
+			_terrain.emplace_back(p_floorSizeos, size);			
+		} else {
+			for (int j = 0; j < _terrain.size(); j++)
+			{
+				std::cout << "New block: " << rand_x << ", " << size << ", " << rand_z << std::endl;
+				std::cout << "Previous block: " << _terrain[j]._position.x << ", " << size << ", " << _terrain[j]._position.z << std::endl;
+				if((rand_x - size < _terrain[j]._position.x + size && rand_x + size > _terrain[j]._position.x - size) || 
+					(rand_z - size < _terrain[j]._position.z + size && rand_z + size > _terrain[j]._position.z - size))
+				{
+					std::cout << "Spawning inside!!" << std::endl;
+					dupe = true;
+				}
+			}
+			if(!dupe) 
+			{
+				_terrain.emplace_back(pos, size);
+			} else {
+				i--;
+			}
+		}
+	}
 }

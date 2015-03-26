@@ -16,11 +16,12 @@ Camera::Camera() : _position(0.0f, 50.0f, 10.0f),
 	_jumping(false),
 	_falling(true),
 	_onFloor(false),
+	_onTerrain(false),
 	_crouched(false),
 	_initJumpSpeed(5.0f),
 	_jumpSpeed(_initJumpSpeed),
 	_playerHeight(10.0f),
-	_playerWidth(5.0f),
+	_playerWidth(2.5f),
 	_gravityIntensity(0.9)
 {
 }
@@ -63,15 +64,18 @@ void Camera::update()
 		cos(_verticalAngle) * cos(_horizontalAngle)
 	);
 
+	//Calculating which way is up
 	_up = glm::cross(_right, _direction);
 
 	// if you're not jumping then you're falling!!
-	if(!_jumping){ _falling = true; }
+	if(!_jumping && !_onFloor){ _falling = true; }
 
 	// Do the jumping & falling math to update the camera position!
 	if(_jumping){
+		//Jumping maths
 		_jumpSpeed *= _gravityIntensity;
 		_position.y += _up.y * _jumpSpeed;
+		//To stop the ascending and cause the camera to fall
 		if(_jumpSpeed < 0.2)
 		{
 			_jumping = false;
@@ -79,7 +83,9 @@ void Camera::update()
 		}
 	}
 	if(_falling){
-		if(!_onFloor){
+		//Make sure the camera is no on the floor or terrain
+		if(!_onFloor && !_onTerrain){
+			//Do the falling maths!
 			_jumpSpeed *= 2 - _gravityIntensity;
 			_position.y -= _up.y * _jumpSpeed;
 		} else {
@@ -92,6 +98,7 @@ void Camera::update()
 	if(_position.y <= -5000){ resetCameraPosition(); }
 }
 
+//A function to reset the camera to its original position
 void Camera::resetCameraPosition()
 {
 	_horizontalAngle = 3.14f;
@@ -132,9 +139,13 @@ void Camera::strafe(float speed, float dt)
 }
 void Camera::jump(float speed, float dt)
 { 
+
+	_jumpSpeed = _initJumpSpeed * speed;
 	_jumping = true;
 	updateViewMatrix();
 }
+
+/* ******** Collision detection functions ******** */
 
 bool Camera::checkFloorCollision(Floor& floor)
 {
@@ -144,6 +155,20 @@ bool Camera::checkFloorCollision(Floor& floor)
 		   _position.x > floor._x - floor._width &&
 		   _position.z < floor._z + floor._width &&
 		   _position.z > floor._z - floor._width); 
+}
+
+bool Camera::checkOnTerrain(Terrain& terrain)
+{
+	return(_position.x - _playerWidth < terrain._position.x + terrain._size &&
+		   _position.x + _playerWidth > terrain._position.x - terrain._size &&
+		   _position.y - _playerHeight - 2.5 <= terrain._position.y + terrain._size &&
+		   _position.z - _playerWidth < terrain._position.z + terrain._size &&
+		   _position.z + _playerWidth > terrain._position.z - terrain._size);
+}
+
+bool Camera::checkUnderTerrain(Terrain& terrain)
+{
+
 }
 
 bool Camera::checkTerrainCollision(Terrain& terrain)

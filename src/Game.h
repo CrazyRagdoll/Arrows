@@ -34,6 +34,9 @@ private:
 	void processPauseInput();
 	void drawGame();
 
+	//A simple functions to build a map
+	void generateTerrain(int blocks, float size, float floor);
+
 	Window _window;
 	int _screenWidth;
 	int _screenHeight;
@@ -60,6 +63,7 @@ private:
 	float _fps;
 	float _time;
 	float _shotTimer, _SHOTSPEED, _shotPower;
+	float _floorSize;
 
 	bool _paused;
 };
