@@ -50,7 +50,8 @@ void Game::initSystems()
 	SDL_ShowCursor(0);		
 
 	//Adding some terrain to the game
-	generateTerrain(5, 5.0f, _floorSize);
+	generateTerrain(5, 1, 5.0f, _floorSize);
+	generateTerrain(5, 8, 5.0f, _floorSize);
 
 	//initialize the shaders.
 	initShaders();
@@ -365,7 +366,7 @@ void Game::drawGame()
 	_window.swapBuffer();
 }
 
-void Game::generateTerrain(int blocks, float size, float floorSize)
+void Game::generateTerrain(int blocks, int terrainLevel, float size, float floorSize)
 {
 	for (int i = 0; i < blocks; i++ )
 	{
@@ -376,19 +377,17 @@ void Game::generateTerrain(int blocks, float size, float floorSize)
 		int rand_x = rand() % floorSize2 - floorSize;
 		int rand_z = rand() % floorSize2 - floorSize;
 		//Create the position vector
-		glm::vec3 pos = glm::vec3(rand_x, size, rand_z);
-		//_terrain.emplace_back(pos, size);
+		glm::vec3 pos = glm::vec3(rand_x, size * terrainLevel, rand_z);
 
 		//If there are no other pieces of terrain create the first block
 		if( i == 0){
-			_terrain.emplace_back(p_floorSizeos, size);			
+			_terrain.emplace_back(pos, size);			
 		} else {
 			for (int j = 0; j < _terrain.size(); j++)
 			{
-				std::cout << "New block: " << rand_x << ", " << size << ", " << rand_z << std::endl;
-				std::cout << "Previous block: " << _terrain[j]._position.x << ", " << size << ", " << _terrain[j]._position.z << std::endl;
-				if((rand_x - size < _terrain[j]._position.x + size && rand_x + size > _terrain[j]._position.x - size) || 
-					(rand_z - size < _terrain[j]._position.z + size && rand_z + size > _terrain[j]._position.z - size))
+				if(pos.x - size < _terrain[j]._position.x + size && pos.x + size > _terrain[j]._position.x - size &&
+					pos.y - size < _terrain[j]._position.y + size && pos.y + size > _terrain[j]._position.y - size && 
+					pos.z - size < _terrain[j]._position.z + size && pos.z + size > _terrain[j]._position.z - size)
 				{
 					std::cout << "Spawning inside!!" << std::endl;
 					dupe = true;

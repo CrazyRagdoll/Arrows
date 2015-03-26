@@ -35,7 +35,7 @@ private:
 	void drawGame();
 
 	//A simple functions to build a map
-	void generateTerrain(int blocks, float size, float floor);
+	void generateTerrain(int blocks, int terrainLevel, float size, float floor);
 
 	Window _window;
 	int _screenWidth;
