@@ -68,13 +68,13 @@ void Camera::update()
 	_up = glm::cross(_right, _direction);
 
 	// if you're not jumping then you're falling!!
-	if(!_jumping && !_onFloor){ _falling = true; }
+	if(!_jumping && !_onFloor && !_onTerrain){ _falling = true; }
 
 	// Do the jumping & falling math to update the camera position!
 	if(_jumping){
 		//Jumping maths
 		_jumpSpeed *= _gravityIntensity;
-		_position.y += _up.y * _jumpSpeed;
+		_position.y += 1.0f * _jumpSpeed;
 		//To stop the ascending and cause the camera to fall
 		if(_jumpSpeed < 0.2)
 		{
@@ -87,7 +87,7 @@ void Camera::update()
 		if(!_onFloor && !_onTerrain){
 			//Do the falling maths!
 			_jumpSpeed *= 2 - _gravityIntensity;
-			_position.y -= _up.y * _jumpSpeed;
+			_position.y -= 1.0f * _jumpSpeed;
 		} else {
 			_falling = false;
 			_jumpSpeed = 0.2;
@@ -161,7 +161,8 @@ bool Camera::checkOnTerrain(Terrain& terrain)
 {
 	return(_position.x - _playerWidth < terrain._position.x + terrain._size &&
 		   _position.x + _playerWidth > terrain._position.x - terrain._size &&
-		   _position.y - _playerHeight - 2.5 <= terrain._position.y + terrain._size &&
+		   _position.y - _playerHeight - 3.5f <= terrain._position.y + terrain._size &&
+		   _position.y + _playerHeight > terrain._position.y - terrain._size - 5.0f &&
 		   _position.z - _playerWidth < terrain._position.z + terrain._size &&
 		   _position.z + _playerWidth > terrain._position.z - terrain._size);
 }

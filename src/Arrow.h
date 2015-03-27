@@ -3,11 +3,13 @@
 #include "glm/glm.hpp"
 
 #include "Cube.h"
+#include "Floor.h"
+#include "Terrain.h"
 
 class Arrow : public Cube
 {
 public:
-	Arrow(glm::vec3 pos, glm::vec3 dir, float speed, int lifeTime);
+	Arrow(glm::vec3 pos, glm::vec3 dir, float speed, float size, int lifeTime);
 	~Arrow();
 
 	void init();
@@ -20,9 +22,12 @@ public:
 
 	void clean();
 
+	bool checkFloorCollision(Floor& floor);
+	bool checkTerrainCollision(Terrain& terrain);
+
 private:
 	int _lifeTime;
-	float _speed;
+	float _speed, _width;
 	glm::vec3 _direction;
 	glm::vec3 _position;
 	glm::vec3 _velocity;

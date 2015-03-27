@@ -52,7 +52,9 @@ void Game::initSystems()
 	//Adding some terrain to the game
 	generateTerrain(5, 1, 5.0f, _floorSize);
 	generateTerrain(5, 8, 5.0f, _floorSize);
-
+	generateTerrain(5, 15, 5.0f, _floorSize);
+	generateTerrain(5, 22, 5.0f, _floorSize);
+	
 	//initialize the shaders.
 	initShaders();
 
@@ -95,13 +97,12 @@ void Game::gameLoop()
 			//update the camera to see if the player is falling or not
 			if(_camera.checkFloorCollision(_floor)) { _camera._onFloor = true; } else { _camera._onFloor = false; }
 
-			int hit = 0;
+			//Check to see if the player is the terrain
 			for( int i = 0; i < _terrain.size(); i++)
 			{
-				if(_camera.checkOnTerrain(_terrain[i])) { hit++; } 
-				if( hit > 0 ) { _camera._onTerrain = true; } else { _camera._onTerrain = false; }
+				if(_camera.checkOnTerrain(_terrain[i])) { _camera._onTerrain = true; break; } else { _camera._onTerrain = false; }
+
 			}
-			hit = 0;
 
 			//update all the arrows
 			for (int i = 0; i < _arrows.size();)
@@ -123,8 +124,14 @@ void Game::gameLoop()
 			//Checking collisions between the arrows and the box in the middle of the map
 			for (int i = 0; i < _arrows.size(); i++)
 			{
-				if(_arrows[i].checkCollision(_cube)) {std::cout << "Hit" << std::endl; _arrows[i].hit();}
+				if(_arrows[i].checkCollision(_cube)) { _arrows[i].hit(); }
+				if(_arrows[i].checkFloorCollision(_floor)) { _arrows[i].hit(); }
+				for(int j = 0; j < _terrain.size(); j++)
+				{
+					if(_arrows[i].checkTerrainCollision(_terrain[j])) { _arrows[i].hit(); }
+				}
 			}
+
 
 			_fps = _fpsLimiter.end();
 			
@@ -245,7 +252,7 @@ void Game::processInput()
 			glm::vec3 position = glm::vec3(_camera.getPosition() + displacement);
 			glm::vec3 direction = glm::vec3(_camera.getDirection());	
 			normalize(direction);
-			_arrows.emplace_back(position, direction, _shotPower, 250);		
+			_arrows.emplace_back(position, direction, _shotPower, 1.0f, 250);		
 		}
  		std::cout << "Shot Speed: " << _shotPower << std::endl;
  		_shotPower = 0.0f;
