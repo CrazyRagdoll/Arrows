@@ -90,7 +90,7 @@ void Cube::init(float x, float y, float z, float width, string texture)
     vertexData[35].setPosUV( _width + x, _width + y,-_width + z,   1.0f, 1.0f);
 
 	for (int i = 0; i < 36; i++) {
-		vertexData[i].setColor(0, 255, 255, 255);
+		vertexData[i].setColor(255, 255, 255, 255);
 	}
 	
 	// Binding the buffer

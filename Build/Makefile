@@ -111,6 +111,30 @@ Arrows/fast:
 	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/build
 .PHONY : Arrows/fast
 
+home/dell/Documents/Final_Year/Arrows/src/Agent.o: home/dell/Documents/Final_Year/Arrows/src/Agent.cpp.o
+.PHONY : home/dell/Documents/Final_Year/Arrows/src/Agent.o
+
+# target to build an object file
+home/dell/Documents/Final_Year/Arrows/src/Agent.cpp.o:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Agent.cpp.o
+.PHONY : home/dell/Documents/Final_Year/Arrows/src/Agent.cpp.o
+
+home/dell/Documents/Final_Year/Arrows/src/Agent.i: home/dell/Documents/Final_Year/Arrows/src/Agent.cpp.i
+.PHONY : home/dell/Documents/Final_Year/Arrows/src/Agent.i
+
+# target to preprocess a source file
+home/dell/Documents/Final_Year/Arrows/src/Agent.cpp.i:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Agent.cpp.i
+.PHONY : home/dell/Documents/Final_Year/Arrows/src/Agent.cpp.i
+
+home/dell/Documents/Final_Year/Arrows/src/Agent.s: home/dell/Documents/Final_Year/Arrows/src/Agent.cpp.s
+.PHONY : home/dell/Documents/Final_Year/Arrows/src/Agent.s
+
+# target to generate assembly for a file
+home/dell/Documents/Final_Year/Arrows/src/Agent.cpp.s:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Agent.cpp.s
+.PHONY : home/dell/Documents/Final_Year/Arrows/src/Agent.cpp.s
+
 home/dell/Documents/Final_Year/Arrows/src/Arrow.o: home/dell/Documents/Final_Year/Arrows/src/Arrow.cpp.o
 .PHONY : home/dell/Documents/Final_Year/Arrows/src/Arrow.o
 
@@ -480,6 +504,9 @@ help:
 	@echo "... Arrows"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... home/dell/Documents/Final_Year/Arrows/src/Agent.o"
+	@echo "... home/dell/Documents/Final_Year/Arrows/src/Agent.i"
+	@echo "... home/dell/Documents/Final_Year/Arrows/src/Agent.s"
 	@echo "... home/dell/Documents/Final_Year/Arrows/src/Arrow.o"
 	@echo "... home/dell/Documents/Final_Year/Arrows/src/Arrow.i"
 	@echo "... home/dell/Documents/Final_Year/Arrows/src/Arrow.s"

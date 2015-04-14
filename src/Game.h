@@ -12,6 +12,7 @@
 #include "InputManager.h"
 #include "Timing.h"
 #include "Arrow.h"
+#include "Agent.h"
 #include "Cube.h"
 #include "Floor.h"
 #include "Terrain.h"
@@ -42,6 +43,8 @@ private:
 	int _screenHeight;
 
 	Cube _cube;	
+
+	Agent _agent;
 
 	Floor _floor;
 

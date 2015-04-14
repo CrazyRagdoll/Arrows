@@ -50,11 +50,8 @@ void Game::initSystems()
 	SDL_ShowCursor(0);		
 
 	//Adding some terrain to the game
-	generateTerrain(5, 1, 5.0f, _floorSize);
-	generateTerrain(5, 8, 5.0f, _floorSize);
-	generateTerrain(5, 15, 5.0f, _floorSize);
-	generateTerrain(5, 22, 5.0f, _floorSize);
-	
+	//generateTerrain(5, 1, 5.0f, _floorSize);
+
 	//initialize the shaders.
 	initShaders();
 
@@ -348,6 +345,10 @@ void Game::drawGame()
 	//Adding a floor to the scene
 	_floor.init(_floorSize);
 	_floor.draw();
+
+	//Adding an agent
+	_agent.init(glm::vec3(10.0f, 10.0f, 10.0f), 2.5f, 5.0f, "NONE");
+	_agent.draw();
 
 	//Adding some "terrain"
 	for (int i = 0; i < _terrain.size(); i++)
