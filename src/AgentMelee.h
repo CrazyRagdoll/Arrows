@@ -17,12 +17,13 @@ public:
 
 	bool update(float dt, glm::vec3 playerPos);
 
+	bool lookForPlayer(glm::vec3 playerPos);
+
 private:
 
 	AgentState _agentState; 
 
-	glm::vec3 _playerPosition;
-	glm::vec3 _dirToPlayer;
+	glm::vec3 _fieldOfViewLeft, _fieldOfViewRight;
 
 	float _life; //Giving the enemies a life total
 	float _speed; //The agents need a movement speed

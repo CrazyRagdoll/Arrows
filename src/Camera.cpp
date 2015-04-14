@@ -5,7 +5,7 @@
 
 double TO_DEG = 180/3.14;
 
-Camera::Camera() : _position(0.0f, 50.0f, 10.0f),
+Camera::Camera() : _position(100.0f, 50.0f, 100.0f),
 	_horizontalAngle(3.14f),
 	_verticalAngle(0.0f),
 	_fov(45.0f),
