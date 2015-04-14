@@ -18,12 +18,16 @@ public:
 	bool update(float dt, glm::vec3 playerPos);
 
 	void damage(float damage);
+	void aggro(){ _agentState = AgentState::CHASE; };
 
+	bool inRange(glm::vec3 playerPos);
 	bool lookForPlayer(glm::vec3 playerPos);
 
 private:
 
 	AgentState _agentState; 
+
+	glm::vec3 _patPos, _patDir;
 
 	glm::vec3 _fieldOfViewLeft, _fieldOfViewRight;
 

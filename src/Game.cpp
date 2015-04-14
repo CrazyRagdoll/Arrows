@@ -1,12 +1,6 @@
 #include "Game.h"
 #include "Errors.h"
 
-#include <iostream>
-#include <string>
-#include <stdlib.h>
-
-int poop = 1;
-
 Game::Game() : 
 	_screenWidth(1024), 
 	_screenHeight(768), 
@@ -51,7 +45,7 @@ void Game::initSystems()
 
 	//Adding an agent
 	_meleeAgents.emplace_back(glm::vec3(0.0f, 7.5f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f), 2.5f, 7.5f);
-
+	
 	//Adding some terrain to the game
 	//generateTerrain(5, 1, 5.0f, _floorSize);
 
@@ -116,6 +110,11 @@ void Game::gameLoop()
 				}
 			}
 
+			if(_meleeAgents.size() <= 0)
+			{
+				_meleeAgents.emplace_back(glm::vec3(0.0f, 7.5f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f), 2.5f, 7.5f);
+			}
+
 			//updating all of the melee agents
 			for (int i = 0; i < _meleeAgents.size();)
 			{
@@ -144,7 +143,12 @@ void Game::gameLoop()
 				}
 				for(int j = 0; j < _meleeAgents.size(); j++)
 				{
-					if(_arrows[i].checkAgentCollision(_meleeAgents[j])) { std::cout << "HIT" << std::endl; _meleeAgents[j].damage(50); }
+					if(_arrows[i].checkAgentCollision(_meleeAgents[j]) && _arrows[i].getActive()) 
+						{ 
+							std::cout << "HIT" << std::endl; 
+							_arrows[i].hitAgent();
+							_meleeAgents[j].damage(50); _meleeAgents[j].aggro(); 
+						}
 				}
 			}
 
@@ -417,9 +421,6 @@ void Game::drawGame()
 		_arrows[i].init();
 		_arrows[i].draw();
 	}
-
-	//Crosshair
-
 
 	//disable the shaders
 	_colorProgram.unuse();

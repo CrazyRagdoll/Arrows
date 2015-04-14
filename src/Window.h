@@ -21,6 +21,7 @@ public:
 	int getScreenHeight() { _screenHeight; }
 
 	SDL_Window* getWindow() { return _sdlWindow; }
+
 private:
 	SDL_Window* _sdlWindow;
 	int _screenWidth, _screenHeight;

@@ -5,6 +5,9 @@
 #include <GL/glew.h>
 #include <GL/gl.h>
 #include <vector>
+#include <iostream>
+#include <string>
+#include <stdlib.h>
 
 #include "GLSLProgram.h"
 #include "Window.h"

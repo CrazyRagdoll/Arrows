@@ -29,7 +29,7 @@ int Window::create(std::string windowName, int screenWidth, int screenHeight, un
 	if (_sdlWindow == nullptr) {
 		fatalError("SDL Window could not be created!");
 	}
-	
+
 	//Set up our OpenGL context
 	SDL_GLContext glContext = SDL_GL_CreateContext(_sdlWindow);
 	if (glContext == nullptr) {

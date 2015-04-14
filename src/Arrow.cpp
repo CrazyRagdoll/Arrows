@@ -3,7 +3,8 @@
 Arrow::Arrow(glm::vec3 pos, glm::vec3 dir, float speed, float width, int lifeTime) :
 	_gravity(-0.002f),
 	_floorTime(100),
-	_stuck(false)
+	_stuck(false),
+	_active(true)
 {
 	_lifeTime = lifeTime;
 	_position = pos;
@@ -40,7 +41,7 @@ bool Arrow::update(float dt)
 		_lifeTime--;
 	}
 
-	if(_lifeTime == 0 || _floorTime == 0) { return true; }
+	if(!_active || _lifeTime == 0 || _floorTime == 0) { return true; }
 	return false;
 }
 

@@ -95,12 +95,6 @@ Game.h
 /home/dell/Documents/Final Year/Arrows/src/Game.h
 Errors.h
 /home/dell/Documents/Final Year/Arrows/src/Errors.h
-iostream
--
-string
--
-stdlib.h
--
 
 /home/dell/Documents/Final Year/Arrows/src/Game.h
 SDL2/SDL.h
@@ -110,6 +104,12 @@ GL/glew.h
 GL/gl.h
 -
 vector
+-
+iostream
+-
+string
+-
+stdlib.h
 -
 GLSLProgram.h
 /home/dell/Documents/Final Year/Arrows/src/GLSLProgram.h
@@ -161,6 +161,12 @@ GL/gl.h
 /home/dell/Documents/Final Year/Arrows/src/Vertex.h
 GL/glew.h
 -
+
+/home/dell/Documents/Final Year/Arrows/src/Window.cpp
+Window.h
+/home/dell/Documents/Final Year/Arrows/src/Window.h
+Errors.h
+/home/dell/Documents/Final Year/Arrows/src/Errors.h
 
 /home/dell/Documents/Final Year/Arrows/src/Window.h
 SDL2/SDL.h
@@ -779,6 +785,12 @@ detail/type_vec4.hpp
 /home/dell/Documents/Final Year/Arrows/src/glm/vector_relational.hpp
 detail/func_vector_relational.hpp
 /home/dell/Documents/Final Year/Arrows/src/glm/detail/func_vector_relational.hpp
+
+/home/dell/Documents/Final Year/Arrows/src/main.cpp
+iostream
+-
+Game.h
+/home/dell/Documents/Final Year/Arrows/src/Game.h
 
 /usr/include/SOIL/SOIL.h
 

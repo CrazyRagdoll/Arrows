@@ -21,7 +21,11 @@ public:
 
 	void hit(){ _stuck = true; };
 
+	void hitAgent(){ _active = false; };
+
 	void clean();
+
+	bool getActive(){ return _active; };
 
 	bool checkFloorCollision(Floor& floor);
 	bool checkTerrainCollision(Terrain& terrain);
@@ -34,7 +38,7 @@ private:
 	glm::vec3 _position;
 	glm::vec3 _velocity;
 
-	bool _stuck;
+	bool _stuck, _active;
 
 	float _gravity;
 
