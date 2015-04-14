@@ -215,32 +215,64 @@ void Game::processInput()
 	if (_inputManager.isKeyPressed(SDLK_LSHIFT)){
 		SPEED *= 2;
 	}
-	if (_inputManager.isKeyPressed(SDLK_w)){
+	if (_inputManager.isKeyPressed(SDLK_w) && !_inputManager.isKeyPressed(SDLK_a) && !_inputManager.isKeyPressed(SDLK_s) && !_inputManager.isKeyPressed(SDLK_d)){
 		_camera.move(SPEED, deltaTime);
 		for( int i = 0; i < _terrain.size(); i++)
 		{
 			if(_camera.checkTerrainCollision(_terrain[i])) { _camera.move(-SPEED, deltaTime); }
 		}
 	}
-	if (_inputManager.isKeyPressed(SDLK_s)){
+	if (!_inputManager.isKeyPressed(SDLK_w) && !_inputManager.isKeyPressed(SDLK_a) && _inputManager.isKeyPressed(SDLK_s) && !_inputManager.isKeyPressed(SDLK_d)){
 		_camera.move(-SPEED, deltaTime);
 		for( int i = 0; i < _terrain.size(); i++)
 		{
 			if(_camera.checkTerrainCollision(_terrain[i])) { _camera.move(SPEED, deltaTime); }
 		}	
 	}
-	if (_inputManager.isKeyPressed(SDLK_a)){
+	if (!_inputManager.isKeyPressed(SDLK_w) && _inputManager.isKeyPressed(SDLK_a) && !_inputManager.isKeyPressed(SDLK_s) && !_inputManager.isKeyPressed(SDLK_d)){
 		_camera.strafe(-SPEED, deltaTime);
 		for( int i = 0; i < _terrain.size(); i++)
 		{
 			if(_camera.checkTerrainCollision(_terrain[i])) { _camera.strafe	(SPEED, deltaTime); }
 		}
 	}
-	if (_inputManager.isKeyPressed(SDLK_d)){
+	if (!_inputManager.isKeyPressed(SDLK_w) && !_inputManager.isKeyPressed(SDLK_a) && !_inputManager.isKeyPressed(SDLK_s) && _inputManager.isKeyPressed(SDLK_d)){
 		_camera.strafe(SPEED, deltaTime);
 		for( int i = 0; i < _terrain.size(); i++)
 		{
 			if(_camera.checkTerrainCollision(_terrain[i])) { _camera.strafe(-SPEED, deltaTime); }
+		}
+	}
+	if (_inputManager.isKeyPressed(SDLK_w) && _inputManager.isKeyPressed(SDLK_a) && !_inputManager.isKeyPressed(SDLK_s) && !_inputManager.isKeyPressed(SDLK_d))
+	{
+		_camera.move(SPEED/2, deltaTime); _camera.strafe(-SPEED/2, deltaTime);
+		for( int i = 0; i < _terrain.size(); i++)
+		{
+			if(_camera.checkTerrainCollision(_terrain[i])) { _camera.move(-SPEED/2, deltaTime); _camera.strafe(SPEED/2, deltaTime); }
+		}
+	}
+	if (_inputManager.isKeyPressed(SDLK_w) && !_inputManager.isKeyPressed(SDLK_a) && !_inputManager.isKeyPressed(SDLK_s) && _inputManager.isKeyPressed(SDLK_d))
+	{
+		_camera.move(SPEED/2, deltaTime); _camera.strafe(SPEED/2, deltaTime);
+		for( int i = 0; i < _terrain.size(); i++)
+		{
+			if(_camera.checkTerrainCollision(_terrain[i])) { _camera.move(-SPEED/2, deltaTime); _camera.strafe(-SPEED/2, deltaTime); }
+		}
+	}
+	if (!_inputManager.isKeyPressed(SDLK_w) && _inputManager.isKeyPressed(SDLK_a) && _inputManager.isKeyPressed(SDLK_s) && !_inputManager.isKeyPressed(SDLK_d))
+	{
+		_camera.move(-SPEED/2, deltaTime); _camera.strafe(-SPEED/2, deltaTime);
+		for( int i = 0; i < _terrain.size(); i++)
+		{
+			if(_camera.checkTerrainCollision(_terrain[i])) { _camera.move(SPEED/2, deltaTime); _camera.strafe(SPEED/2, deltaTime); }
+		}
+	}
+	if (!_inputManager.isKeyPressed(SDLK_w) && !_inputManager.isKeyPressed(SDLK_a) && _inputManager.isKeyPressed(SDLK_s) && _inputManager.isKeyPressed(SDLK_d))
+	{
+		_camera.move(-SPEED/2, deltaTime); _camera.strafe(SPEED/2, deltaTime);
+		for( int i = 0; i < _terrain.size(); i++)
+		{
+			if(_camera.checkTerrainCollision(_terrain[i])) { _camera.move(-SPEED/2, deltaTime); _camera.strafe(-SPEED/2, deltaTime); }
 		}
 	}
 	if (_inputManager.isKeyPressed(SDLK_SPACE)){
