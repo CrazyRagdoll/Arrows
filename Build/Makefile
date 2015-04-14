@@ -135,6 +135,30 @@ home/dell/Documents/Final_Year/Arrows/src/Agent.cpp.s:
 	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Agent.cpp.s
 .PHONY : home/dell/Documents/Final_Year/Arrows/src/Agent.cpp.s
 
+home/dell/Documents/Final_Year/Arrows/src/AgentMelee.o: home/dell/Documents/Final_Year/Arrows/src/AgentMelee.cpp.o
+.PHONY : home/dell/Documents/Final_Year/Arrows/src/AgentMelee.o
+
+# target to build an object file
+home/dell/Documents/Final_Year/Arrows/src/AgentMelee.cpp.o:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/AgentMelee.cpp.o
+.PHONY : home/dell/Documents/Final_Year/Arrows/src/AgentMelee.cpp.o
+
+home/dell/Documents/Final_Year/Arrows/src/AgentMelee.i: home/dell/Documents/Final_Year/Arrows/src/AgentMelee.cpp.i
+.PHONY : home/dell/Documents/Final_Year/Arrows/src/AgentMelee.i
+
+# target to preprocess a source file
+home/dell/Documents/Final_Year/Arrows/src/AgentMelee.cpp.i:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/AgentMelee.cpp.i
+.PHONY : home/dell/Documents/Final_Year/Arrows/src/AgentMelee.cpp.i
+
+home/dell/Documents/Final_Year/Arrows/src/AgentMelee.s: home/dell/Documents/Final_Year/Arrows/src/AgentMelee.cpp.s
+.PHONY : home/dell/Documents/Final_Year/Arrows/src/AgentMelee.s
+
+# target to generate assembly for a file
+home/dell/Documents/Final_Year/Arrows/src/AgentMelee.cpp.s:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/AgentMelee.cpp.s
+.PHONY : home/dell/Documents/Final_Year/Arrows/src/AgentMelee.cpp.s
+
 home/dell/Documents/Final_Year/Arrows/src/Arrow.o: home/dell/Documents/Final_Year/Arrows/src/Arrow.cpp.o
 .PHONY : home/dell/Documents/Final_Year/Arrows/src/Arrow.o
 
@@ -507,6 +531,9 @@ help:
 	@echo "... home/dell/Documents/Final_Year/Arrows/src/Agent.o"
 	@echo "... home/dell/Documents/Final_Year/Arrows/src/Agent.i"
 	@echo "... home/dell/Documents/Final_Year/Arrows/src/Agent.s"
+	@echo "... home/dell/Documents/Final_Year/Arrows/src/AgentMelee.o"
+	@echo "... home/dell/Documents/Final_Year/Arrows/src/AgentMelee.i"
+	@echo "... home/dell/Documents/Final_Year/Arrows/src/AgentMelee.s"
 	@echo "... home/dell/Documents/Final_Year/Arrows/src/Arrow.o"
 	@echo "... home/dell/Documents/Final_Year/Arrows/src/Arrow.i"
 	@echo "... home/dell/Documents/Final_Year/Arrows/src/Arrow.s"

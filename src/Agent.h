@@ -12,7 +12,6 @@
 #include <string>
 
 using namespace std;
-using namespace glm;
 
 class Agent 
 {
@@ -20,18 +19,16 @@ public:
 	Agent();
 	~Agent();
 
-	void init(glm::vec3 position, float width, float height, string texture);
+	void init(string texture);
 
 	void draw();
 
-private:
-
 	//We need the enemies to have a position and to face a direction
-	vec3 _position, _direction; 
+	glm::vec3 _position, _direction;
 	//We need the enemies ot have a height and width
-	float _width, _height; 
-	//Giving the enemies a life total
-	float _life, _speed;
+	float _width, _height;
+
+private: 	
 
 	GLuint _vboID; //vertex buffer object ID
 	GLTexture _texture;

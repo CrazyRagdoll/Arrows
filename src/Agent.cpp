@@ -1,22 +1,22 @@
 #include "Agent.h"
 
 
-Agent::Agent()
+Agent::Agent() 
 {
-
+	_vboID = 0;
 }
 
 Agent::~Agent()
 {
-
+	//cleaing up the buffers when the sprite is destroyed.
+	if(_vboID != 0)
+	{
+		glDeleteBuffers(1, &_vboID);
+	}
 }
 
-void Agent::init(glm::vec3 position, float width, float height, string texture)
+void Agent::init(string texture)
 {
-	_position = position;
-	_width = width;
-	_height = height;
-
 	if (texture != "NONE")
 	{
 		_texture.id = _textureLoader.loadGLTexture(texture);	

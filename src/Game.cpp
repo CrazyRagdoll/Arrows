@@ -17,7 +17,7 @@ Game::Game() :
 	_shotTimer(100.0f),
 	_shotPower(0.0f),
 	_paused(false),
-	_floorSize(100.0f)
+	_floorSize(250.0f)
 {
 	_camera.init(_screenWidth, _screenHeight);
 	SDL_WarpMouseInWindow(_window.getWindow(), _screenWidth/2, _screenHeight/2);
@@ -48,6 +48,9 @@ void Game::initSystems()
 
 	//hiding the cursor
 	SDL_ShowCursor(0);		
+
+	//Adding an agent
+	_meleeAgents.emplace_back(glm::vec3(0.0f, 7.5f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f), 2.5f, 7.5f);
 
 	//Adding some terrain to the game
 	//generateTerrain(5, 1, 5.0f, _floorSize);
@@ -108,6 +111,17 @@ void Game::gameLoop()
 				{
 					_arrows[i] = _arrows.back();
 					_arrows.pop_back();
+				} else {
+					i++;
+				}
+			}
+
+			for (int i = 0; i < _meleeAgents.size();)
+			{
+				if(_meleeAgents[i].update(deltaTime, _camera.getPosition()) == true)
+				{
+					_meleeAgents[i] = _meleeAgents.back();
+					_meleeAgents.pop_back();
 				} else {
 					i++;
 				}
@@ -249,9 +263,9 @@ void Game::processInput()
 			glm::vec3 position = glm::vec3(_camera.getPosition() + displacement);
 			glm::vec3 direction = glm::vec3(_camera.getDirection());	
 			normalize(direction);
-			_arrows.emplace_back(position, direction, _shotPower, 1.0f, 250);		
-		}
- 		std::cout << "Shot Speed: " << _shotPower << std::endl;
+			_arrows.emplace_back(position, direction, _shotPower, 1.0f, 250);	
+			std::cout << "Shot Speed: " << _shotPower << std::endl;	
+		} 		
  		_shotPower = 0.0f;
  	}
 	if (_inputManager.isKeyPressed(SDLK_m)){
@@ -346,9 +360,12 @@ void Game::drawGame()
 	_floor.init(_floorSize);
 	_floor.draw();
 
-	//Adding an agent
-	_agent.init(glm::vec3(10.0f, 10.0f, 10.0f), 2.5f, 5.0f, "NONE");
-	_agent.draw();
+	//Updating the melee agents
+	for (int i = 0; i < _meleeAgents.size(); i++)
+	{
+		_meleeAgents[i].init();
+		_meleeAgents[i].draw();
+	}
 
 	//Adding some "terrain"
 	for (int i = 0; i < _terrain.size(); i++)

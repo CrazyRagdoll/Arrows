@@ -12,7 +12,7 @@
 #include "InputManager.h"
 #include "Timing.h"
 #include "Arrow.h"
-#include "Agent.h"
+#include "AgentMelee.h"
 #include "Cube.h"
 #include "Floor.h"
 #include "Terrain.h"
@@ -44,8 +44,6 @@ private:
 
 	Cube _cube;	
 
-	Agent _agent;
-
 	Floor _floor;
 
 	GameState _gameState;	
@@ -61,6 +59,8 @@ private:
 	std::vector<Arrow> _arrows;
 
 	std::vector<Terrain> _terrain;
+
+	std::vector<AgentMelee> _meleeAgents;
 
 	float _maxFPS;
 	float _fps;

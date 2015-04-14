@@ -21,54 +21,11 @@ Arrow::~Arrow()
 void Arrow::init()
 {
 	Cube::init(_position.x, _position.y, _position.z, _width, "NONE");
-
-/*
-	// If the vertex buffer is 0, use OpenGL to set it.
-	if( _vboID == 0 )
-	{
-		glGenBuffers(1, &_vboID);
-	}
-
-    // Make a cube out of triangles (two triangles per side)
-	Vertex vertexData[18];
-    //  X     Y     Z       U     V
-    // bottom
-    vertexData[0].setPosUV(x       , y       , z       ,   0.0f, 0.0f);
-    vertexData[1].setPosUV(x       , y + 0.5f, z - 1.0f,   0.0f, 0.0f);
-    vertexData[2].setPosUV(x + 0.1f, y + 0.1f, z - 1.0f,   0.0f, 0.0f);
-    vertexData[3].setPosUV(x       , y       , z       ,   0.0f, 0.0f);
-    vertexData[4].setPosUV(x + 0.1f, y + 0.1f, z - 1.0f,   0.0f, 0.0f);
-    vertexData[5].setPosUV(x + 0.4f, y - 0.2f, z - 1.0f,   0.0f, 0.0f);
-    vertexData[6].setPosUV(x       , y       , z       ,   0.0f, 0.0f);
-    vertexData[7].setPosUV(x + 0.4f, y - 0.4f, z - 1.0f,   0.0f, 0.0f);
-    vertexData[8].setPosUV(x       , y - 0.1f, z - 1.0f,   0.0f, 0.0f);
-    vertexData[9].setPosUV(x       , y       , z       ,   0.0f, 0.0f);
-    vertexData[10].setPosUV(x       , y - 0.1f, z - 1.0f,   0.0f, 0.0f);
-    vertexData[11].setPosUV(x - 0.4f, y - 0.4f, z - 1.0f,   0.0f, 0.0f);
-    vertexData[12].setPosUV(x       , y       , z       ,   0.0f, 0.0f);
-    vertexData[13].setPosUV(x - 0.4f, y - 0.4f, z - 1.0f,   0.0f, 0.0f);
-    vertexData[14].setPosUV(x + 0.1f, y + 0.1f, z - 1.0f,   0.0f, 0.0f);
-    vertexData[15].setPosUV(x       , y       , z       ,   0.0f, 0.0f);
-    vertexData[16].setPosUV(x + 0.1f, y + 0.1f, z - 1.0f,   0.0f, 0.0f);
-    vertexData[17].setPosUV(x       , y + 0.5f, z - 1.0f,   0.0f, 0.0f);
-
-
-	for (int i = 0; i < 18; i++) {
-		vertexData[i].setColor(255, 255, 255, 255);
-	}
-	
-	// Binding the buffer
-	glBindBuffer(GL_ARRAY_BUFFER, _vboID);
-	// Uploading the buffer data
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
-	// Unbinding the buffer
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	*/
 }
 
 void Arrow::draw()
 {	
-	Cube::draw();
+	Cube::draw(); 
 }
 
 bool Arrow::update(float dt)
