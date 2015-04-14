@@ -59,6 +59,16 @@ bool Arrow::checkFloorCollision(Floor& floor)
 		   _position.z > floor._z - floor._width); 
 }
 
+bool Arrow::checkAgentCollision(Agent& agent)
+{
+	return(_position.x - _width < agent._position.x + agent._width &&
+			_position.x + _width > agent._position.x - agent._width &&
+			_position.y - _width < agent._position.y + agent._height &&
+			_position.y + _width > agent._position.y - agent._height &&
+			_position.z - _width < agent._position.z + agent._width &&
+			_position.z + _width > agent._position.z - agent._width);
+}
+
 //Checking only the TIP of the arrow against stuffs
 bool Arrow::checkTerrainCollision(Terrain& terrain)
 {

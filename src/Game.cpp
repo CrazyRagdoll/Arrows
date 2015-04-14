@@ -116,6 +116,7 @@ void Game::gameLoop()
 				}
 			}
 
+			//updating all of the melee agents
 			for (int i = 0; i < _meleeAgents.size();)
 			{
 				if(_meleeAgents[i].update(deltaTime, _camera.getPosition()) == true)
@@ -132,7 +133,7 @@ void Game::gameLoop()
 			
 			drawGame();
 
-			//Checking collisions between the arrows and the box in the middle of the map
+			//Checking collisions between the arrows and STUFFS
 			for (int i = 0; i < _arrows.size(); i++)
 			{
 				if(_arrows[i].checkCollision(_cube)) { _arrows[i].hit(); }
@@ -140,6 +141,10 @@ void Game::gameLoop()
 				for(int j = 0; j < _terrain.size(); j++)
 				{
 					if(_arrows[i].checkTerrainCollision(_terrain[j])) { _arrows[i].hit(); }
+				}
+				for(int j = 0; j < _meleeAgents.size(); j++)
+				{
+					if(_arrows[i].checkAgentCollision(_meleeAgents[j])) { std::cout << "HIT" << std::endl; _meleeAgents[j].damage(50); }
 				}
 			}
 

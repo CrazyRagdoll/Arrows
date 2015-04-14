@@ -29,6 +29,11 @@ void AgentMelee::draw()
 	Agent::draw();
 }
 
+void AgentMelee::damage(float damage)
+{
+	_life -= damage;
+}
+
 bool AgentMelee::lookForPlayer(glm::vec3 playerPos)
 {
 	//Along with the current position of the player these two values form a triangle of view
@@ -44,7 +49,7 @@ bool AgentMelee::lookForPlayer(glm::vec3 playerPos)
 	float gamma = 1.0f - alpha - beta;
 
 	if(alpha > 0 && beta > 0 && gamma > 0) {
-		std::cout << "I SEE YOU" << std::endl;
+		//std::cout << "I SEE YOU" << std::endl;
 		return true;
 	} 
 	return false;
@@ -52,21 +57,23 @@ bool AgentMelee::lookForPlayer(glm::vec3 playerPos)
 
 bool AgentMelee::update(float dt, glm::vec3 playerPos)
 {
+	if(lookForPlayer(playerPos)) { _agentState = AgentState::CHASE; } else { _agentState = AgentState::PATROL; }
 	if(_agentState == AgentState::PATROL)
 	{
 		//Some simple patrolling math to make the agent move back and forth
 		if(_patrolTimer == _patrolLimit) { _patrolLimit *= -1; _direction *= -1; } 
 		if(_patrolLimit > 0) { _patrolTimer++; } else { _patrolTimer--; }
 		_position += _direction * (_speed * dt);
-		if(lookForPlayer(playerPos)) { _agentState = AgentState::CHASE; }
 	} else if(_agentState == AgentState::CHASE) {
 		//Getting the direction to the player.
 		_direction = glm::normalize(playerPos - _position);
 		//Move towards the player
 		_position.x += _direction.x * (_speed * dt);
 		_position.z += _direction.z * (_speed * dt);
+	} else if(_agentState == AgentState::ATTACK)
+	{
 	}
-
-	if(_agentState == AgentState::DEAD) { return true; }
+	
+	if(_life <= 0) { return true; }
 	return false;
 }

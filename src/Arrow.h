@@ -5,6 +5,7 @@
 #include "Cube.h"
 #include "Floor.h"
 #include "Terrain.h"
+#include "Agent.h"
 
 class Arrow : public Cube
 {
@@ -24,6 +25,7 @@ public:
 
 	bool checkFloorCollision(Floor& floor);
 	bool checkTerrainCollision(Terrain& terrain);
+	bool checkAgentCollision(Agent& agent);
 
 private:
 	int _lifeTime;

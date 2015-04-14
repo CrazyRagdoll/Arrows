@@ -3,7 +3,7 @@
 #include "Agent.h"
 #include "Camera.h"
 
-enum class AgentState {PATROL, CHASE, ATTACK, DEAD};
+enum class AgentState {PATROL, CHASE, ATTACK};
 
 class AgentMelee : public Agent
 {
@@ -16,6 +16,8 @@ public:
 	void draw();
 
 	bool update(float dt, glm::vec3 playerPos);
+
+	void damage(float damage);
 
 	bool lookForPlayer(glm::vec3 playerPos);
 
