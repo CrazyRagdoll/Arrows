@@ -21,8 +21,11 @@ public:
 
 	void draw();
 
-private:
 	float _x, _y, _z, _width;
+
+private:
+
+	int _vertexSize;
 
 	glm::vec3 _position;
 

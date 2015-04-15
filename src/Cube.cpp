@@ -92,11 +92,13 @@ void Cube::init(float x, float y, float z, float width, string texture)
 	for (int i = 0; i < 36; i++) {
 		vertexData[i].setColor(255, 255, 255, 255);
 	}
+
+	_vertexSize = sizeof(vertexData);
 	
 	// Binding the buffer
 	glBindBuffer(GL_ARRAY_BUFFER, _vboID);
 	// Uploading the buffer data
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, _vertexSize, vertexData, GL_STATIC_DRAW);
 	// Unbinding the buffer
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
@@ -136,7 +138,7 @@ void Cube::draw()
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_TRUE, sizeof(Vertex), (void*)offsetof(Vertex, uv));
 	
 	//Draw the 6 verticies to the screen
-	glDrawArrays(GL_TRIANGLES, 0, 36);
+	glDrawArrays(GL_TRIANGLES, 0, _vertexSize);
 
 	//disable the vertex attrib array. Not optional
 	glDisableVertexAttribArray(0);

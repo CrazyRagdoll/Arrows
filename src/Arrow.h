@@ -2,15 +2,14 @@
 
 #include "glm/glm.hpp"
 
-#include "Cube.h"
 #include "Floor.h"
 #include "Terrain.h"
 #include "Agent.h"
 
-class Arrow : public Cube
+class Arrow 
 {
 public:
-	Arrow(glm::vec3 pos, glm::vec3 dir, float speed, float size, int lifeTime);
+	Arrow(glm::vec3 pos, glm::vec3 dir, float speed, float size, int lifeTime, string texture);
 	~Arrow();
 
 	void init();
@@ -30,6 +29,7 @@ public:
 	bool checkFloorCollision(Floor& floor);
 	bool checkTerrainCollision(Terrain& terrain);
 	bool checkAgentCollision(Agent& agent);
+	bool checkCollision(Cube& cube);
 
 private:
 	int _lifeTime;
@@ -38,9 +38,20 @@ private:
 	glm::vec3 _position;
 	glm::vec3 _velocity;
 
+	string _skin;
+
 	bool _stuck, _active;
 
 	float _gravity;
 
 	int _floorTime;
+
+	int _vertexSize;
+
+	GLuint _vboID; //vertex buffer object ID
+	GLTexture _texture;
+
+	TextureLoader _textureLoader;
+
+	GLSLProgram _colorProgram;	
 };

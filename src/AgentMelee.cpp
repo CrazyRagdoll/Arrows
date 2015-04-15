@@ -6,6 +6,7 @@ AgentMelee::AgentMelee(glm::vec3 pos, glm::vec3 dir, float width, float height):
 	_patrolLimit(200.0f),
 	_life(100.0f),
 	_speed(0.04f),
+	_currentSpeed(_speed),
 	_range(width + 2.0f)
 {
 	_position = pos; _patPos = pos;
@@ -54,7 +55,7 @@ bool AgentMelee::lookForPlayer(glm::vec3 playerPos)
 	return false;
 }
 
-bool AgentMelee::inRange(glm::vec3 playerPos)
+bool AgentMelee::inMeleeRange(glm::vec3 playerPos)
 {
 	return(playerPos.x < _position.x + _width &&
 			playerPos.x > _position.x - _width &&
@@ -64,24 +65,31 @@ bool AgentMelee::inRange(glm::vec3 playerPos)
 			playerPos.z > _position.z - _height);
 }
 
+void AgentMelee::attack()
+{
+
+}
+
 bool AgentMelee::update(float dt, glm::vec3 playerPos)
 {	
 	if(_agentState == AgentState::PATROL)
 	{
+		_currentSpeed = _speed;
 		//Some simple patrolling math to make the agent move back and forth
 		if(_patrolTimer == _patrolLimit) { _patrolLimit *= -1; _direction *= -1; } 
 		if(_patrolLimit > 0) { _patrolTimer++; } else { _patrolTimer--; }
-		_position += _direction * (_speed * dt);
+		_position += _direction * (_currentSpeed * dt);
 		//If the agent finds the player Chase that mofo!
 		if(lookForPlayer(playerPos)) { _agentState = AgentState::CHASE; } 
 	} else if(_agentState == AgentState::CHASE) {
+		_currentSpeed = _speed * 2;
 		//Getting the direction to the player.
 		_direction = glm::normalize(playerPos - _position);
 		//Move towards the player
-		_position.x += _direction.x * (_speed * dt);
-		_position.z += _direction.z * (_speed * dt);
+		_position.x += _direction.x * (_currentSpeed * dt);
+		_position.z += _direction.z * (_currentSpeed * dt);
 		//If the agent gets in attack range of the player attack!
-		if(inRange(playerPos)){ _agentState = AgentState::ATTACK; } 
+		if(inMeleeRange(playerPos)){ _agentState = AgentState::ATTACK; } 
 	} else if(_agentState == AgentState::ATTACK)
 	{
 		std::cout << "Rawrrrrrr" << std::endl;

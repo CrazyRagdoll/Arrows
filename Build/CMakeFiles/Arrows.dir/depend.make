@@ -710,6 +710,9 @@ CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Level.cpp.o: /ho
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Level.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/Level.cpp
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Level.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/Level.h
 
+CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/PlayerStatus.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/PlayerStatus.cpp
+CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/PlayerStatus.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/PlayerStatus.h
+
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Terrain.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/Cube.h
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Terrain.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/GLSLProgram.h
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Terrain.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/GLTexture.h

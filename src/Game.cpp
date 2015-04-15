@@ -304,7 +304,7 @@ void Game::processInput()
 			glm::vec3 position = glm::vec3(_camera.getPosition() + displacement);
 			glm::vec3 direction = glm::vec3(_camera.getDirection());	
 			normalize(direction);
-			_arrows.emplace_back(position, direction, _shotPower, 1.0f, 250);	
+			_arrows.emplace_back(position, direction, _shotPower, 1.0f, 250, "NONE");	
 			std::cout << "Shot Speed: " << _shotPower << std::endl;	
 		} 		
  		_shotPower = 0.0f;
