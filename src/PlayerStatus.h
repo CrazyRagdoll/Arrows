@@ -34,6 +34,7 @@ private:
 
 	float _life;
 	float _time;
+	float _score;
 	int _ammo;
 
 };

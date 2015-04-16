@@ -1,6 +1,7 @@
 #include "PlayerStatus.h"
 
-PlayerStatus::PlayerStatus()
+PlayerStatus::PlayerStatus() :
+	_score(0.0f)
 {
 
 }
