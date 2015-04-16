@@ -5,23 +5,20 @@
 
 double TO_DEG = 180/3.14;
 
-Camera::Camera() : _position(100.0f, 50.0f, 100.0f),
+Camera::Camera() : _spawn(100.0f, 50.0f, 100.0f),
+	_position(_spawn),
 	_horizontalAngle(3.14f),
 	_verticalAngle(0.0f),
 	_fov(45.0f),
 	_mouseSpeed(0.01f),
-	_speed(3.0f),
+	_moveSpeed(0.0f),
 	_projectionMatrix(1.0f),
 	_vertFoV(75.0f),
-	_jumping(false),
-	_falling(true),
-	_onFloor(false),
-	_onTerrain(false),
-	_crouched(false),
-	_initJumpSpeed(5.0f),
-	_jumpSpeed(_initJumpSpeed),
-	_playerHeight(10.0f),
-	_playerWidth(2.5f),
+	_jumping(false), _falling(true),
+	_onFloor(false), _onTerrain(false),
+	_crouching(false), _sprinting(false), _drawing(false),
+	_initJumpSpeed(5.0f), _jumpSpeed(_initJumpSpeed),
+	_playerHeight(10.0f), _playerWidth(2.5f),
 	_gravityIntensity(0.9)
 {
 }
@@ -103,7 +100,7 @@ void Camera::resetCameraPosition()
 {
 	_horizontalAngle = 3.14f;
 	_verticalAngle = 0.0f; 	
-	_position = vec3(0.0f, 5.0f, 10.0f);
+	_position = _spawn;
 	updateProjectionMatrix();
 	updateViewMatrix();
 }
@@ -128,19 +125,21 @@ void Camera::updateViewMatrix()
 
 void Camera::move(float speed, float dt)
 {
-	_position.x += _direction.x * dt * speed;
-	_position.z += _direction.z * dt * speed;
+	if(_sprinting) { _moveSpeed = speed * 2; } else if(_crouching || _drawing) { _moveSpeed = speed / 2; } else { _moveSpeed = speed; }
+	_position.x += _direction.x * dt * _moveSpeed;
+	_position.z += _direction.z * dt * _moveSpeed;
 	updateViewMatrix();
 }
 void Camera::strafe(float speed, float dt)
 {
-	_position += _right * dt * speed;
+	if(_sprinting) { _moveSpeed = speed * 2; } else if(_crouching || _drawing) { _moveSpeed = speed / 2; } else { _moveSpeed = speed; }
+	_position += _right * dt * _moveSpeed;
 	updateViewMatrix();
 }
 void Camera::jump(float speed, float dt)
 { 
-
-	_jumpSpeed = _initJumpSpeed * speed;
+	_moveSpeed = speed;
+	_jumpSpeed = _initJumpSpeed * _moveSpeed;
 	_jumping = true;
 	updateViewMatrix();
 }
@@ -149,7 +148,7 @@ void Camera::jump(float speed, float dt)
 
 bool Camera::checkFloorCollision(Floor& floor)
 {
-	//if(_crouched) { _playerHeight = 5.0f; } else { _playerHeight = 10.0f; }
+	//if(_crouching) { _playerHeight = 5.0f; } else { _playerHeight = 10.0f; }
 	return(_position.y - _playerHeight < floor._y &&
 		   _position.x < floor._x + floor._width &&
 		   _position.x > floor._x - floor._width &&

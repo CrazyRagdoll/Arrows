@@ -19,6 +19,7 @@
 #include "Cube.h"
 #include "Floor.h"
 #include "Terrain.h"
+#include "PlayerStatus.h"
 
 enum class GameState {PLAY, PAUSE, MAIN_MENU, EXIT};
 
@@ -45,6 +46,8 @@ private:
 	int _screenWidth;
 	int _screenHeight;
 
+	PlayerStatus _player;
+
 	Cube _cube;	
 
 	Floor _floor;
@@ -67,7 +70,6 @@ private:
 
 	float _maxFPS;
 	float _fps;
-	float _time;
 	float _shotTimer, _SHOTSPEED, _shotPower;
 	float _floorSize;
 

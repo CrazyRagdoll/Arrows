@@ -23,6 +23,7 @@ void Floor::init(float width)
 {
 	_width = width;
 
+	//../src/Textures/NeHe.bmp
 	_texture.id = _textureLoader.loadGLTexture("../src/Textures/NeHe.bmp");
 
 	// If the vertex buffer is 0, use OpenGL to set it.

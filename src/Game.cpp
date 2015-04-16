@@ -4,7 +4,6 @@
 Game::Game() : 
 	_screenWidth(1024), 
 	_screenHeight(768), 
-	_time(0.0f),  
 	_gameState(GameState::PLAY),
 	_maxFPS(60.0f),
 	_SHOTSPEED(100.0f),
@@ -41,7 +40,10 @@ void Game::initSystems()
 	_window.create("Arrows", _screenWidth, _screenHeight, 0);
 
 	//hiding the cursor
-	SDL_ShowCursor(0);		
+	SDL_ShowCursor(0);	
+
+	//Initialize the player
+	_player.init();	
 
 	//Adding an agent
 	_meleeAgents.emplace_back(glm::vec3(0.0f, 7.5f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f), 2.5f, 7.5f);
@@ -74,6 +76,21 @@ void Game::gameLoop()
 		}
 		while(_gameState == GameState::PLAY)
 		{
+
+			if( _player.getLife() <= 0)
+			{
+				std::cout << "Game over noober" << std::endl;
+				//reset camera position
+				_camera.resetCameraPosition();
+				//kill all of the agents and respawn them.
+				for (int i = 0; i < _meleeAgents.size();)
+				{
+					_meleeAgents[i] = _meleeAgents.back();
+					_meleeAgents.pop_back();
+				}
+				_player.reset();
+			}
+
 			//This block of code is used to rotate the camera using mouse input.
 			static double lastTime = SDL_GetTicks();
 			
@@ -84,7 +101,6 @@ void Game::gameLoop()
 			_fpsLimiter.begin();
 			
 			processInput();
-			_time += 0.01;
 		
 			_camera.update();
 
@@ -110,6 +126,7 @@ void Game::gameLoop()
 				}
 			}
 
+			//if all the agents are dead spawn some back in!!
 			if(_meleeAgents.size() <= 0)
 			{
 				_meleeAgents.emplace_back(glm::vec3(0.0f, 7.5f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f), 2.5f, 7.5f);
@@ -118,11 +135,13 @@ void Game::gameLoop()
 			//updating all of the melee agents
 			for (int i = 0; i < _meleeAgents.size();)
 			{
-				if(_meleeAgents[i].update(deltaTime, _camera.getPosition()) == true)
+				//Passing the position of the player so the agents can check search for him
+				if(_meleeAgents[i].update(deltaTime, _camera.getPosition(), _player) == true)
 				{
 					_meleeAgents[i] = _meleeAgents.back();
 					_meleeAgents.pop_back();
 				} else {
+					if(_meleeAgents[i]._hitPlayer) { _player.damage(_meleeAgents[i].getDamage()); _meleeAgents[i]._hitPlayer = false; }
 					i++;
 				}
 			}
@@ -151,7 +170,6 @@ void Game::gameLoop()
 						}
 				}
 			}
-
 
 			_fps = _fpsLimiter.end();
 			
@@ -211,6 +229,7 @@ void Game::processInput()
 				break;
 		}
 	}
+	//Pause key!
 	if (_inputManager.isKeyPressed(SDLK_ESCAPE)){
 		_paused = true;
 	}
@@ -218,12 +237,19 @@ void Game::processInput()
 		_gameState = GameState::PAUSE;
 		_paused = false;
 	}
+	//Crouch key
 	if (_inputManager.isKeyPressed(SDLK_LCTRL)){
-		//_camera._crouched = true;
-	} else { /*_camera._crouched = false; */ }
-	if (_inputManager.isKeyPressed(SDLK_LSHIFT)){
-		SPEED *= 2;
+		_camera._crouching = true;
+	} else if (!_inputManager.isKeyPressed(SDLK_LCTRL)) { 
+		_camera._crouching = false; 
 	}
+	//Sprint key
+	if (_inputManager.isKeyPressed(SDLK_LSHIFT)){
+		_camera._sprinting = true; 
+	} else if (!_inputManager.isKeyPressed(SDLK_LSHIFT)){
+		_camera._sprinting = false;
+	}
+		/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ MOVEMENT KEYPRESS FUNCTIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 	if (_inputManager.isKeyPressed(SDLK_w) && !_inputManager.isKeyPressed(SDLK_a) && !_inputManager.isKeyPressed(SDLK_s) && !_inputManager.isKeyPressed(SDLK_d)){
 		_camera.move(SPEED, deltaTime);
 		for( int i = 0; i < _terrain.size(); i++)
@@ -284,27 +310,44 @@ void Game::processInput()
 			if(_camera.checkTerrainCollision(_terrain[i])) { _camera.move(-SPEED/2, deltaTime); _camera.strafe(-SPEED/2, deltaTime); }
 		}
 	}
+		/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ MOVEMENT KEYPRESS FUNCTIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 	if (_inputManager.isKeyPressed(SDLK_SPACE)){
+		//If the player is not jumping or falling then jump!
 		if(!_camera._jumping && !_camera._falling){
 			_camera.jump(1.0f, deltaTime);		
 		}
 	}
 	if (_inputManager.isKeyPressed(SDL_BUTTON_LEFT)){
-		if(_shotPower <= 10.0f){
+		//Checking to see if the player has any ammo left
+		if(_player.getAmmo() <= 0)
+		{
+			//Oh nooo!!
+			std::cout << "Out of Ammo!!" << std::endl;
+		} else if(_shotPower <= 10.0f && _player.getAmmo() > 0){
+			//Increase the power of the arrow by how long the LMB is held.
 			_shotPower += 0.10f;
+			_camera._drawing = true;
 		}
  	}
  	if (!_inputManager.isKeyPressed(SDL_BUTTON_LEFT) && _shotPower > 0)
  	{
+ 		_camera._drawing = false;
  		if(_shotTimer >= _SHOTSPEED){
+ 			//Resetting the shot timer so the player can shoot again.
 			_shotTimer = 0.0f;
+			//Where the arrow is being shot from
+			glm::vec3 position = glm::vec3(_camera.getPosition());
+			//The direction the arrow is being shot
+			glm::vec3 direction = glm::vec3(_camera.getDirection());	
+			normalize(direction);
+			//Adding a buffer to the arrow so its not shot from inside the player
 			glm::vec3 displacement = glm::vec3(_camera.getDirection());
 			normalize(displacement);
 			displacement *= 3;
-			glm::vec3 position = glm::vec3(_camera.getPosition() + displacement);
-			glm::vec3 direction = glm::vec3(_camera.getDirection());	
-			normalize(direction);
-			_arrows.emplace_back(position, direction, _shotPower, 1.0f, 250, "NONE");	
+			//Adding an arrow into the world
+			_arrows.emplace_back(position + displacement, direction, _shotPower, 1.0f, 250, "NONE");
+			//Reducing the players ammo	
+			_player.incAmmo(-1);
 			std::cout << "Shot Speed: " << _shotPower << std::endl;	
 		} 		
  		_shotPower = 0.0f;
@@ -393,8 +436,8 @@ void Game::drawGame()
 
 	glUniformMatrix4fv(pLocation, 1, GL_FALSE, &(cameraMatrix[0][0]));
 
-	//creating and drawing a cube
-	_cube.init(0.0f, 10.0f, 0.0f, 5.0f, "../src/Textures/NeHe.bmp");
+	//creating and drawing a cube ../src/Textures/NeHe.bmp
+	_cube.init(0.0f, 10.0f, 0.0f, 5.0f, "NONE");
 	_cube.draw();
 
 	//Adding a floor to the scene
@@ -429,6 +472,7 @@ void Game::drawGame()
 	_window.swapBuffer();
 }
 
+//A simple function to randomly generate terrain around the map.
 void Game::generateTerrain(int blocks, int terrainLevel, float size, float floorSize)
 {
 	for (int i = 0; i < blocks; i++ )

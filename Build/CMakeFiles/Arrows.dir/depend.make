@@ -93,6 +93,7 @@ CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/AgentMelee.cpp.o
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/AgentMelee.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/Floor.h
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/AgentMelee.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/GLSLProgram.h
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/AgentMelee.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/GLTexture.h
+CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/AgentMelee.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/PlayerStatus.h
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/AgentMelee.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/Terrain.h
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/AgentMelee.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/TextureLoader.h
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/AgentMelee.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/Vertex.h
@@ -539,6 +540,7 @@ CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Game.cpp.o: /hom
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Game.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/Game.cpp
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Game.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/Game.h
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Game.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/InputManager.h
+CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Game.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/PlayerStatus.h
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Game.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/Terrain.h
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Game.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/TextureLoader.h
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Game.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/Timing.h
@@ -818,6 +820,7 @@ CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/main.cpp.o: /hom
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/main.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/GLTexture.h
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/main.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/Game.h
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/main.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/InputManager.h
+CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/main.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/PlayerStatus.h
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/main.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/Terrain.h
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/main.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/TextureLoader.h
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/main.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/Timing.h
