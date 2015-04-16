@@ -2,6 +2,7 @@
 
 #include "Agent.h"
 #include "Camera.h"
+#include "Terrain.h"
 #include "PlayerStatus.h"
 
 enum class AgentState {PATROL, CHASE, ATTACK};
@@ -16,22 +17,25 @@ public:
 
 	void draw();
 
-	bool update(float dt, glm::vec3 playerPos, PlayerStatus player);
+	bool update(float dt, PlayerStatus player, Camera camera);
 
 	//A function to damage the agent's heath
 	void damage(float damage);
 	//A function to get the attention of the agent
 	void aggro(){ _agentState = AgentState::CHASE; };
 
-	//A function to attack the player
-	void patrol(float dt, glm::vec3 playerPos);
-	void chase(float dt, glm::vec3 playerPos);
-	void attack(float dt, glm::vec3 playerPos, PlayerStatus player);
+	//A functions to hunt down the player
+	void move(float dt, Camera camera);
+	void patrol(float dt, Camera camera);
+	void chase(float dt, Camera camera);
+	void attack(float dt, Camera camera, PlayerStatus player);
 
 	//A Check to see if the agent is in range to attack the player.
-	bool inMeleeRange(glm::vec3 playerPos);
+	bool inMeleeRange(Camera camera);
 	//A cheeck to see if the player is in the agents Line of Sight
 	bool lookForPlayer(glm::vec3 playerPos);
+	//A check to see if the next movement will make the agent collide with the player
+	bool collideWithPlayer(Camera camera, glm::vec3 newPos);
 
 	//Returns how much damage the agent will do 
 	float getDamage() { return _damage; }

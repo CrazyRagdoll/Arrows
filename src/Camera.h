@@ -39,6 +39,8 @@ public:
 	vec3 getPosition(){ return _position; }
 	vec3 getDirection(){ return _direction; }
 	vec3 getUp(){ return _up; }
+	float getPlayerWidth() { return _playerWidth ; }
+	float getPlayerHeight(){ return _playerHeight; }
 
 	void updateProjectionMatrix();	
 	void updateViewMatrix();

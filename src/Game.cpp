@@ -136,7 +136,7 @@ void Game::gameLoop()
 			for (int i = 0; i < _meleeAgents.size();)
 			{
 				//Passing the position of the player so the agents can check search for him
-				if(_meleeAgents[i].update(deltaTime, _camera.getPosition(), _player) == true)
+				if(_meleeAgents[i].update(deltaTime, _player, _camera) == true)
 				{
 					_meleeAgents[i] = _meleeAgents.back();
 					_meleeAgents.pop_back();
@@ -345,7 +345,7 @@ void Game::processInput()
 			normalize(displacement);
 			displacement *= 3;
 			//Adding an arrow into the world
-			_arrows.emplace_back(position + displacement, direction, _shotPower, 1.0f, 250, "NONE");
+			_arrows.emplace_back(position + displacement, direction, _shotPower, 0.25f, 5.0f, 250, "NONE");
 			//Reducing the players ammo	
 			_player.incAmmo(-1);
 			std::cout << "Shot Speed: " << _shotPower << std::endl;	
