@@ -10,7 +10,7 @@ Game::Game() :
 	_shotTimer(100.0f),
 	_shotPower(0.0f),
 	_paused(false),
-	_floorSize(250.0f)
+	_floorSize(1000.0f)
 {
 	_camera.init(_screenWidth, _screenHeight);
 	SDL_WarpMouseInWindow(_window.getWindow(), _screenWidth/2, _screenHeight/2);

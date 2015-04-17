@@ -16,16 +16,11 @@ EnemyArrow::EnemyArrow(glm::vec3 pos, glm::vec3 playerPos, float damage) :
 	_position = pos;
 
 	//Figuring out the trajectory.
-	float timeTaken = glm::distance(playerPos,  pos)/_speed; //time taken for the arrow to reach the player
-	std::cout << timeTaken << std::endl;
-	//The initial upwards velocity of the arrow needs to be S = ut + 1.2at^2
-	//Where S = displacement, u = initial velocity, t = time taken, a = accelerationg
-	//In this case S = 0, t = timeTaken, a = gravity and u is the unknown.
-	float upwardsVelocity = -(_gravity * timeTaken);
-	std::cout << upwardsVelocity << std::endl;
+	float timeTaken = glm::distance(playerPos, pos)/_speed; //time taken for the arrow to reach the player
+	//Simple suvat, v = u + at, 0 = u + _gravity * timeTaken
+	float upwardsVelocity = 2 * -(_gravity * timeTaken);
 	_direction = glm::normalize(playerPos - pos);
-	_velocity = _direction * _speed;
-	_velocity += glm::vec3(0.0f, upwardsVelocity, 0.0f) * _speed;
+	_velocity = glm::vec3(_direction.x, _direction.y + upwardsVelocity, _direction.z) * _speed;
 	_damage = damage;
 }
 

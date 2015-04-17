@@ -22,7 +22,7 @@ AgentRanged::AgentRanged(glm::vec3 pos, glm::vec3 dir, float width, float height
 	_damage = 100.0f;
 	_hitPlayer = false;
 	_currentSpeed = _speed;
-	_range = 150.0f;
+	_range = 500.0f;
 	_viewDist = 350.0f;
 	_viewRange = 175.0f;
 }

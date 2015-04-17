@@ -13,7 +13,7 @@ AgentMelee::AgentMelee(glm::vec3 pos, glm::vec3 dir, float width, float height, 
 	_patrolTimer = 0.0f;
 	_patrolLimit = 200.0f;
 	_speed = 0.04f;
-	_attackSpeed = 75.0f;
+	_attackSpeed = 100.0f;
 	_asCount = _attackSpeed;
 	_damage = 200.0f;
 	_hitPlayer = false;
