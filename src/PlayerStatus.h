@@ -19,16 +19,18 @@ public:
 	void setLife(float life) { _life = life; }
 	void setTime(float time) { _time = time; }
 	void setAmmo(int   ammo) { _ammo = ammo; }
+	void setWave(int   wave) { _wave = wave; }
 
 	//Some simple getters.
 	float getLife() { return _life; }
 	float getTime() { return _time; }
 	int   getAmmo() { return _ammo; }
+	int   getWave() { return _wave; }
 
 	//incrementers
-	void incLife(float life) { _life += life; std::cout << "Your life: " << _life << std::endl; }
 	void incTime(float time) { _time += time; std::cout << "Your time: " << _time << std::endl; }
 	void incAmmo(int   ammo) { _ammo += ammo; std::cout << "Your ammo: " << _ammo << std::endl; }
+	void incWave(int   wave) { _wave += wave; std::cout << "Starting Wave: " << _wave << "." << std::endl;}
 
 private:
 
@@ -36,5 +38,6 @@ private:
 	float _time;
 	float _score;
 	int _ammo;
+	int _wave;
 
 };

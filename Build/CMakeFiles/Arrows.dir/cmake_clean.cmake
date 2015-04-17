@@ -2,6 +2,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/main.cpp.o"
   "CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Agent.cpp.o"
   "CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/AgentMelee.cpp.o"
+  "CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/AgentRanged.cpp.o"
   "CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Arrow.cpp.o"
   "CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Camera.cpp.o"
   "CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Cube.cpp.o"

@@ -45,11 +45,14 @@ void Game::initSystems()
 	//Initialize the player
 	_player.init();	
 
-	//Adding an agent
-	_meleeAgents.emplace_back(glm::vec3(0.0f, 7.5f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f), 2.5f, 7.5f);
+	//Adding an melee agent
+	_meleeAgents.emplace_back(glm::vec3(0.0f, 7.5f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f), 4.0f, 3.5f, 100.0f);
+
+	//Adding a ranged agent
+	_rangedAgents.emplace_back(glm::vec3(-50.0f, 7.5f, -50.0f), glm::vec3(0.0f, 0.0f, -1.0f), 2.5f, 7.5f, 50.0f);
 
 	//Testing out the arrow item! (position & ammo value)
-	_arrowItems.emplace_back(glm::vec3(10.0f, 5.0f, 10.0f), 2);
+	_arrowItems.emplace_back(glm::vec3(10.0f, 2.5f, 10.0f), 2);
 	
 	//Adding some terrain to the game
 	//generateTerrain(5, 1, 5.0f, _floorSize);
@@ -80,20 +83,8 @@ void Game::gameLoop()
 		while(_gameState == GameState::PLAY)
 		{
 
-			//Game over state.
-			if( _player.getLife() <= 0)
-			{
-				std::cout << "Game over noober" << std::endl;
-				//reset camera position
-				_camera.resetCameraPosition();
-				//kill all of the agents and respawn them.
-				for (int i = 0; i < _meleeAgents.size();)
-				{
-					_meleeAgents[i] = _meleeAgents.back();
-					_meleeAgents.pop_back();
-				}
-				_player.reset();
-			}
+			//Game over state - Check to see if they player is out of time or life - End game and display score.
+			processState();
 
 			//This block of code is used to rotate the camera using mouse input.
 			static double lastTime = SDL_GetTicks();
@@ -111,6 +102,18 @@ void Game::gameLoop()
 			//Update the camera.
 			_camera.update();
 
+			//Function call to update all of the arrows.
+			processArrows(deltaTime);
+
+			//Function call to update all of the melee agents
+			processMeleeAgents(deltaTime);
+
+			//Function call to update all of the melee agents
+			processRangedAgents(deltaTime);
+
+			//Function call to update and process all of the collectables
+			processCollectables(currentTime);
+
 			//update the camera to see if the player is falling or not
 			if(_camera.checkFloorCollision(_floor)) { _camera._onFloor = true; } else { _camera._onFloor = false; }
 
@@ -121,56 +124,10 @@ void Game::gameLoop()
 
 			}
 
-			//update all the arrows
-			for (int i = 0; i < _arrows.size();)
-			{
-				if(_arrows[i].update(deltaTime) == true)
-				{
-					_arrows[i] = _arrows.back();
-					_arrows.pop_back();
-				} else {
-					i++;
-				}
-			}
-
-			//update all of the collectables
-			for (int i = 0; i < _arrowItems.size();)
-			{
-				if(_camera.checkItemCollision(_arrowItems[i]))
-				{
-					//if the player collides with the arrow item, set it to inactive
-					_arrowItems[i].setInactive();
-					//Also give the player more ammo!! woo
-					_player.incAmmo(_arrowItems[i].getValue());
-				}
-				if(_arrowItems[i].update(currentTime) == true)
-				{
-					_arrowItems[i] = _arrowItems.back();
-					_arrowItems.pop_back();
-				} else {
-					i++;
-				}
-			}
-
 			//if all the agents are dead spawn some back in!!
 			if(_meleeAgents.size() <= 0)
 			{
-				_meleeAgents.emplace_back(glm::vec3(0.0f, 7.5f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f), 2.5f, 7.5f);
-			}
-
-			//updating all of the melee agents
-			for (int i = 0; i < _meleeAgents.size();)
-			{
-				//Passing the position of the player so the agents can check search for him
-				if(_meleeAgents[i].update(deltaTime, _player, _camera) == true)
-				{
-					_meleeAgents[i] = _meleeAgents.back();
-					_meleeAgents.pop_back();
-				} else {
-					//If a melee agent manages to hit the player deal damage to the player.
-					if(_meleeAgents[i]._hitPlayer) { _player.damage(_meleeAgents[i].getDamage()); _meleeAgents[i]._hitPlayer = false; }
-					i++;
-				}
+				_meleeAgents.emplace_back(glm::vec3(0.0f, 7.5f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f), 2.5f, 7.5f, 100.0f);
 			}
 
 			//Incrementing shot timer to regulate shooting speed
@@ -178,32 +135,12 @@ void Game::gameLoop()
 			
 			drawGame();
 
-			//Checking collisions between the arrows and STUFFS
-			for (int i = 0; i < _arrows.size(); i++)
-			{
-				if(_arrows[i].checkCollision(_cube)) { _arrows[i].hit(); }
-				if(_arrows[i].checkFloorCollision(_floor)) { _arrows[i].hit(); }
-				for(int j = 0; j < _terrain.size(); j++)
-				{
-					if(_arrows[i].checkTerrainCollision(_terrain[j])) { _arrows[i].hit(); }
-				}
-				for(int j = 0; j < _meleeAgents.size(); j++)
-				{
-					if(_arrows[i].checkAgentCollision(_meleeAgents[j]) && _arrows[i].getActive()) 
-						{ 
-							std::cout << "HIT" << std::endl; 
-							_arrows[i].hitAgent();
-							_meleeAgents[j].damage(50); _meleeAgents[j].aggro(); 
-						}
-				}
-			}
-
 			_fps = _fpsLimiter.end();
 			
-			//print only once every 10 frames
+			//print only once every 600 frames
 			static int frameCounter = 0;
 			frameCounter++;
-			if (frameCounter == 1000)
+			if (frameCounter == 600)
 			{
 				std::cout << "Fps: " << _fps << std::endl;
 				frameCounter = 0;
@@ -214,6 +151,126 @@ void Game::gameLoop()
 		while (_gameState == GameState::PAUSE)
 		{
 			processPauseInput();
+		}
+	}
+}
+
+void Game::processState()
+{
+	if( _player.getLife() <= 0)
+	{
+		std::cout << "Game over noober" << std::endl;
+		//reset camera position
+		_camera.resetCameraPosition();
+		//kill all of the agents and respawn them.
+		for (int i = 0; i < _meleeAgents.size();)
+		{
+			_meleeAgents[i] = _meleeAgents.back();
+			_meleeAgents.pop_back();
+		}
+		//reset the player stats.
+		_player.reset();
+	}
+}
+
+void Game::processCollectables(float ct)
+{
+	//update all of the collectables
+	for (int i = 0; i < _arrowItems.size();)
+	{
+		if(_camera.checkItemCollision(_arrowItems[i]))
+		{
+			//if the player collides with the arrow item, set it to inactive
+			_arrowItems[i].setInactive();
+			//Also give the player more ammo!! woo
+			_player.incAmmo(_arrowItems[i].getValue());
+		}
+		if(_arrowItems[i].update(ct) == true)
+		{
+			_arrowItems[i] = _arrowItems.back();
+			_arrowItems.pop_back();
+		} else {
+			i++;
+		}
+	}
+}
+
+void Game::processMeleeAgents(float dt)
+{
+	//updating all of the melee agents
+	for (int i = 0; i < _meleeAgents.size();)
+	{
+		//Passing the position of the player so the agents can check search for him
+		if(_meleeAgents[i].update(dt, _player, _camera) == true)
+		{
+			_meleeAgents[i] = _meleeAgents.back();
+			_meleeAgents.pop_back();
+		} else {
+			//If a melee agent manages to hit the player deal damage to the player.
+			if(_meleeAgents[i]._hitPlayer) { _player.damage(_meleeAgents[i].getDamage()); _meleeAgents[i]._hitPlayer = false; }
+			i++;
+		}
+	}
+}
+
+void Game::processRangedAgents(float dt)
+{
+	//updating all of the melee agents
+	for (int i = 0; i < _rangedAgents.size();)
+	{
+		//Passing the position of the player so the agents can check search for him
+		if(_rangedAgents[i].update(dt, _player, _camera) == true)
+		{
+			_rangedAgents[i] = _rangedAgents.back();
+			_rangedAgents.pop_back();
+		} else {
+			//If a melee agent manages to hit the player deal damage to the player.
+			if(_rangedAgents[i]._hitPlayer) { _player.damage(_rangedAgents[i].getDamage()); _rangedAgents[i]._hitPlayer = false; }
+			i++;
+		}
+	}
+}
+
+void Game::processArrows(float dt)
+{
+	//update all the arrows
+	for (int i = 0; i < _arrows.size();)
+	{
+		if(_arrows[i].update(dt) == true)
+		{
+			_arrows[i] = _arrows.back();
+			_arrows.pop_back();
+		} else {
+			i++;
+		}
+	}
+
+	//Checking collisions between the arrows and STUFFS
+	for (int i = 0; i < _arrows.size(); i++)
+	{
+		if(_arrows[i].checkCollision(_cube)) { _arrows[i].hit(); }
+		if(_arrows[i].checkFloorCollision(_floor)) { _arrows[i].hit(); }
+		for(int j = 0; j < _terrain.size(); j++)
+		{
+			if(_arrows[i].checkTerrainCollision(_terrain[j])) { _arrows[i].hit(); }
+		}
+		for(int j = 0; j < _meleeAgents.size(); j++)
+		{
+			if(_arrows[i].checkAgentCollision(_meleeAgents[j]) && _arrows[i].getActive()) 
+				{ 
+					std::cout << "HIT" << std::endl; 
+					_arrows[i].hitAgent();
+					_meleeAgents[j].damage(50); _meleeAgents[j].aggro(); 
+				}
+		}
+		for(int j = 0; j < _rangedAgents.size(); j++)
+		{
+			if(_arrows[i].checkAgentCollision(_rangedAgents[j]) && _arrows[i].getActive()) 
+				{ 
+					std::cout << "HIT" << std::endl; 
+					_arrows[i].hitAgent();
+					_rangedAgents[j].damage(50); _rangedAgents[j].aggro(); 
+				}
 		}
 	}
 }
@@ -476,6 +533,13 @@ void Game::drawGame()
 	{
 		_meleeAgents[i].init();
 		_meleeAgents[i].draw();
+	}
+
+	//updating the ranged agents
+	for (int i = 0; i < _rangedAgents.size(); i++)
+	{
+		_rangedAgents[i].init();
+		_rangedAgents[i].draw();
 	}
 
 	//Adding some "terrain"

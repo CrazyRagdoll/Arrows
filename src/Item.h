@@ -35,7 +35,7 @@ private:
 
 	int _value; //How much the item is worth
 
-	bool  _collected; //To set the item to inactive
+	bool _collected; //To set the item to inactive
 
 	int _vertexSize; //holds how many vertices make up the object
 

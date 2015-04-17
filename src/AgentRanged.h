@@ -5,11 +5,11 @@
 #include "Terrain.h"
 #include "PlayerStatus.h"
 
-class AgentMelee : public Agent
+class AgentRanged : public Agent
 {
 public:
-	AgentMelee(glm::vec3 pos, glm::vec3 dir, float width, float height, float life);
-	~AgentMelee();
+	AgentRanged(glm::vec3 pos, glm::vec3 dir, float width, float height, float life);
+	~AgentRanged();
 
 	void init();
 

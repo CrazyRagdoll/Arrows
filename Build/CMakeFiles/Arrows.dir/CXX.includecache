@@ -24,11 +24,17 @@ cstddef
 string
 -
 
-/home/dell/Documents/Final Year/Arrows/src/AgentMelee.cpp
-AgentMelee.h
 /home/dell/Documents/Final Year/Arrows/src/AgentMelee.h
+Agent.h
+/home/dell/Documents/Final Year/Arrows/src/Agent.h
+Camera.h
+/home/dell/Documents/Final Year/Arrows/src/Camera.h
+Terrain.h
+/home/dell/Documents/Final Year/Arrows/src/Terrain.h
+PlayerStatus.h
+/home/dell/Documents/Final Year/Arrows/src/PlayerStatus.h
 
-/home/dell/Documents/Final Year/Arrows/src/AgentMelee.h
+/home/dell/Documents/Final Year/Arrows/src/AgentRanged.h
 Agent.h
 /home/dell/Documents/Final Year/Arrows/src/Agent.h
 Camera.h
@@ -49,14 +55,6 @@ Terrain.h
 /home/dell/Documents/Final Year/Arrows/src/Terrain.h
 Agent.h
 /home/dell/Documents/Final Year/Arrows/src/Agent.h
-
-/home/dell/Documents/Final Year/Arrows/src/Camera.cpp
-Camera.h
-/home/dell/Documents/Final Year/Arrows/src/Camera.h
-iostream
--
-string
--
 
 /home/dell/Documents/Final Year/Arrows/src/Camera.h
 glm/glm.hpp
@@ -143,6 +141,8 @@ Arrow.h
 /home/dell/Documents/Final Year/Arrows/src/Arrow.h
 AgentMelee.h
 /home/dell/Documents/Final Year/Arrows/src/AgentMelee.h
+AgentRanged.h
+/home/dell/Documents/Final Year/Arrows/src/AgentRanged.h
 Cube.h
 /home/dell/Documents/Final Year/Arrows/src/Cube.h
 Floor.h
@@ -159,10 +159,6 @@ unordered_map
 -
 glm/glm.hpp
 /home/dell/Documents/Final Year/Arrows/src/glm/glm.hpp
-
-/home/dell/Documents/Final Year/Arrows/src/Item.cpp
-Item.h
-/home/dell/Documents/Final Year/Arrows/src/Item.h
 
 /home/dell/Documents/Final Year/Arrows/src/Item.h
 glm/glm.hpp
@@ -823,12 +819,6 @@ detail/type_vec4.hpp
 /home/dell/Documents/Final Year/Arrows/src/glm/vector_relational.hpp
 detail/func_vector_relational.hpp
 /home/dell/Documents/Final Year/Arrows/src/glm/detail/func_vector_relational.hpp
-
-/home/dell/Documents/Final Year/Arrows/src/main.cpp
-iostream
--
-Game.h
-/home/dell/Documents/Final Year/Arrows/src/Game.h
 
 /usr/include/SOIL/SOIL.h
 

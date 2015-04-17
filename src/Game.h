@@ -16,6 +16,7 @@
 #include "Timing.h"
 #include "Arrow.h"
 #include "AgentMelee.h"
+#include "AgentRanged.h"
 #include "Cube.h"
 #include "Floor.h"
 #include "Terrain.h"
@@ -39,6 +40,13 @@ private:
 	void processInput();
 	void processPauseInput();
 	void drawGame();
+
+	//Object processing functions to keep the code more readable
+	void processState();
+	void processArrows(float dt);
+	void processMeleeAgents(float dt);
+	void processRangedAgents(float dt);
+	void processCollectables(float ct);
 
 	//A simple functions to build a map
 	void generateTerrain(int blocks, int terrainLevel, float size, float floor);
@@ -68,6 +76,8 @@ private:
 	std::vector<Terrain> _terrain;
 
 	std::vector<AgentMelee> _meleeAgents;
+
+	std::vector<AgentRanged> _rangedAgents;
 
 	std::vector<Item> _arrowItems;
 

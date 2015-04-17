@@ -15,6 +15,29 @@ Agent::~Agent()
 	}
 }
 
+bool Agent::lookForPlayer(glm::vec3 playerPos)
+{
+	//Along with the current position of the agent these two values form a triangle of view
+	//by using the cross product of the direction the agent is facing and which way is up I can find points to the left and right.
+	glm::vec3 _fieldOfViewLeft, _fieldOfViewRight;
+	_fieldOfViewLeft  =  glm::cross(glm::vec3(0.0f, 1.0f, 0.0f), _direction * _viewRange) + _direction * _viewDist + _position;
+	_fieldOfViewRight = -glm::cross(glm::vec3(0.0f, 1.0f, 0.0f), _direction * _viewRange) + _direction * _viewDist + _position;
+
+	//Barycentric coordinate system collision detection
+	glm::vec3 p2 = _fieldOfViewLeft; glm::vec3 p3 = _fieldOfViewRight; glm::vec3 p1 = _position;
+	float alpha = ((p2.z - p3.z)*(playerPos.x - p3.x) + (p3.x - p2.x)*(playerPos.z - p3.z)) /
+					((p2.z - p3.z)*(p1.x - p3.x) + (p3.x - p2.x)*(p1.z - p3.z));
+	float beta  = ((p3.z - p1.z)*(playerPos.x - p3.x) + (p1.x - p3.x)*(playerPos.z - p3.z)) / 
+					((p2.z - p3.z)*(p1.x - p3.x) + (p3.x - p2.x)*(p1.z - p3.z));
+	float gamma = 1.0f - alpha - beta;
+
+	//If all of the values are above 0 the player is inside the LoS triangle.
+	if(alpha > 0 && beta > 0 && gamma > 0) {
+		return true;
+	} 
+	return false;
+}
+
 void Agent::init(string texture)
 {
 	if (texture != "NONE")
