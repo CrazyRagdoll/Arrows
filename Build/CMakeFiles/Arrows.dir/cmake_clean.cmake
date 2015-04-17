@@ -6,6 +6,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Arrow.cpp.o"
   "CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Camera.cpp.o"
   "CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Cube.cpp.o"
+  "CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/EnemyArrow.cpp.o"
   "CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Errors.cpp.o"
   "CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Floor.cpp.o"
   "CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Game.cpp.o"

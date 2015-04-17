@@ -53,12 +53,12 @@ bool AgentMelee::inAttackRange(Camera camera)
 
 bool AgentMelee::collideWithTerrain(Terrain terrain, glm::vec3 newPos)
 {
-	return(terrain._position.x - terrain._size < _position.x + _width &&
-		terrain._position.x + terrain._size > _position.x - _width &&
-		terrain._position.y - terrain._size < _position.y + _height &&
-		terrain._position.y + terrain._size > _position.y - _height &&
-		terrain._position.z - terrain._size < _position.z + _width &&
-		terrain._position.z + terrain._size > _position.z - _width);
+	return(terrain._position.x - terrain._size < newPos.x + _width &&
+		terrain._position.x + terrain._size > newPos.x - _width &&
+		terrain._position.y - terrain._size < newPos.y + _height &&
+		terrain._position.y + terrain._size > newPos.y - _height &&
+		terrain._position.z - terrain._size < newPos.z + _width &&
+		terrain._position.z + terrain._size > newPos.z - _width);
 }
 
 bool AgentMelee::collideWithPlayer(Camera camera, glm::vec3 newPos)
@@ -66,12 +66,12 @@ bool AgentMelee::collideWithPlayer(Camera camera, glm::vec3 newPos)
 	glm::vec3 playerPos = camera.getPosition();
 	float width = camera.getPlayerWidth();
 	float height = camera.getPlayerHeight();
-	return(playerPos.x - width < _position.x + _width &&
-		playerPos.x + width > _position.x - _width &&
-		playerPos.y - height < _position.y + _height &&
-		playerPos.y + height > _position.y - _height &&
-		playerPos.z - width < _position.z + _width &&
-		playerPos.z + width > _position.z - _width);
+	return(playerPos.x - width < newPos.x + _width &&
+		playerPos.x + width > newPos.x - _width &&
+		playerPos.y - height < newPos.y + _height &&
+		playerPos.y + height > newPos.y - _height &&
+		playerPos.z - width < newPos.z + _width &&
+		playerPos.z + width > newPos.z - _width);
 }
 
 void AgentMelee::move(float dt, Camera camera)

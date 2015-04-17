@@ -255,6 +255,30 @@ home/dell/Documents/Final_Year/Arrows/src/Cube.cpp.s:
 	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Cube.cpp.s
 .PHONY : home/dell/Documents/Final_Year/Arrows/src/Cube.cpp.s
 
+home/dell/Documents/Final_Year/Arrows/src/EnemyArrow.o: home/dell/Documents/Final_Year/Arrows/src/EnemyArrow.cpp.o
+.PHONY : home/dell/Documents/Final_Year/Arrows/src/EnemyArrow.o
+
+# target to build an object file
+home/dell/Documents/Final_Year/Arrows/src/EnemyArrow.cpp.o:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/EnemyArrow.cpp.o
+.PHONY : home/dell/Documents/Final_Year/Arrows/src/EnemyArrow.cpp.o
+
+home/dell/Documents/Final_Year/Arrows/src/EnemyArrow.i: home/dell/Documents/Final_Year/Arrows/src/EnemyArrow.cpp.i
+.PHONY : home/dell/Documents/Final_Year/Arrows/src/EnemyArrow.i
+
+# target to preprocess a source file
+home/dell/Documents/Final_Year/Arrows/src/EnemyArrow.cpp.i:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/EnemyArrow.cpp.i
+.PHONY : home/dell/Documents/Final_Year/Arrows/src/EnemyArrow.cpp.i
+
+home/dell/Documents/Final_Year/Arrows/src/EnemyArrow.s: home/dell/Documents/Final_Year/Arrows/src/EnemyArrow.cpp.s
+.PHONY : home/dell/Documents/Final_Year/Arrows/src/EnemyArrow.s
+
+# target to generate assembly for a file
+home/dell/Documents/Final_Year/Arrows/src/EnemyArrow.cpp.s:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/EnemyArrow.cpp.s
+.PHONY : home/dell/Documents/Final_Year/Arrows/src/EnemyArrow.cpp.s
+
 home/dell/Documents/Final_Year/Arrows/src/Errors.o: home/dell/Documents/Final_Year/Arrows/src/Errors.cpp.o
 .PHONY : home/dell/Documents/Final_Year/Arrows/src/Errors.o
 
@@ -618,6 +642,9 @@ help:
 	@echo "... home/dell/Documents/Final_Year/Arrows/src/Cube.o"
 	@echo "... home/dell/Documents/Final_Year/Arrows/src/Cube.i"
 	@echo "... home/dell/Documents/Final_Year/Arrows/src/Cube.s"
+	@echo "... home/dell/Documents/Final_Year/Arrows/src/EnemyArrow.o"
+	@echo "... home/dell/Documents/Final_Year/Arrows/src/EnemyArrow.i"
+	@echo "... home/dell/Documents/Final_Year/Arrows/src/EnemyArrow.s"
 	@echo "... home/dell/Documents/Final_Year/Arrows/src/Errors.o"
 	@echo "... home/dell/Documents/Final_Year/Arrows/src/Errors.i"
 	@echo "... home/dell/Documents/Final_Year/Arrows/src/Errors.s"

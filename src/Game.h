@@ -15,6 +15,7 @@
 #include "InputManager.h"
 #include "Timing.h"
 #include "Arrow.h"
+#include "EnemyArrow.h"
 #include "AgentMelee.h"
 #include "AgentRanged.h"
 #include "Cube.h"
@@ -40,10 +41,12 @@ private:
 	void processInput();
 	void processPauseInput();
 	void drawGame();
+	void drawObjects();
 
 	//Object processing functions to keep the code more readable
 	void processState();
 	void processArrows(float dt);
+	void processEnemyArrows(float dt);
 	void processMeleeAgents(float dt);
 	void processRangedAgents(float dt);
 	void processCollectables(float ct);
@@ -72,6 +75,8 @@ private:
 	FpsLimiter _fpsLimiter;
 
 	std::vector<Arrow> _arrows;
+
+	std::vector<EnemyArrow> _enemyArrows;
 
 	std::vector<Terrain> _terrain;
 

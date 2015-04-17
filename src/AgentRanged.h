@@ -24,6 +24,7 @@ public:
 
 	//Functions to hunt down the player
 	void move(float dt, Camera camera);
+	void scout(float dt, Camera camera);
 	void patrol(float dt, Camera camera);
 	void chase(float dt, Camera camera);
 	void attack(float dt, Camera camera, PlayerStatus player);

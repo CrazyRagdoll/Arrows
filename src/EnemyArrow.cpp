@@ -1,26 +1,35 @@
-#include "Arrow.h"
+#include "EnemyArrow.h"
 
-double TO_RAD = 3.14159265358979323846/180;
-
-Arrow::Arrow(glm::vec3 pos, glm::vec3 dir, float speed, float width, float length, int lifeTime, string texture) :
+EnemyArrow::EnemyArrow(glm::vec3 pos, glm::vec3 playerPos, float damage) :
+	_width(1.0f),
+	_length(1.0f),
+	_skin("NONE"),
 	_gravity(-0.002f),
 	_floorTime(100),
 	_stuck(false),
-	_active(true)
+	_active(true),
+	_lifeTime(250),
+	_speed(5.0f)
 {
 	_vboID = 0;
-	
-	_lifeTime = lifeTime;
+
 	_position = pos;
-	_direction = dir;
-	_speed = speed;
-	_width = width;
-	_length = length;
-	_velocity = dir * speed;
-	_skin = texture;
+
+	//Figuring out the trajectory.
+	float timeTaken = glm::distance(playerPos,  pos)/_speed; //time taken for the arrow to reach the player
+	std::cout << timeTaken << std::endl;
+	//The initial upwards velocity of the arrow needs to be S = ut + 1.2at^2
+	//Where S = displacement, u = initial velocity, t = time taken, a = accelerationg
+	//In this case S = 0, t = timeTaken, a = gravity and u is the unknown.
+	float upwardsVelocity = -(_gravity * timeTaken);
+	std::cout << upwardsVelocity << std::endl;
+	_direction = glm::normalize(playerPos - pos);
+	_velocity = _direction * _speed;
+	_velocity += glm::vec3(0.0f, upwardsVelocity, 0.0f) * _speed;
+	_damage = damage;
 }
 
-Arrow::~Arrow()
+EnemyArrow::~EnemyArrow()
 {
 	//cleaing up the buffers when the sprite is destroyed.
 	if(_vboID != 0)
@@ -29,8 +38,42 @@ Arrow::~Arrow()
 	}
 }
 
-bool Arrow::update(float dt)
-{	
+bool EnemyArrow::checkFloorCollision(Floor& floor)
+{
+	return(_position.y - _width < floor._y &&
+		   _position.x < floor._x + floor._width &&
+		   _position.x > floor._x - floor._width &&
+		   _position.z < floor._z + floor._width &&
+		   _position.z > floor._z - floor._width); 
+}
+
+//Checking for collisions with the player
+bool EnemyArrow::checkPlayerCollision(Camera& camera)
+{
+	glm::vec3 tmpP = camera.getPosition();
+	float tmpW = camera.getPlayerWidth();
+	float tmpH = camera.getPlayerHeight();
+	return(_position.x - _width < tmpP.x + tmpW &&
+			_position.x + _width > tmpP.x - tmpW &&
+			_position.y - _width < tmpP.y + tmpH &&
+			_position.y + _width > tmpP.y - tmpH &&
+			_position.z - _width < tmpP.z + tmpW &&
+			_position.z + _width > tmpP.z - tmpW);
+}
+
+//Checking only the TIP of the arrow against stuffs
+bool EnemyArrow::checkTerrainCollision(Terrain& terrain)
+{
+	return(_position.x < terrain._position.x + terrain._size &&
+		   _position.x > terrain._position.x - terrain._size &&
+		   _position.y < terrain._position.y + terrain._size &&
+		   _position.y > terrain._position.y - terrain._size &&
+		   _position.z < terrain._position.z + terrain._size &&
+		   _position.z > terrain._position.z - terrain._size); 
+}
+
+bool EnemyArrow::update(float dt)
+{
 	//checking to see if the arrow is still in flight or not, then updating its position and deleting after a certain time
 	if(_stuck){
 		_floorTime--;
@@ -45,96 +88,7 @@ bool Arrow::update(float dt)
 	return false;
 }
 
-void Arrow::clean()
-{
-
-}
-
-bool Arrow::checkFloorCollision(Floor& floor)
-{
-	return(_position.y - _width < floor._y &&
-		   _position.x < floor._x + floor._width &&
-		   _position.x > floor._x - floor._width &&
-		   _position.z < floor._z + floor._width &&
-		   _position.z > floor._z - floor._width); 
-}
-
-//Checking for collisions with agents
-bool Arrow::checkAgentCollision(Agent& agent)
-{
-	return(_position.x - _width < agent._position.x + agent._width &&
-			_position.x + _width > agent._position.x - agent._width &&
-			_position.y - _width < agent._position.y + agent._height &&
-			_position.y + _width > agent._position.y - agent._height &&
-			_position.z - _width < agent._position.z + agent._width &&
-			_position.z + _width > agent._position.z - agent._width);
-}
-
-//Checking only the TIP of the arrow against stuffs
-bool Arrow::checkTerrainCollision(Terrain& terrain)
-{
-	return(_position.x < terrain._position.x + terrain._size &&
-		   _position.x > terrain._position.x - terrain._size &&
-		   _position.y < terrain._position.y + terrain._size &&
-		   _position.y > terrain._position.y - terrain._size &&
-		   _position.z < terrain._position.z + terrain._size &&
-		   _position.z > terrain._position.z - terrain._size); 
-}
-
-//Checking collisions with cubes
-bool Arrow::checkCollision(Cube& cube)
-{
-	return(_position.x + _width > cube._x - cube._width &&
-		_position.x - _width < cube._x + cube._width &&
-		_position.y + _width > cube._y - cube._width &&
-		_position.y - _width < cube._y + cube._width &&
-		_position.z + _width > cube._z - cube._width &&
-		_position.z - _width < cube._z + cube._width); 
-}
-
-//Rotation function created using 3D rotation matrix math.
-glm::vec3 Arrow::rotate(float deg, glm::vec3 axis, glm::vec3 pos)
-{
-	//If not a single axis has been specified return false.
-	if(!(axis.x == 0.0f && axis.y == 0.0f && axis.z == 1.0f) && 
-		!(axis.x == 0.0f && axis.y == 1.0f && axis.z == 0.0f) && 
-		!(axis.x == 1.0f && axis.y == 0.0f && axis.z == 0.0f)) { return pos; }
-
-	glm::vec3 temp = glm::vec3(0.0f, 0.0f, 0.0f);
-	deg *= TO_RAD;
-
-	//For rotations along the x
-	if(axis.x == 1.0f && axis.y == 0.0f && axis.z == 0.0f)
-	{
-		std::cout << "Rotating around the X axis." << std::endl;
-		temp.x = pos.x;
-		temp.y = (pos.y * cos(deg) - pos.z * sin(deg));
-		temp.z = (pos.y * sin(deg) + pos.z * cos(deg));
-		return temp; 
-	}
-
-	//For rotations along the y.
-	if(axis.x == 0.0f && axis.y == 1.0f && axis.z == 0.0f)
-	{
-		std::cout << "Rotating around the Y axis." << std::endl;
-		temp.x = (pos.x * cos(deg) + pos.z * sin(deg));
-		temp.y = pos.y;
-		temp.z = (pos.x *-sin(deg) + pos.z * cos(deg));
-		return temp;
-	}
-
-	//For rotations along the z.
-	if(axis.x == 0.0f && axis.y == 0.0f && axis.z == 1.0f)
-	{
-		std::cout << "Rotating around the Z axis." << std::endl;
-		temp.x = (pos.x * cos(deg) - pos.y * sin(deg));
-		temp.y = (pos.x * sin(deg) + pos.y * cos(deg));
-		temp.z = pos.z;
-		return temp;
-	}
-}	
-
-void Arrow::init()
+void EnemyArrow::init()
 {
 
 	if (_skin != "NONE")
@@ -152,58 +106,6 @@ void Arrow::init()
 	float posX = _width + _position.x; float negX = -_width + _position.x;
 	float posY = _width + _position.y; float negY = -_width + _position.y;
 	float posZ = _width + _position.z; float negZ = -_width + _position.z;
-
-
-	/*	~~~~~~~~Experimental CODE~~~~~~~~~~~~
-	std::vector<glm::vec3> p;
-
-	p.emplace_back(glm::vec3(negX, negY, negZ));
-	p.emplace_back(glm::vec3(posX, negY, negZ));
-	p.emplace_back(glm::vec3(negX, negY, posZ));
-	p.emplace_back(glm::vec3(posX, negY, negZ));
-	p.emplace_back(glm::vec3(posX, negY, posZ));
-	p.emplace_back(glm::vec3(negX, negY, posZ));
-
-	p.emplace_back(glm::vec3(negX, posY, negZ));
-	p.emplace_back(glm::vec3(negX, posY, posZ));
-	p.emplace_back(glm::vec3(posX, posY, negZ));
-	p.emplace_back(glm::vec3(posX, posY, negZ));
-	p.emplace_back(glm::vec3(negX, posY, posZ));
-	p.emplace_back(glm::vec3(posX, posY, posZ));
-
-	p.emplace_back(glm::vec3(posX, negY, posZ));
-	p.emplace_back(glm::vec3(posX, negY, negZ));
-	p.emplace_back(glm::vec3(posX, posY, negZ));
-	p.emplace_back(glm::vec3(posX, negY, posZ));
-	p.emplace_back(glm::vec3(posX, posY, negZ));
-	p.emplace_back(glm::vec3(posX, posY, posZ));
-
-	p.emplace_back(glm::vec3(negX, negY, posZ));
-	p.emplace_back(glm::vec3(negX, posY, negZ));
-	p.emplace_back(glm::vec3(negX, negY, negZ));
-	p.emplace_back(glm::vec3(negX, negY, posZ));
-	p.emplace_back(glm::vec3(negX, posY, posZ));
-	p.emplace_back(glm::vec3(negX, posY, negZ));
-
-	p.emplace_back(glm::vec3(negX, negY, posZ));
-	p.emplace_back(glm::vec3(posX, negY, posZ));
-	p.emplace_back(glm::vec3(negX, posY, posZ));
-	p.emplace_back(glm::vec3(posX, negY, posZ));
-	p.emplace_back(glm::vec3(posX, posY, posZ));
-	p.emplace_back(glm::vec3(negX, posY, posZ));
-
-	p.emplace_back(glm::vec3(negX, negY, negZ));
-	p.emplace_back(glm::vec3(negX, posY, negZ));
-	p.emplace_back(glm::vec3(posX, negY, negZ));
-	p.emplace_back(glm::vec3(posX, negY, negZ));
-	p.emplace_back(glm::vec3(negX, posY, negZ));
-	p.emplace_back(glm::vec3(posX, posY, negZ));
-
-	for(int i = 0; i < p.size(); i++)
-	{
-		p[i] = rotate(45.0f, glm::vec3(0.0f, 1.0f, 0.0f), p[i]);
-		vertexData[i].setPosUV(p[i].x, p[i].y, p[i].z, 0.0, 0.0);
-	}*/
 
     // Make a cube out of triangles (two triangles per side)
 	Vertex vertexData[36];
@@ -271,8 +173,8 @@ void Arrow::init()
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-void Arrow::draw()
-{	
+void EnemyArrow::draw()
+{
 		//bind the buffer object
 	glBindBuffer(GL_ARRAY_BUFFER, _vboID);
 

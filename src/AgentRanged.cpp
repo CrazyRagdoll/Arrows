@@ -1,7 +1,7 @@
 #include "AgentRanged.h"
 
 AgentRanged::AgentRanged(glm::vec3 pos, glm::vec3 dir, float width, float height, float life) :
-	_agentState(AgentState::PATROL)
+	_agentState(AgentState::SCOUT)
 {
 	_position = pos; _patPos = pos;
 	_direction = dir; _patDir = dir;
@@ -12,15 +12,19 @@ AgentRanged::AgentRanged(glm::vec3 pos, glm::vec3 dir, float width, float height
 	//Melee units variables
 	_patrolTimer = 0.0f;
 	_patrolLimit = 200.0f;
+	_scoutTimer = 0.0f;
+	_scoutLimit = 200.0f;
 	_speed = 0.04f;
-	_attackSpeed = 150.0f;
+	_attackSpeed = 25.0f;
 	_asCount = _attackSpeed;
+	_attackCooldown = 150.0f;
+	_attackTimer = _attackCooldown;
 	_damage = 100.0f;
 	_hitPlayer = false;
 	_currentSpeed = _speed;
-	_range = 200.0f;
-	_viewDist = 150.0f;
-	_viewRange = 75.0f;
+	_range = 150.0f;
+	_viewDist = 350.0f;
+	_viewRange = 175.0f;
 }
 
 AgentRanged::~AgentRanged()
@@ -84,6 +88,29 @@ void AgentRanged::move(float dt, Camera camera)
 	}
 }
 
+void AgentRanged::scout(float dt, Camera camera)
+{
+	//The melee agent will patrol, this agent will stand around looking out for the agent
+	//by randomly looking in different directions.
+	_scoutTimer++;
+	if(_scoutTimer == _scoutLimit)
+	{
+		//Getting the agent to look north, south, east & west randomly
+		int rando = rand() % 4;
+		if(rando == 1){
+			_direction = glm::vec3(0.0f, 0.0f, 1.0f);	
+		} else if(rando == 2) {
+			_direction = glm::vec3(0.0f, 0.0f, -1.0f);
+		} else if(rando == 3) {
+			_direction = glm::vec3(1.0f, 0.0f, 0.0f);
+		} else {
+			_direction = glm::vec3(-1.0f, 0.0f, 0.0f);
+		}
+		_scoutTimer = 0;
+	}
+	if(Agent::lookForPlayer(camera.getPosition())) { _agentState = AgentState::CHASE; } 
+}
+
 void AgentRanged::patrol(float dt, Camera camera)
 {
 	//Some simple patrolling math to make the agent move back and forth
@@ -96,25 +123,32 @@ void AgentRanged::patrol(float dt, Camera camera)
 
 void AgentRanged::chase(float dt, Camera camera)
 {
-	//If the agent gets in attack range of the player attack!
-	if(inAttackRange(camera)){ _agentState = AgentState::ATTACK; } 
-	//Getting the direction to the player.
-	_direction = glm::normalize(camera.getPosition() - _position);
-	//Move towards the player
-	move(dt, camera);
+	_attackTimer--;
+	//If the agent gets in attack range of the player and his attack is off cooldown
+	if(inAttackRange(camera))
+	{ 
+		if(_attackTimer <= 0)
+		{
+			_agentState = AgentState::ATTACK;
+		} 
+	} else {
+		//Getting the direction to the player.
+		_direction = glm::normalize(camera.getPosition() - _position);
+		//Move towards the player
+		move(dt, camera);
+	}
 }
 
 void AgentRanged::attack(float dt, Camera camera, PlayerStatus player)
 {
 	//Getting the direction to the player.
 	_direction = glm::normalize(camera.getPosition() - _position);
-	//Move towards the player
-	move(dt, camera);
 
 	//if the agent has stopped his attack "animation"
 	if(_asCount == 0) 
 	{ 
 		if (inAttackRange(camera)) {
+			_attackTimer = _attackCooldown;
 			_hitPlayer = true;
 		}
 		_agentState = AgentState::CHASE; 
@@ -126,12 +160,17 @@ void AgentRanged::attack(float dt, Camera camera, PlayerStatus player)
 
 bool AgentRanged::update(float dt, PlayerStatus player, Camera camera)
 {	
-	if(_agentState == AgentState::PATROL)
+	if(_agentState == AgentState::SCOUT)
+	{
+		_currentSpeed = 0;
+		scout(dt, camera);
+	} else if(_agentState == AgentState::PATROL)
 	{
 		_currentSpeed = _speed;
 		patrol(dt, camera);
 		
-	} else if(_agentState == AgentState::CHASE) {
+	} else if(_agentState == AgentState::CHASE) 
+	{
 		_currentSpeed = _speed * 1.5;
 		chase(dt, camera);
 		

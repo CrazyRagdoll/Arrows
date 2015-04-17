@@ -90,9 +90,6 @@ void Camera::update()
 			_jumpSpeed = 0.2;
 		}
 	} 
-
-	//If the player falls through the floor reset his position
-	if(_position.y <= -5000){ resetCameraPosition(); }
 }
 
 //A function to reset the camera to its original position
