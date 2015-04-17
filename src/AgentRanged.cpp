@@ -22,9 +22,9 @@ AgentRanged::AgentRanged(glm::vec3 pos, glm::vec3 dir, float width, float height
 	_damage = 100.0f;
 	_hitPlayer = false;
 	_currentSpeed = _speed;
-	_range = 500.0f;
-	_viewDist = 350.0f;
-	_viewRange = 175.0f;
+	_range = 150.0f;
+	_viewDist = 300.0f;
+	_viewRange = 150.0f;
 }
 
 AgentRanged::~AgentRanged()
@@ -98,12 +98,16 @@ void AgentRanged::scout(float dt, Camera camera)
 		//Getting the agent to look north, south, east & west randomly
 		int rando = rand() % 4;
 		if(rando == 1){
+			std::cout << "looking north" << std::endl;
 			_direction = glm::vec3(0.0f, 0.0f, 1.0f);	
 		} else if(rando == 2) {
+			std::cout << "looking south" << std::endl;
 			_direction = glm::vec3(0.0f, 0.0f, -1.0f);
 		} else if(rando == 3) {
+			std::cout << "looking west" << std::endl;
 			_direction = glm::vec3(1.0f, 0.0f, 0.0f);
 		} else {
+			std::cout << "looking east" << std::endl;
 			_direction = glm::vec3(-1.0f, 0.0f, 0.0f);
 		}
 		_scoutTimer = 0;

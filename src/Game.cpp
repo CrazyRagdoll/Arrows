@@ -10,7 +10,7 @@ Game::Game() :
 	_shotTimer(100.0f),
 	_shotPower(0.0f),
 	_paused(false),
-	_floorSize(1000.0f)
+	_floorSize(150.0f)
 {
 	_camera.init(_screenWidth, _screenHeight);
 	SDL_WarpMouseInWindow(_window.getWindow(), _screenWidth/2, _screenHeight/2);
@@ -298,11 +298,10 @@ void Game::processEnemyArrows(float dt)
 
 	for (int i = 0; i < _enemyArrows.size(); i++)
 	{
-		if(_arrows[i].checkCollision(_cube)) { _arrows[i].hit(); }
-		if(_arrows[i].checkFloorCollision(_floor)) { _arrows[i].hit(); }
+		if(_enemyArrows[i].checkFloorCollision(_floor)) { _enemyArrows[i].hit(); }
 		for(int j = 0; j < _terrain.size(); j++)
 		{
-			if(_arrows[i].checkTerrainCollision(_terrain[j])) { _arrows[i].hit(); }
+			if(_enemyArrows[i].checkTerrainCollision(_terrain[j])) { _enemyArrows[i].hit(); }
 		}
 		if (_enemyArrows[i].checkPlayerCollision(_camera))
 		{
