@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 project("Arrows")
 
 #set the source files and path
-set(SOURCES ../src/main.cpp ../src/Agent.h ../src/Agent.cpp ../src/AgentMelee.h ../src/AgentMelee.cpp ../src/Arrow.h ../src/Arrow.cpp ../src/Camera.h ../src/Camera.cpp ../src/Cube.h ../src/Cube.cpp ../src/Errors.h ../src/Errors.cpp ../src/Floor.h ../src/Floor.cpp ../src/Game.h ../src/Game.cpp ../src/GLSLProgram.h ../src/GLSLProgram.cpp ../src/GLTexture ../src/InputManager.h ../src/InputManager.cpp ../src/PlayerStatus.h ../src/PlayerStatus.cpp ../src/IOManager.h ../src/IOManager.cpp ../src/Level.h ../src/Level.cpp ../src/Terrain.h ../src/Terrain.cpp ../src/TextureLoader.h ../src/TextureLoader.cpp ../src/Timing.h ../src/Timing.cpp ../src/Vertex.h ../src/Window.h ../src/Window.cpp)
+set(SOURCES ../src/main.cpp ../src/Agent.h ../src/Agent.cpp ../src/AgentMelee.h ../src/AgentMelee.cpp ../src/Arrow.h ../src/Arrow.cpp ../src/Camera.h ../src/Camera.cpp ../src/Cube.h ../src/Cube.cpp ../src/Errors.h ../src/Errors.cpp ../src/Floor.h ../src/Floor.cpp ../src/Game.h ../src/Game.cpp ../src/GLSLProgram.h ../src/GLSLProgram.cpp ../src/GLTexture ../src/InputManager.h ../src/InputManager.cpp ../src/Item.h ../src/Item.cpp ../src/PlayerStatus.h ../src/PlayerStatus.cpp ../src/IOManager.h ../src/IOManager.cpp ../src/Level.h ../src/Level.cpp ../src/Terrain.h ../src/Terrain.cpp ../src/TextureLoader.h ../src/TextureLoader.cpp ../src/Timing.h ../src/Timing.cpp ../src/Vertex.h ../src/Window.h ../src/Window.cpp)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/../Modules)
 
 #Checking all packages are installed

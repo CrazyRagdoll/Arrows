@@ -15,6 +15,7 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "/home/dell/Documents/Final Year/Arrows/src/Game.cpp" "/home/dell/Documents/Final Year/Arrows/Build/CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Game.cpp.o"
   "/home/dell/Documents/Final Year/Arrows/src/IOManager.cpp" "/home/dell/Documents/Final Year/Arrows/Build/CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/IOManager.cpp.o"
   "/home/dell/Documents/Final Year/Arrows/src/InputManager.cpp" "/home/dell/Documents/Final Year/Arrows/Build/CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/InputManager.cpp.o"
+  "/home/dell/Documents/Final Year/Arrows/src/Item.cpp" "/home/dell/Documents/Final Year/Arrows/Build/CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Item.cpp.o"
   "/home/dell/Documents/Final Year/Arrows/src/Level.cpp" "/home/dell/Documents/Final Year/Arrows/Build/CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Level.cpp.o"
   "/home/dell/Documents/Final Year/Arrows/src/PlayerStatus.cpp" "/home/dell/Documents/Final Year/Arrows/Build/CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/PlayerStatus.cpp.o"
   "/home/dell/Documents/Final Year/Arrows/src/Terrain.cpp" "/home/dell/Documents/Final Year/Arrows/Build/CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Terrain.cpp.o"

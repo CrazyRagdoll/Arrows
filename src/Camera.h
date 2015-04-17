@@ -5,6 +5,7 @@
 #include "glm/gtc/matrix_transform.hpp"
 #include "Floor.h"
 #include "Terrain.h"
+#include "Item.h"
 using namespace glm;
 
 //Camera class for 2D games
@@ -32,6 +33,7 @@ public:
 	bool checkOnTerrain(Terrain& terrain);
 	bool checkUnderTerrain(Terrain& terrain);
 	bool checkTerrainCollision(Terrain& terrain);
+	bool checkItemCollision(Item& item);
 
 	//Getters
 	mat4 getViewMatrix(){ return _viewMatrix; }

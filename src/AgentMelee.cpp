@@ -92,7 +92,8 @@ void AgentMelee::move(float dt, Camera camera)
 	glm::vec3 newPos = _position + _direction * (_currentSpeed * dt);
 	if(!collideWithPlayer(camera, newPos))
 	{
-		_position = newPos;
+		_position.x = newPos.x;
+		_position.z = newPos.z;
 	}
 }
 

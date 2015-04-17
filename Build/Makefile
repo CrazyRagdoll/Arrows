@@ -375,6 +375,30 @@ home/dell/Documents/Final_Year/Arrows/src/InputManager.cpp.s:
 	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/InputManager.cpp.s
 .PHONY : home/dell/Documents/Final_Year/Arrows/src/InputManager.cpp.s
 
+home/dell/Documents/Final_Year/Arrows/src/Item.o: home/dell/Documents/Final_Year/Arrows/src/Item.cpp.o
+.PHONY : home/dell/Documents/Final_Year/Arrows/src/Item.o
+
+# target to build an object file
+home/dell/Documents/Final_Year/Arrows/src/Item.cpp.o:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Item.cpp.o
+.PHONY : home/dell/Documents/Final_Year/Arrows/src/Item.cpp.o
+
+home/dell/Documents/Final_Year/Arrows/src/Item.i: home/dell/Documents/Final_Year/Arrows/src/Item.cpp.i
+.PHONY : home/dell/Documents/Final_Year/Arrows/src/Item.i
+
+# target to preprocess a source file
+home/dell/Documents/Final_Year/Arrows/src/Item.cpp.i:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Item.cpp.i
+.PHONY : home/dell/Documents/Final_Year/Arrows/src/Item.cpp.i
+
+home/dell/Documents/Final_Year/Arrows/src/Item.s: home/dell/Documents/Final_Year/Arrows/src/Item.cpp.s
+.PHONY : home/dell/Documents/Final_Year/Arrows/src/Item.s
+
+# target to generate assembly for a file
+home/dell/Documents/Final_Year/Arrows/src/Item.cpp.s:
+	$(MAKE) -f CMakeFiles/Arrows.dir/build.make CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Item.cpp.s
+.PHONY : home/dell/Documents/Final_Year/Arrows/src/Item.cpp.s
+
 home/dell/Documents/Final_Year/Arrows/src/Level.o: home/dell/Documents/Final_Year/Arrows/src/Level.cpp.o
 .PHONY : home/dell/Documents/Final_Year/Arrows/src/Level.o
 
@@ -585,6 +609,9 @@ help:
 	@echo "... home/dell/Documents/Final_Year/Arrows/src/InputManager.o"
 	@echo "... home/dell/Documents/Final_Year/Arrows/src/InputManager.i"
 	@echo "... home/dell/Documents/Final_Year/Arrows/src/InputManager.s"
+	@echo "... home/dell/Documents/Final_Year/Arrows/src/Item.o"
+	@echo "... home/dell/Documents/Final_Year/Arrows/src/Item.i"
+	@echo "... home/dell/Documents/Final_Year/Arrows/src/Item.s"
 	@echo "... home/dell/Documents/Final_Year/Arrows/src/Level.o"
 	@echo "... home/dell/Documents/Final_Year/Arrows/src/Level.i"
 	@echo "... home/dell/Documents/Final_Year/Arrows/src/Level.s"

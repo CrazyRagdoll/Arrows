@@ -47,6 +47,9 @@ void Game::initSystems()
 
 	//Adding an agent
 	_meleeAgents.emplace_back(glm::vec3(0.0f, 7.5f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f), 2.5f, 7.5f);
+
+	//Testing out the arrow item! (position & ammo value)
+	_arrowItems.emplace_back(glm::vec3(10.0f, 5.0f, 10.0f), 2);
 	
 	//Adding some terrain to the game
 	//generateTerrain(5, 1, 5.0f, _floorSize);
@@ -77,6 +80,7 @@ void Game::gameLoop()
 		while(_gameState == GameState::PLAY)
 		{
 
+			//Game over state.
 			if( _player.getLife() <= 0)
 			{
 				std::cout << "Game over noober" << std::endl;
@@ -98,10 +102,13 @@ void Game::gameLoop()
 			double currentTime = SDL_GetTicks();
 			float deltaTime = float(currentTime - lastTime);
 
+			//Begin the FPS limiter!
 			_fpsLimiter.begin();
-			
+
+			//Process all of the keyboard and mouse inputs
 			processInput();
 		
+			//Update the camera.
 			_camera.update();
 
 			//update the camera to see if the player is falling or not
@@ -126,6 +133,25 @@ void Game::gameLoop()
 				}
 			}
 
+			//update all of the collectables
+			for (int i = 0; i < _arrowItems.size();)
+			{
+				if(_camera.checkItemCollision(_arrowItems[i]))
+				{
+					//if the player collides with the arrow item, set it to inactive
+					_arrowItems[i].setInactive();
+					//Also give the player more ammo!! woo
+					_player.incAmmo(_arrowItems[i].getValue());
+				}
+				if(_arrowItems[i].update(currentTime) == true)
+				{
+					_arrowItems[i] = _arrowItems.back();
+					_arrowItems.pop_back();
+				} else {
+					i++;
+				}
+			}
+
 			//if all the agents are dead spawn some back in!!
 			if(_meleeAgents.size() <= 0)
 			{
@@ -141,6 +167,7 @@ void Game::gameLoop()
 					_meleeAgents[i] = _meleeAgents.back();
 					_meleeAgents.pop_back();
 				} else {
+					//If a melee agent manages to hit the player deal damage to the player.
 					if(_meleeAgents[i]._hitPlayer) { _player.damage(_meleeAgents[i].getDamage()); _meleeAgents[i]._hitPlayer = false; }
 					i++;
 				}
@@ -463,6 +490,12 @@ void Game::drawGame()
 	{
 		_arrows[i].init();
 		_arrows[i].draw();
+	}
+
+	for (int i = 0; i < _arrowItems.size(); i++)
+	{
+		_arrowItems[i].init();
+		_arrowItems[i].draw();
 	}
 
 	//disable the shaders

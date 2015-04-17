@@ -180,3 +180,14 @@ bool Camera::checkTerrainCollision(Terrain& terrain)
 		   _position.z - _playerWidth < terrain._position.z + terrain._size &&
 		   _position.z + _playerWidth > terrain._position.z - terrain._size); 
 }
+
+bool Camera::checkItemCollision(Item& item)
+{
+	glm::vec3 itemPos = item.getPosition();
+	return(_position.x - _playerWidth < itemPos.x + item._width &&
+			_position.x + _playerWidth > itemPos.x - item._width &&
+			_position.y - _playerHeight < itemPos.y + item._height &&
+			_position.y + _playerHeight > itemPos.y - item._height &&
+			_position.z - _playerWidth < itemPos.z + item._depth &&
+			_position.z + _playerWidth > itemPos.z - item._depth);
+}

@@ -20,6 +20,7 @@
 #include "Floor.h"
 #include "Terrain.h"
 #include "PlayerStatus.h"
+#include "Item.h"
 
 enum class GameState {PLAY, PAUSE, MAIN_MENU, EXIT};
 
@@ -67,6 +68,8 @@ private:
 	std::vector<Terrain> _terrain;
 
 	std::vector<AgentMelee> _meleeAgents;
+
+	std::vector<Item> _arrowItems;
 
 	float _maxFPS;
 	float _fps;
