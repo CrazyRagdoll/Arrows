@@ -122,14 +122,21 @@ void Camera::updateViewMatrix()
 
 void Camera::move(float speed, float dt)
 {
-	if(_sprinting) { _moveSpeed = speed * 2; } else if(_crouching || _drawing) { _moveSpeed = speed / 2; } else { _moveSpeed = speed; }
+	//Regulating movement speed
+	if(_sprinting) { _moveSpeed = speed * 2; } 
+	else if(_crouching || _drawing) { _moveSpeed = speed / 2; } 
+	else if(_sprinting && _drawing) { _moveSpeed = speed / 2; }
+	else { _moveSpeed = speed; }
 	_position.x += _direction.x * dt * _moveSpeed;
 	_position.z += _direction.z * dt * _moveSpeed;
 	updateViewMatrix();
 }
 void Camera::strafe(float speed, float dt)
 {
-	if(_sprinting) { _moveSpeed = speed * 2; } else if(_crouching || _drawing) { _moveSpeed = speed / 2; } else { _moveSpeed = speed; }
+	if(_sprinting) { _moveSpeed = speed * 2; } 
+	else if(_crouching || _drawing) { _moveSpeed = speed / 2; } 
+	else if(_sprinting && _drawing) { _moveSpeed = speed / 2; }
+	else { _moveSpeed = speed; }
 	_position += _right * dt * _moveSpeed;
 	updateViewMatrix();
 }

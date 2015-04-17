@@ -10,7 +10,10 @@ Game::Game() :
 	_shotTimer(100.0f),
 	_shotPower(0.0f),
 	_paused(false),
-	_floorSize(150.0f)
+	_floorSize(250.0f),
+	_wave(1),
+	_spawnBuffer(250),
+	_spawnTimer(0)
 {
 	_camera.init(_screenWidth, _screenHeight);
 	SDL_WarpMouseInWindow(_window.getWindow(), _screenWidth/2, _screenHeight/2);
@@ -45,14 +48,17 @@ void Game::initSystems()
 	//Initialize the player
 	_player.init();	
 
+	//Spawning the first wave of enemies
+	nextWave(1);
+
 	//Adding an melee agent
-	_meleeAgents.emplace_back(glm::vec3(0.0f, 7.5f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f), 4.0f, 3.5f, 100.0f);
+	//_meleeAgents.emplace_back(glm::vec3(0.0f, 7.5f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f), 4.0f, 3.5f, 100.0f);
 
 	//Adding a ranged agent
-	_rangedAgents.emplace_back(glm::vec3(-50.0f, 7.5f, -50.0f), glm::vec3(0.0f, 0.0f, -1.0f), 2.5f, 7.5f, 50.0f);
+	//_rangedAgents.emplace_back(glm::vec3(-50.0f, 7.5f, -50.0f), glm::vec3(0.0f, 0.0f, -1.0f), 2.5f, 7.5f, 50.0f);
 
 	//Testing out the arrow item! (position & ammo value)
-	_arrowItems.emplace_back(glm::vec3(10.0f, 2.5f, 10.0f), 2);
+	//_arrowItems.emplace_back(glm::vec3(10.0f, 2.5f, 10.0f), 2);
 	
 	//Adding some terrain to the game
 	//generateTerrain(5, 1, 5.0f, _floorSize);
@@ -86,6 +92,9 @@ void Game::gameLoop()
 			//Game over state - Check to see if they player is out of time or life - End game and display score.
 			processState();
 
+			//Spawning the next wave of enemies
+			processWave();
+
 			//This block of code is used to rotate the camera using mouse input.
 			static double lastTime = SDL_GetTicks();
 			
@@ -101,6 +110,10 @@ void Game::gameLoop()
 		
 			//Update the camera.
 			_camera.update();
+
+			//Calculating how long the player has been fighting this current wave.
+			_player.incTotalTime(deltaTime/1000);
+			_player.incTime(deltaTime/1000);
 
 			//Function call to update all of the arrows.
 			processArrows(deltaTime);
@@ -160,19 +173,85 @@ void Game::gameLoop()
 
 void Game::processState()
 {
-	if( _player.getLife() <= 0 || _camera.getPosition().y <= -5000.0f)
+	if( _player.getLife() <= 0 || _camera.getPosition().y <= -200.0f)
 	{
-		std::cout << "Game over noober" << std::endl;
+		std::cout << "Game over noober!" << std::endl;
+		std::cout << "You survived for: " << _player.getTotalTime() << " seconds!!" << std::endl;
+		std::cout << "Your score was: " << _player.getScore(); 
+		//Obviously, if the player beats his high score you compliment him. Otherwise you call him a noob...
+		if(_player.getScore() > _player.getHighScore()) { std::cout << ". Niceeee...!" << std::endl; } else { std::cout << ". Noob." << std::endl; }
+
 		//reset camera position
 		_camera.resetCameraPosition();
+		//reset the player stats.
+		_player.reset();
+
 		//kill all of the agents and respawn them.
 		for (int i = 0; i < _meleeAgents.size();)
 		{
 			_meleeAgents[i] = _meleeAgents.back();
 			_meleeAgents.pop_back();
 		}
-		//reset the player stats.
-		_player.reset();
+		for (int i = 0; i < _rangedAgents.size(); ++i)
+		{
+			_rangedAgents[i] = _rangedAgents.back();
+			_rangedAgents.pop_back();
+		}
+
+		//Spawn in the enemies.
+		nextWave(_player.getWave());
+	}
+}
+
+void Game::processWave()
+{
+	//If all of the enemies are dead the player has completed the wave.
+	if(_meleeAgents.size() + _rangedAgents.size() == 0)
+	{
+		//A buffer to give the player some time before each wave.
+		if(_spawnTimer == _spawnBuffer)
+		{
+			_player.incWave(1);				//Progress in waves.
+			if (_player.getTime() < 500) { _player.incScore(500 - _player.getTime()); }			//Increase the score by how fast the player was!
+			nextWave(_player.getWave());	//Spawn the next wave of enemies
+			_spawnTimer = 0;				//Reset the spawn timer!
+			_player.setTime(0.0f);			//Reset the wave timer
+		} else {
+			if( _spawnTimer == 0)
+			{
+				std::cout << "GG Bro. That wave took: " << _player.getTime() << " seconds." << std::endl;
+			}
+			if( _spawnTimer % 50 == 0 )
+			{
+				std::cout << "Next wave in: " << (250 - _spawnTimer)/50 << std::endl;
+			}
+			_spawnTimer++;
+		}
+	}
+}
+
+void Game::nextWave(int wave)
+{
+	//A variable to calculate the size of the floor.
+	int floorSize = 2 * _floorSize;
+	for (float i = 0; i < wave; i++)
+	{
+		//Randomize some coordinates
+		int rand_x = rand() % floorSize - _floorSize;
+		int rand_z = rand() % floorSize - _floorSize;
+		//Create the position vector
+		glm::vec3 pos = glm::vec3(rand_x, 5.0f, rand_z);
+		_meleeAgents.emplace_back(pos, glm::vec3(0.0f, 0.0f, 1.0f), 5.0f, 5.0f, 100.0f);
+	}
+
+	for (float i = 0; i < wave; ++i)
+	{
+		//Randomize some coordinates
+		int rand_x = rand() % floorSize - _floorSize;
+		int rand_z = rand() % floorSize - _floorSize;
+		//Create the position vector
+		glm::vec3 pos = glm::vec3(rand_x, 7.5f, rand_z);
+		_rangedAgents.emplace_back(pos, glm::vec3(0.0f, 0.0f, -1.0f), 2.5f, 7.5f, 50.0f);
 	}
 }
 
@@ -190,6 +269,7 @@ void Game::processCollectables(float ct)
 		}
 		if(_arrowItems[i].update(ct) == true)
 		{
+			//If the item has expired or is inactive delete it..
 			_arrowItems[i] = _arrowItems.back();
 			_arrowItems.pop_back();
 		} else {
@@ -203,14 +283,22 @@ void Game::processMeleeAgents(float dt)
 	//updating all of the melee agents
 	for (int i = 0; i < _meleeAgents.size();)
 	{
-		//Passing the position of the player so the agents can check search for him
+		//Passing the position of the player so the agents can search for him
 		if(_meleeAgents[i].update(dt, _player, _camera) == true)
 		{
+			//When the mele enemy dies give some score to the player!
+			_player.incScore(75.0f);
+			//if the melee agent update returns true then it is dead, so delete it and remove it from the vector
 			_meleeAgents[i] = _meleeAgents.back();
 			_meleeAgents.pop_back();
 		} else {
 			//If a melee agent manages to hit the player deal damage to the player.
-			if(_meleeAgents[i]._hitPlayer) { _player.damage(_meleeAgents[i].getDamage()); _meleeAgents[i]._hitPlayer = false; }
+			if(_meleeAgents[i]._hitPlayer) 
+			{ 
+				//Damage the player
+				_player.damage(_meleeAgents[i].getDamage()); 
+				_meleeAgents[i]._hitPlayer = false; 
+			}
 			i++;
 		}
 	}
@@ -218,16 +306,21 @@ void Game::processMeleeAgents(float dt)
 
 void Game::processRangedAgents(float dt)
 {
-	//updating all of the melee agents
+	//updating all of the ranged agents
 	for (int i = 0; i < _rangedAgents.size();)
 	{
-		//Passing the position of the player so the agents can check search for him
+		//Passing the position of the player so the agents can search for him
 		if(_rangedAgents[i].update(dt, _player, _camera) == true)
 		{
+			//When a ranged enemy dies, make it spawn some ammo!!
+			_arrowItems.emplace_back(_rangedAgents[i].getAgentPos(), 2);
+			//When the ranged enemy dies give some score to the player!
+			_player.incScore(50.0f);
 			_rangedAgents[i] = _rangedAgents.back();
 			_rangedAgents.pop_back();
 		} else {
-			//If a melee agent manages to hit the player deal damage to the player.
+			//The ranged enemy works differently to the melee, if the ranged enemy has the player in his range & sight he will shoot
+			//Therefore we create an arrow at the position of the enemy and fire it at the player's position.
 			if(_rangedAgents[i]._hitPlayer) 
 			{ 
 				_enemyArrows.emplace_back(_rangedAgents[i].getAgentPos(), _camera.getPosition(), _rangedAgents[i].getDamage());
@@ -265,7 +358,6 @@ void Game::processArrows(float dt)
 		{
 			if(_arrows[i].checkAgentCollision(_meleeAgents[j]) && _arrows[i].getActive()) 
 				{ 
-					std::cout << "HIT" << std::endl; 
 					_arrows[i].hitAgent();
 					_meleeAgents[j].damage(50); _meleeAgents[j].aggro(); 
 				}
@@ -274,7 +366,6 @@ void Game::processArrows(float dt)
 		{
 			if(_arrows[i].checkAgentCollision(_rangedAgents[j]) && _arrows[i].getActive()) 
 				{ 
-					std::cout << "HIT" << std::endl; 
 					_arrows[i].hitAgent();
 					_rangedAgents[j].damage(50); _rangedAgents[j].aggro(); 
 				}
@@ -465,7 +556,7 @@ void Game::processInput()
 			normalize(displacement);
 			displacement *= 3;
 			//Adding an arrow into the world
-			_arrows.emplace_back(position + displacement, direction, _shotPower, 0.25f, 5.0f, 250, "NONE");
+			_arrows.emplace_back(position + displacement, direction, _shotPower, 0.5f, 5.0f, 250, "NONE");
 			//Reducing the players ammo	
 			_player.incAmmo(-1);
 			std::cout << "Shot Speed: " << _shotPower << std::endl;	
@@ -557,13 +648,14 @@ void Game::drawGame()
 	glUniformMatrix4fv(pLocation, 1, GL_FALSE, &(cameraMatrix[0][0]));
 
 	//creating and drawing a cube ../src/Textures/NeHe.bmp
-	_cube.init(0.0f, 10.0f, 0.0f, 5.0f, "NONE");
-	_cube.draw();
+	//_cube.init(0.0f, 10.0f, 0.0f, 5.0f, "../src/Textures/NeHe.bmp");
+	//_cube.draw();
 
 	//Adding a floor to the scene
 	_floor.init(_floorSize);
 	_floor.draw();
 
+	//Draw all of the things!!
 	drawObjects();
 
 	//disable the shaders
@@ -573,10 +665,10 @@ void Game::drawGame()
 	_window.swapBuffer();
 }
 
-
+//A function to hold all of the objects to keep it clean.
 void Game::drawObjects()
 {
-		//Updating the melee agents
+	//Updating the melee agents
 	for (int i = 0; i < _meleeAgents.size(); i++)
 	{
 		_meleeAgents[i].init();

@@ -8,6 +8,7 @@
 #include <iostream>
 #include <string>
 #include <stdlib.h>
+#include <ctime>
 
 #include "GLSLProgram.h"
 #include "Window.h"
@@ -45,6 +46,8 @@ private:
 
 	//Object processing functions to keep the code more readable
 	void processState();
+	void nextWave(int wave);
+	void processWave();
 	void processArrows(float dt);
 	void processEnemyArrows(float dt);
 	void processMeleeAgents(float dt);
@@ -90,6 +93,9 @@ private:
 	float _fps;
 	float _shotTimer, _SHOTSPEED, _shotPower;
 	float _floorSize;
+
+	int _spawnBuffer, _spawnTimer;  //Used to give the player an amout of time before the next wave spawns.
+	int _wave; //What wave the player is on
 
 	bool _paused;
 };
