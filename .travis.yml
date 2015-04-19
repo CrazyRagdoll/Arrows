@@ -6,6 +6,6 @@ before_script:
   - sudo apt-add-repository ppa:zoogie/sdl2-snapshots -y
   - sudo apt-get update -qq
   - sudo apt-get install -qq -y libglew-dev libsdl2-dev
-  - cmake CMakeLists.txt
+  - cmake ../Build/CMakeLists.txt
   
 script: make
