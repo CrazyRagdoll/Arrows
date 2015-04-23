@@ -98,16 +98,16 @@ void AgentRanged::scout(float dt, Camera camera)
 		//Getting the agent to look north, south, east & west randomly
 		int rando = rand() % 4;
 		if(rando == 1){
-			std::cout << "looking north" << std::endl;
+			//std::cout << "looking north" << std::endl;
 			_direction = glm::vec3(0.0f, 0.0f, 1.0f);	
 		} else if(rando == 2) {
-			std::cout << "looking south" << std::endl;
+			//std::cout << "looking south" << std::endl;
 			_direction = glm::vec3(0.0f, 0.0f, -1.0f);
 		} else if(rando == 3) {
-			std::cout << "looking west" << std::endl;
+			//std::cout << "looking west" << std::endl;
 			_direction = glm::vec3(1.0f, 0.0f, 0.0f);
 		} else {
-			std::cout << "looking east" << std::endl;
+			//std::cout << "looking east" << std::endl;
 			_direction = glm::vec3(-1.0f, 0.0f, 0.0f);
 		}
 		_scoutTimer = 0;

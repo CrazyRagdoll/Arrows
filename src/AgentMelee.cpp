@@ -9,9 +9,16 @@ AgentMelee::AgentMelee(glm::vec3 pos, glm::vec3 dir, float width, float height, 
 	_height = height;
 	_life = life;
 
+	//Randomizing the patrol direction! -- everyones gota be different!
+	int rando = rand() % 4;
+	if(rando == 0){ _direction = _patDir = glm::vec3(0.0f, 0.0f, 1.0f);	} 
+	else if(rando == 1) { _direction = _patDir = glm::vec3(0.0f, 0.0f, -1.0f); } 
+	else if(rando == 2) { _direction = _patDir = glm::vec3(1.0f, 0.0f, 0.0f); } 
+	else { _direction = _patDir = glm::vec3(-1.0f, 0.0f, 0.0f); }
+
 	//Melee units variables
 	_patrolTimer = 0.0f;
-	_patrolLimit = 200.0f;
+	_patrolLimit = 150.0f;
 	_speed = 0.04f;
 	_attackSpeed = 100.0f;
 	_asCount = _attackSpeed;
@@ -77,6 +84,7 @@ bool AgentMelee::collideWithPlayer(Camera camera, glm::vec3 newPos)
 void AgentMelee::move(float dt, Camera camera)
 {
 	glm::vec3 newPos = _position + _direction * (_currentSpeed * dt);
+	//if the next movement doesnt move the agent ontop of the player
 	if(!collideWithPlayer(camera, newPos))
 	{
 		_position.x = newPos.x;

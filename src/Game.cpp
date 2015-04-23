@@ -15,7 +15,9 @@ Game::Game() :
 	_spawnBuffer(250),
 	_spawnTimer(0)
 {
-	_camera.init(_screenWidth, _screenHeight);
+	//Passing the screen sizes and the spawn position!!
+	float spawn = _floorSize - 35.0f;	//Spawn 35 units from the cornor of the map.
+	_camera.init(_screenWidth, _screenHeight, glm::vec3(spawn, 50.0f, spawn));
 	SDL_WarpMouseInWindow(_window.getWindow(), _screenWidth/2, _screenHeight/2);
 }
 
@@ -234,11 +236,12 @@ void Game::nextWave(int wave)
 {
 	//A variable to calculate the size of the floor.
 	int floorSize = 2 * _floorSize;
-	for (float i = 0; i < wave; i++)
+	for (float i = 0; i < wave * 0.5; i++)
 	{
 		//Randomize some coordinates
-		int rand_x = rand() % floorSize - _floorSize;
-		int rand_z = rand() % floorSize - _floorSize;
+		//Minusing 100 because we dont want the enemies to patroll off of the edge of the map.
+		int rand_x = rand() % (floorSize-150) - _floorSize;
+		int rand_z = rand() % (floorSize-150) - _floorSize;
 		//Create the position vector
 		glm::vec3 pos = glm::vec3(rand_x, 5.0f, rand_z);
 		_meleeAgents.emplace_back(pos, glm::vec3(0.0f, 0.0f, 1.0f), 5.0f, 5.0f, 100.0f);

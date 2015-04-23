@@ -5,8 +5,7 @@
 
 double TO_DEG = 180/3.14;
 
-Camera::Camera() : _spawn(100.0f, 50.0f, 100.0f),
-	_position(_spawn),
+Camera::Camera() : 
 	_horizontalAngle(3.14f),
 	_verticalAngle(0.0f),
 	_fov(45.0f),
@@ -27,7 +26,8 @@ Camera::~Camera()
 {
 }
 
-void Camera::init(int screenWidth, int screenHeight) {
+void Camera::init(int screenWidth, int screenHeight, glm::vec3 spawn) {
+	_position = _spawn = spawn;
 	_screenWidth = screenWidth;
 	_screenHeight = screenHeight;
 	update();
@@ -37,12 +37,12 @@ void Camera::init(int screenWidth, int screenHeight) {
 
 void Camera::rotate(double xpos, double ypos)
 {
-	_horizontalAngle += _mouseSpeed * float(_screenWidth/2 - xpos);
+	_horizontalAngle += (_mouseSpeed * float(_screenWidth/2 - xpos))/2;
 	float verticalDeg = (_verticalAngle + (_mouseSpeed * float(_screenHeight/2 - ypos))) * TO_DEG ;
 	//To make sure the player cannot look past the vertical view distance
 	if(verticalDeg > -_vertFoV && verticalDeg < _vertFoV)
 	{
-		_verticalAngle += _mouseSpeed * float(_screenHeight/2 - ypos);
+		_verticalAngle += (_mouseSpeed * float(_screenHeight/2 - ypos))/2;
 	}	
 	updateViewMatrix();
 }

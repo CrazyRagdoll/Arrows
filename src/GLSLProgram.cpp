@@ -39,7 +39,7 @@ void GLSLProgram::linkShaders()
 	glAttachShader(_programID, _vertexShaderID);
 	glAttachShader(_programID, _fragmentShaderID);
 
-	//Link out program
+	//Link our program
 	glLinkProgram(_programID);
 	
 	GLint isLinked = 0;

@@ -15,7 +15,7 @@ public:
 	Camera();
 	~Camera();
 
-	void init(int screenWidth, int screenHeight);
+	void init(int screenWidth, int screenHeight, glm::vec3 spawn);
 
 	void update();
 
