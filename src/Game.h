@@ -44,6 +44,8 @@ private:
 	void drawGame();
 	void drawObjects();
 
+	void drawCrosshair();
+
 	//Object processing functions to keep the code more readable
 	void processState();
 	void nextWave(int wave);

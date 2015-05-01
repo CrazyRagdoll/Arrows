@@ -651,8 +651,8 @@ void Game::drawGame()
 	glUniformMatrix4fv(pLocation, 1, GL_FALSE, &(cameraMatrix[0][0]));
 
 	//creating and drawing a cube ../src/Textures/NeHe.bmp
-	//_cube.init(0.0f, 10.0f, 0.0f, 5.0f, "../src/Textures/NeHe.bmp");
-	//_cube.draw();
+	_cube.init(0.0f, 10.0f, 0.0f, 5.0f, "../src/Textures/NeHe.bmp");
+	_cube.draw();
 
 	//Adding a floor to the scene
 	_floor.init(_floorSize);
@@ -666,6 +666,11 @@ void Game::drawGame()
 
 	// Swap the buffers and draw everything onto the screencd 
 	_window.swapBuffer();
+}
+
+void Game::drawCrosshair()
+{
+	
 }
 
 //A function to hold all of the objects to keep it clean.
