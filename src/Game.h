@@ -20,6 +20,7 @@
 #include "AgentMelee.h"
 #include "AgentRanged.h"
 #include "Cube.h"
+#include "Crosshair.h"
 #include "Floor.h"
 #include "Terrain.h"
 #include "PlayerStatus.h"
@@ -44,8 +45,6 @@ private:
 	void drawGame();
 	void drawObjects();
 
-	void drawCrosshair();
-
 	//Object processing functions to keep the code more readable
 	void processState();
 	void nextWave(int wave);
@@ -57,6 +56,7 @@ private:
 	void processCollectables(float ct);
 
 	//A simple functions to build a map
+	void generateMap();
 	void generateTerrain(int blocks, int terrainLevel, float size, float floor);
 
 	Window _window;
@@ -65,7 +65,7 @@ private:
 
 	PlayerStatus _player;
 
-	Cube _cube;	
+	Cube _cube;		
 
 	Floor _floor;
 
@@ -100,6 +100,9 @@ private:
 	int _wave; //What wave the player is on
 
 	bool _paused;
+
+	//To bebug!!
+	bool _debug;
 };
 
 #endif

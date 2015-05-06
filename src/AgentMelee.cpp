@@ -37,7 +37,7 @@ AgentMelee::~AgentMelee()
 
 void AgentMelee::init()
 {
-	Agent::init("NONE");
+	Agent::init("NONE", 255, 0, 0, 255);
 }
 
 void AgentMelee::draw()

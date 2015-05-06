@@ -26,7 +26,7 @@ if(NOT SDL2_FOUND)
     message(ERROR " SDL2 not found!")
 endif(NOT SDL2_FOUND)
 
-#GLU library
+#GLEW library
 find_package(GLEW REQUIRED)
 if(NOT GLEW_FOUND)
 	message(ERROR " GLEW not found!")

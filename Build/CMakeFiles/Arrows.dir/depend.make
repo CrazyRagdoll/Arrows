@@ -720,6 +720,7 @@ CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Game.cpp.o: /hom
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Game.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/AgentRanged.h
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Game.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/Arrow.h
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Game.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/Camera.h
+CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Game.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/Crosshair.h
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Game.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/Cube.h
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Game.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/EnemyArrow.h
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/Game.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/Errors.h
@@ -1089,6 +1090,7 @@ CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/main.cpp.o: /hom
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/main.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/AgentRanged.h
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/main.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/Arrow.h
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/main.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/Camera.h
+CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/main.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/Crosshair.h
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/main.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/Cube.h
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/main.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/EnemyArrow.h
 CMakeFiles/Arrows.dir/home/dell/Documents/Final_Year/Arrows/src/main.cpp.o: /home/dell/Documents/Final\ Year/Arrows/src/Floor.h

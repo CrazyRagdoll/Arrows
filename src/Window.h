@@ -25,4 +25,5 @@ public:
 private:
 	SDL_Window* _sdlWindow;
 	int _screenWidth, _screenHeight;
+
 };

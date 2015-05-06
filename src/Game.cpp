@@ -13,7 +13,8 @@ Game::Game() :
 	_floorSize(250.0f),
 	_wave(1),
 	_spawnBuffer(250),
-	_spawnTimer(0)
+	_spawnTimer(0),
+	_debug(false)
 {
 	//Passing the screen sizes and the spawn position!!
 	float spawn = _floorSize - 35.0f;	//Spawn 35 units from the cornor of the map.
@@ -51,7 +52,7 @@ void Game::initSystems()
 	_player.init();	
 
 	//Spawning the first wave of enemies
-	nextWave(1);
+	if(!_debug) { nextWave(1); }
 
 	//Adding an melee agent
 	//_meleeAgents.emplace_back(glm::vec3(0.0f, 7.5f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f), 4.0f, 3.5f, 100.0f);
@@ -63,7 +64,9 @@ void Game::initSystems()
 	//_arrowItems.emplace_back(glm::vec3(10.0f, 2.5f, 10.0f), 2);
 	
 	//Adding some terrain to the game
-	//generateTerrain(5, 1, 5.0f, _floorSize);
+	generateTerrain(10, 5, 5.0f, _floorSize);
+	generateTerrain(10, 12, 5.0f, _floorSize);
+	generateTerrain(10, 19, 5.0f, _floorSize);
 
 	//initialize the shaders.
 	initShaders();
@@ -95,7 +98,7 @@ void Game::gameLoop()
 			processState();
 
 			//Spawning the next wave of enemies
-			processWave();
+			if(!_debug) { processWave(); }
 
 			//This block of code is used to rotate the camera using mouse input.
 			static double lastTime = SDL_GetTicks();
@@ -135,22 +138,17 @@ void Game::gameLoop()
 			//update the camera to see if the player is falling or not
 			if(_camera.checkFloorCollision(_floor)) { _camera._onFloor = true; } else { _camera._onFloor = false; }
 
-			//Check to see if the player is the terrain
+			//Check to see if the player is on the terrain
 			for( int i = 0; i < _terrain.size(); i++)
 			{
 				if(_camera.checkOnTerrain(_terrain[i])) { _camera._onTerrain = true; break; } else { _camera._onTerrain = false; }
 
 			}
 
-			//if all the agents are dead spawn some back in!!
-			if(_meleeAgents.size() <= 0)
-			{
-				//_meleeAgents.emplace_back(glm::vec3(0.0f, 7.5f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f), 4.0f, 3.5f, 100.0f);
-			}
-
 			//Incrementing shot timer to regulate shooting speed
 			_shotTimer++;
 			
+			//Draw the game..
 			drawGame();
 
 			_fps = _fpsLimiter.end();
@@ -225,6 +223,7 @@ void Game::processWave()
 			}
 			if( _spawnTimer % 50 == 0 )
 			{
+				//Displaying a count down
 				std::cout << "Next wave in: " << (250 - _spawnTimer)/50 << std::endl;
 			}
 			_spawnTimer++;
@@ -239,7 +238,7 @@ void Game::nextWave(int wave)
 	for (float i = 0; i < wave * 0.5; i++)
 	{
 		//Randomize some coordinates
-		//Minusing 100 because we dont want the enemies to patroll off of the edge of the map.
+		//Minusing 150 because we dont want the enemies to patroll off of the edge of the map.
 		int rand_x = rand() % (floorSize-150) - _floorSize;
 		int rand_z = rand() % (floorSize-150) - _floorSize;
 		//Create the position vector
@@ -390,6 +389,7 @@ void Game::processEnemyArrows(float dt)
 		}
 	}
 
+	//Enemy arrows can hit terrain too!!
 	for (int i = 0; i < _enemyArrows.size(); i++)
 	{
 		if(_enemyArrows[i].checkFloorCollision(_floor)) { _enemyArrows[i].hit(); }
@@ -464,6 +464,7 @@ void Game::processInput()
 		_camera._sprinting = false;
 	}
 		/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ MOVEMENT KEYPRESS FUNCTIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+		/* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 	if (_inputManager.isKeyPressed(SDLK_w) && !_inputManager.isKeyPressed(SDLK_a) && !_inputManager.isKeyPressed(SDLK_s) && !_inputManager.isKeyPressed(SDLK_d)){
 		_camera.move(SPEED, deltaTime);
 		for( int i = 0; i < _terrain.size(); i++)
@@ -524,6 +525,7 @@ void Game::processInput()
 			if(_camera.checkTerrainCollision(_terrain[i])) { _camera.move(-SPEED/2, deltaTime); _camera.strafe(-SPEED/2, deltaTime); }
 		}
 	}
+		/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 		/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ MOVEMENT KEYPRESS FUNCTIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 	if (_inputManager.isKeyPressed(SDLK_SPACE)){
 		//If the player is not jumping or falling then jump!
@@ -668,11 +670,6 @@ void Game::drawGame()
 	_window.swapBuffer();
 }
 
-void Game::drawCrosshair()
-{
-	
-}
-
 //A function to hold all of the objects to keep it clean.
 void Game::drawObjects()
 {
@@ -717,6 +714,12 @@ void Game::drawObjects()
 		_arrowItems[i].init();
 		_arrowItems[i].draw();
 	}
+}
+
+//A simple function to create a map...
+void Game::generateMap()
+{
+
 }
 
 //A simple function to randomly generate terrain around the map.

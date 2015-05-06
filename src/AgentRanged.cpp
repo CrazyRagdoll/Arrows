@@ -34,7 +34,7 @@ AgentRanged::~AgentRanged()
 
 void AgentRanged::init()
 {
-	Agent::init("NONE");
+	Agent::init("NONE", 0, 255, 0, 255);
 }
 
 void AgentRanged::draw()

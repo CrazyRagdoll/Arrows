@@ -21,7 +21,7 @@ public:
 	Agent();
 	~Agent();
 
-	void init(string texture);
+	void init(string texture, int r, int g, int b, int a);
 
 	void draw();
 
@@ -36,6 +36,9 @@ public:
 	glm::vec3 _position, _direction;
 	//We need the enemies ot have a height and width
 	float _width, _height;
+
+	//colour integers
+	int _r, _g, _b, _a;
 
 	float _viewDist, _viewRange; //Agent needs to have a view distance and range
 	float _life; //Giving the enemies a life total

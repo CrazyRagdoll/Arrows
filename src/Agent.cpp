@@ -38,8 +38,9 @@ bool Agent::lookForPlayer(glm::vec3 playerPos)
 	return false;
 }
 
-void Agent::init(string texture)
+void Agent::init(string texture, int r, int g, int b, int a)
 {
+	_r = r; _g = g; _b = b; _a = a;
 	if (texture != "NONE")
 	{
 		_texture.id = _textureLoader.loadGLTexture(texture);	
@@ -103,7 +104,7 @@ void Agent::init(string texture)
     vertexData[35].setPosUV( _width + _position.x, _height + _position.y,-_width + _position.z,   1.0f, 1.0f);
 
 	for (int i = 0; i < 36; i++) {
-		vertexData[i].setColor(255, 255, 255, 255);
+		vertexData[i].setColor(_r, _g, _b, _a);
 	}
 	
 	// Binding the buffer
@@ -136,7 +137,7 @@ void Agent::draw()
 	//This is the color attribute pointer	
 	glVertexAttribPointer(1, 4, GL_UNSIGNED_BYTE, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, color));
 	//this is the UV attribute pointer
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_TRUE, sizeof(Vertex), (void*)offsetof(Vertex, uv));
+	//glVertexAttribPointer(2, 2, GL_FLOAT, GL_TRUE, sizeof(Vertex), (void*)offsetof(Vertex, uv));
 	
 	//Draw the 6 verticies to the screen
 	glDrawArrays(GL_TRIANGLES, 0, 36);
