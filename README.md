@@ -10,10 +10,14 @@ Requires Ubuntu 12.04/14.04
 
 Required libraries & extensions (Ubuntu terminal commands to install libaries): 
 
-Cmake: sudo apt-get install cmake /n
+Cmake: sudo apt-get install cmake 
+
 GLEW: sudo apt-get install libglew-dev
+
 SDL2.0: sudo apt-get install libsdl2-dev
+
 SOIL: sudo apt-get install libsoil-dev 
+
 OpenGL & GLM: Should be pre-installed on the Ubuntu OS
 
 To Run:
