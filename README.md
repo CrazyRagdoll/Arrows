@@ -14,7 +14,7 @@ To Run:
 
 Open Ubuntu terminal and navigate to ../Arrows/Build/
 
-Enter “cmake CMakeLists.txt” to build project
+Enter “cmake CMakeLists.txt” to build project (Cmake might ask you to change the source directory which can be changed in CMakeLists.txt)
 
 Enter “make” to compile project
 
