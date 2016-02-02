@@ -28,4 +28,6 @@ Enter “cmake CMakeLists.txt” to build project (Cmake might shout at you beca
 
 Enter “make” to compile project
 
-Enter “/Arrows” to run the project
+Enter “/Arrows” to run the project
+
+Then have FUN!!!
